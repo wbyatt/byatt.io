@@ -1,3 +1,18 @@
-baseURL: "http://example.org/"
+baseURL: "https://byatt.io/"
 languageCode: "en-us"
-title: "My New Hugo Site"
+title: "byatt.io"
+
+params:
+  env: production
+  description: "byatt.io"
+
+  defaultTheme: auto
+
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowPostBreadCrumbs: true
+
+  socialIcons:
+    - name: linkedin
+      title: LinkedIn
+      url: "https://linkedin.com/in/wm-byatt"
