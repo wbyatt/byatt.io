@@ -1,5 +1,5 @@
 ---
-title: "The Big Picture of AI"
+title: "The Raft Consensus"
 date: 2024-06-17T12:45:18-04:00
 draft: false
 ---
