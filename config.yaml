@@ -32,6 +32,8 @@ params:
 
   homeInfoParams:
     Title: william byatt
+    Content: Software development is a distributed, social enterprise. This is where I get to think about that.
+
 
   socialIcons:
     - name: linkedin
