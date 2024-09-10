@@ -1,3 +1,11 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "My New Hugo Site"
+
+[params]
+  [params.homeInfoParams]
+    Title = "william byatt"
+  
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/wm-byatt"
