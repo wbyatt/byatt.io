@@ -12,6 +12,10 @@ params:
   ShowPostNavLinks: true
   ShowPostBreadCrumbs: true
 
+  homeInfoParams:
+    Title: byatt.io
+    content: Some Content...
+
   socialIcons:
     - name: linkedin
       title: LinkedIn
