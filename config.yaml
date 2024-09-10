@@ -16,7 +16,7 @@ languages:
     menu:
       main:
         - name: CV
-          url: /posts/resume
+          url: /cv
           weight: 10
 
 params:
