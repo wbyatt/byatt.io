@@ -4,8 +4,6 @@ date: 2024-09-10T13:45:18-04:00
 draft: false
 ---
 
-linkedin.com/in/wm-byatt 
-
 ## Director, Software Engineering
 
 With 15 years of experience, I consistently deliver results by pairing a commitment to process and team development with top-tier engineering standards. I have worked in several regulation-heavy industries, including healthcare and finance, to create market-defining professional solutions. I have delivered systems built with Ruby-on-Rails, Go/gRPC, Elixir/Phoenix, and Python/Flask, and across a wide-range of modern front-end technologies. I deploy distributed, cloud-native SaaS to AWS, Azure, and GCP. This experience has allowed me to build action-biased, high-performance teams that build ambitious projects quickly and support them for the long haul.
