@@ -9,6 +9,16 @@ outputs:
     - RSS
     - JSON
 
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    menu:
+      main:
+        - name: CV
+          url: cv
+          weight: 10
+
 params:
   env: production
   description: "byatt.io"
@@ -19,11 +29,6 @@ params:
   ShowPostNavLinks: true
   ShowPostBreadCrumbs: true
 
-  menu:
-    main:
-      - name: CV
-        url: cv
-        weight: 10
 
   homeInfoParams:
     Title: byatt.io
