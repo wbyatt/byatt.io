@@ -3,6 +3,12 @@ languageCode: "en-us"
 title: "byatt.io"
 theme: ['papermod']
 
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
 params:
   env: production
   description: "byatt.io"
@@ -13,9 +19,14 @@ params:
   ShowPostNavLinks: true
   ShowPostBreadCrumbs: true
 
+  menu:
+    main:
+      - name: CV
+        url: cv
+        weight: 10
+
   homeInfoParams:
     Title: byatt.io
-    content: Some Content...
 
   socialIcons:
     - name: linkedin
