@@ -16,12 +16,12 @@ languages:
     menu:
       main:
         - name: CV
-          url: cv
+          url: /posts/resume
           weight: 10
 
 params:
   env: production
-  description: "byatt.io"
+  description: "william byatt"
 
   defaultTheme: auto
 
