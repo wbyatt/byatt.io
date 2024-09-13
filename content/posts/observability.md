@@ -4,6 +4,8 @@ date: 2024-09-13T12:00:00-04:00
 draft: false
 ---
 
+![An observability-based hero image](/static/observability-banner.png)
+
 ### Observability From the Beginning
 
 Eventually, every piece of software we build and deploy in production generates some user experience that requires us to examine the state of our application *as it's running in production*. Maybe when we first launch some system, we can wrap it up in a VM or a container and fling it into the world, but eventually we find that we need more detailed information about our application's actual running conditions. This is the point at which we know observability is required, where we know we need to monitor and observe our system and take actions based on that.
