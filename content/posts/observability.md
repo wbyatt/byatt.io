@@ -2,9 +2,11 @@
 title: "Observability from the beginning"
 date: 2024-09-13T12:00:00-04:00
 draft: false
+cover:
+  image: /static/observability-banner.png
+  alt: An observability-based hero image
+  relative: false
 ---
-
-![An observability-based hero image](/static/observability-banner.png)
 
 ### Observability From the Beginning
 
