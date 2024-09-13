@@ -1,7 +1,7 @@
 ---
 title: "Observability from the beginning"
-date: 2024-09-17T12:00:00-04:00
-draft: true
+date: 2024-09-13T12:00:00-04:00
+draft: false
 ---
 
 ### Observability From the Beginning
