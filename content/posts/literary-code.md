@@ -2,6 +2,10 @@
 title: "Code Review as Literary Criticism"
 date: 2024-09-10T15:12:00-04:00
 draft: false
+cover:
+  image: /images/literary-banner.png
+  alt: Pencils near a computer, drawing attention to the relationship between text and code
+  relative: false
 ---
 
 ### Code review as literary criticism

@@ -2,6 +2,10 @@
 title: "The Raft Consensus"
 date: 2024-06-17T12:45:18-04:00
 draft: false
+cover:
+  image: /images/raft-banner.png
+  alt: A little boat in a digital sea. It's a Raft pun, get it?
+  relative: false
 ---
 
 

@@ -2,6 +2,10 @@
 title: "The Big Picture of AI"
 date: 2024-06-15T12:45:18-04:00
 draft: false
+cover:
+  image: /images/ai-banner.png
+  alt: A person in an abstract landscape that represents the fast-paced change of modern AI
+  relative: false
 ---
 
 ### The Big Picture of AI: Why You Don't Need to Know Every Detail
