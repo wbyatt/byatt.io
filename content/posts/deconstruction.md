@@ -1,6 +1,6 @@
 ---
 title: "Deconstructing the Instruction-Data Dichotomy"
-date: 2024-06-17T12:45:18-04:00
+date: 2024-09-17T12:45:18-04:00
 cover:
   image: /images/deconstruction-banner.png
   alt: Books against a backdrop of code
