@@ -52,7 +52,7 @@ This is straightforwardly a data structure. It is stored on the heap like data, 
 
 While this is a toy example, table-driven methods on the whole are quite production-worthy, and there are other forms of data-driven instruction available to us. An engineer building a scheduling service might allow arbitrary event repetition rules to be saved in a database and executed as instance generators. A robotics engineer can set configuration parameters that dramatically impact the behavior of a robot. A machine learning scientist tunes hyperparameters to instruct his system's learning process. There is an entire universe where information that's initially conceived of as data is behaviorally indistinguishable from instruction.
 
-### The Apotheosis: Homoiconicity
+#### The Apotheosis: Homoiconicity
 
 Our boundary collapse between instruction and data reaches its fullest expression in languages that demonstrate homoiconicty. Homoiconicity is a property of a programming language where its code and data structures have semantically indistinguishable representations, and thus the code can operate on itself in place.
 
