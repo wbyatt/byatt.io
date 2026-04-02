@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Unrolling of the Real Line — byatt.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/illuminated.css">
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<div class="page">
+
+  
+  <div class="doc-header">
+    <div class="header-inner">
+      <div class="header-gutter">
+        <span class="header-gutter-mark">doc/math</span>
+      </div>
+      <div class="header-body">
+        <div class="doc-title">On the Unrolling of the Real Line</div>
+        
+        <div class="doc-subtitle">being a treatise on the construction of continua from counting alone</div>
+        
+      </div>
+      <div class="header-margin">
+        <div class="status-indicators">
+          
+          
+          <div class="status-pip active"></div>
+          
+          <div class="status-pip amber"></div>
+          
+          <div class="status-pip dim"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="ornament-band">
+  <svg viewBox="0 0 1020 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="interlace" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+        <rect width="44" height="44" fill="#0b0f0e"/>
+        
+        <rect x="1" y="1" width="42" height="42" fill="none" stroke="#2d5040" stroke-width="0.8"/>
+        
+        <line x1="1" y1="1" x2="43" y2="43" stroke="#1e3328" stroke-width="0.7"/>
+        <line x1="43" y1="1" x2="1" y2="43" stroke="#1e3328" stroke-width="0.7"/>
+        
+        <polygon points="22,3 41,22 22,41 3,22" fill="none" stroke="#2d5040" stroke-width="0.8"/>
+        
+        <line x1="22" y1="1" x2="22" y2="43" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
+        <line x1="1" y1="22" x2="43" y2="22" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
+        
+        <circle cx="22" cy="22" r="3.5" fill="none" stroke="#3d6e52" stroke-width="0.8"/>
+        <circle cx="22" cy="22" r="1.2" fill="#7ec8a0" opacity="0.6"/>
+        
+        <rect x="1" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
+        <rect x="37" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
+        <rect x="1" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
+        <rect x="37" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
+        
+        <circle cx="4" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
+        <circle cx="40" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
+        <circle cx="4" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
+        <circle cx="40" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
+      </pattern>
+    </defs>
+    <rect width="1020" height="44" fill="url(#interlace)"/>
+    <rect width="1020" height="44" fill="url(#interlace)" opacity="0.3"/>
+    
+    <line x1="0" y1="0.5" x2="1020" y2="0.5" stroke="#7a4e18" stroke-width="1"/>
+    <line x1="0" y1="43.5" x2="1020" y2="43.5" stroke="#7a4e18" stroke-width="1"/>
+    
+    <line x1="0" y1="22" x2="1020" y2="22" stroke="#d4913a" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+</div>
+
+
+  
+  <div class="section-head-row">
+  <div class="section-head-gutter">§01</div>
+  <div class="section-head-body">
+    <span class="section-label">§ I.  The Axioms of Peano</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">peano.1889</span>
+</div>
+
+<div class="main-cell">
+
+
+<div class="dropcap-wrap">
+  <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+    
+    <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
+    
+    <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
+    
+    <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
+    <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
+    <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
+    <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
+    
+    <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#7ec8a0"
+          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">N</text>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#b8f0d0" opacity="0.15">N</text>
+  </svg>
+</div>
+
+
+<p>ow, the natural numbers arise not from experience but from the form of thought itself. Peano, following Dedekind's <em>Was sind und was sollen die Zahlen?</em>, distilled arithmetic to five propositions — each as spare and hard as flint — from which the entire edifice of number shall be raised stone by stone. Let <span class="math">ℕ</span> denote the set in question, <span class="math">0</span> its least element, and <span class="math">S</span> the successor function: the engine of increment, the <span class="rubric">pulse of counting</span>.</p>
+
+<p>These axioms are not merely rules but definitions: they tell us what the naturals <em>are</em>, not merely how they behave. From them we shall peel back layer after layer of abstraction until the continuous real line stands exposed — wrested, astonishingly, from the act of adding one.</p>
+
+<div class="axiom-block">
+  <div class="axiom-header">
+    <span class="axiom-header-label">Axiomata // Peano 1889</span>
+  </div>
+  <div class="axiom-list">
+    
+<div class="axiom">
+  <span class="axiom-num">PA.I</span>
+  <span><span class="math">0 ∈ ℕ</span>. Zero is a natural number.</span>
+</div>
+
+<div class="axiom">
+  <span class="axiom-num">PA.II</span>
+  <span>For every <span class="math">n ∈ ℕ</span>, its successor <span class="math">S(n) ∈ ℕ</span>. The act of adding one is always possible.</span>
+</div>
+
+<div class="axiom">
+  <span class="axiom-num">PA.III</span>
+  <span>For all <span class="math">n ∈ ℕ</span>, <span class="math">S(n) ≠ 0</span>. Nothing succeeds to zero — it is the origin, uncaused.</span>
+</div>
+
+<div class="axiom">
+  <span class="axiom-num">PA.IV</span>
+  <span><span class="math">S</span> is injective: if <span class="math">S(m) = S(n)</span> then <span class="math">m = n</span>. Different numbers have different successors.</span>
+</div>
+
+<div class="axiom">
+  <span class="axiom-num">PA.V</span>
+  <span>If a set <span class="math">K ⊆ ℕ</span> contains <span class="math">0</span> and is closed under <span class="math">S</span>, then <span class="math">K = ℕ</span>. This is induction — the <span class="rubric">inextinguishable flame</span> that propagates truth upward without end.</span>
+</div>
+
+
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">REF // Dedekind 1888</span>
+  
+The successor function encodes the entire structure of ℕ. Remarkably, PA.V — induction — is the only axiom that cannot be expressed in first-order logic without the full power of second-order quantification over sets.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // Gödel 1931</span>
+  
+Any consistent system strong enough to contain PA.I–V will contain true statements it cannot prove. The axioms are sufficient for number theory; they are not sufficient for truth.
+
+</div>
+
+
+</div>
+
+<!-- §II -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§02</div>
+  <div class="section-head-body">
+    <span class="section-label">§ II.  Integers &amp;amp; Rationals</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">ℕ→ℤ→ℚ</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>From these five strokes we build addition and multiplication by structural recursion, then define the <em>integers</em> as equivalence classes of pairs: <span class="math">(a, b)</span> represents the signed number <span class="math">a − b</span>, and two pairs <span class="math">(a,b) ∼ (c,d)</span> when <span class="math">a + d = b + c</span>. The negative numbers are not objects discovered in nature but <span class="rubric">certificates of subtraction</span> — formal witnesses that a computation would have succeeded had its inputs been larger.</p>
+
+<div class="codex">
+  <div class="codex-header">
+    <div class="codex-chrome">
+      <div class="codex-dot"></div>
+      <div class="codex-dot"></div>
+      <div class="codex-dot"></div>
+    </div>
+    <span class="codex-caption">ℤ as a quotient of ℕ × ℕ // Grothendieck group construction</span>
+    <span class="codex-lang">Haskell</span>
+  </div>
+  <div class="codex-body">
+    
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="cm">-- ℤ as equivalence classes of pairs (a, b) ≅ a - b</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">type</span> <span class="ty">IntPair</span> <span class="op">=</span> (<span class="ty">Nat</span>, <span class="ty">Nat</span>)</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">equiv</span> <span class="op">::</span> <span class="ty">IntPair</span> <span class="op">-></span> <span class="ty">IntPair</span> <span class="op">-></span> <span class="ty">Bool</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">equiv</span> (a, b) (c, d) <span class="op">=</span> a <span class="op">+</span> d <span class="op">==</span> b <span class="op">+</span> c</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">addZ</span> <span class="op">::</span> <span class="ty">IntPair</span> <span class="op">-></span> <span class="ty">IntPair</span> <span class="op">-></span> <span class="ty">IntPair</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">addZ</span> (a, b) (c, d) <span class="op">=</span> (a <span class="op">+</span> c,  b <span class="op">+</span> d)</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">negZ</span>  <span class="op">::</span> <span class="ty">IntPair</span> <span class="op">-></span> <span class="ty">IntPair</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="nm">negZ</span>  (a, b) <span class="op">=</span> (b, a)    <span class="cm">-- the mirror operator</span></span></div>
+
+
+  </div>
+</div>
+
+
+<p>The rationals follow the same pattern: represent <span class="math">p/q</span> as a pair <span class="math">(p, q)</span> with <span class="math">q ≠ 0</span>, and declare <span class="math">(p,q) ∼ (r,s)</span> when <span class="math">ps = qr</span>. Division becomes, like negation before it, a syntactic device — an invented object whose entire justification is that it makes equations solvable.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // symmetry</span>
+  
+The move from ℕ to ℤ is a symmetrization — we demand that subtraction be total. The move from ℤ to ℚ is a rationalization — we demand division be total. Both are quotient constructions: we forget details to gain closure.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">REF // Grothendieck</span>
+  
+The same construction — pairs modulo an equivalence — generates the K-theory groups that classify vector bundles. Peano's arithmetic and algebraic topology share a common engine.
+
+</div>
+
+
+</div>
+
+<!-- §III -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§03</div>
+  <div class="section-head-body">
+    <span class="section-label">§ III.  The Leap into Continuity</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">ℚ→ℝ.cut</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>Here the construction arrives at its most vertiginous step. The rationals are <em>dense</em> — between any two there lies a third — yet they are riddled with gaps. The square root of two is missing. So is <span class="math">π</span>. So is every transcendental, of which there are, in a precise sense, incomparably more than the rationals they elude.</p>
+
+<p>Dedekind's answer is the <span class="rubric">cut</span>: a partition of <span class="math">ℚ</span> into two nonempty sets <span class="math">(A, B)</span> such that every element of <span class="math">A</span> is less than every element of <span class="math">B</span>, and <span class="math">A</span> has no greatest member. Each such cut <em>is</em> a real number — not a name for one, but the thing itself, reconceived as a <em>division of what we already know</em>. The gap in the rationals does not point to a missing object; it <span class="rubric">constitutes</span> one.</p>
+
+<div class="codex">
+  <div class="codex-header">
+    <div class="codex-chrome">
+      <div class="codex-dot"></div>
+      <div class="codex-dot"></div>
+      <div class="codex-dot"></div>
+    </div>
+    <span class="codex-caption">a Dedekind cut in ℚ // √2 without naming it</span>
+    <span class="codex-lang">Lean 4</span>
+  </div>
+  <div class="codex-body">
+    
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="cm">-- A real number as a downward-closed cut in ℚ</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">structure</span> <span class="ty">Cut</span> <span class="kw">where</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  lower    <span class="op">:</span> ℚ <span class="op">→</span> <span class="ty">Prop</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  nonempty <span class="op">:</span> <span class="op">∃</span> q, lower q</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  bounded  <span class="op">:</span> <span class="op">∃</span> q, <span class="op">¬</span>lower q</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  downward <span class="op">:</span> p <span class="op">≤</span> q <span class="op">→</span> lower q <span class="op">→</span> lower p</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  open_up  <span class="op">:</span> lower q <span class="op">→</span> <span class="op">∃</span> r <span class="op">></span> q, lower r</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="cm">-- √2, defined without naming its value</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">def</span> <span class="nm">sqrt2</span> <span class="op">:</span> <span class="ty">Cut</span> <span class="op">:=</span> {</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  lower <span class="op">:=</span> <span class="kw">fun</span> q <span class="op">=></span> q <span class="op"><</span> 0 <span class="op">∨</span> q<span class="op">*</span>q <span class="op"><</span> 2</span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  <span class="cm">-- proofs of nonempty, bounded, downward, open_up</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">  <span class="cm">-- follow from ordered field properties of ℚ</span></span></div>
+
+<div class="cl"><span class="cl-num"></span><span class="cl-code">}</span></div>
+
+
+  </div>
+</div>
+
+
+<p>Cantor's equivalent formulation uses Cauchy sequences: a real is an equivalence class of rational sequences <span class="math">(q₁, q₂, q₃, …)</span> whose terms grow arbitrarily close, two sequences identified when their difference converges to zero. Where Dedekind sees a real as a <em>place</em>, Cantor sees it as a <em>process of approach</em> — two portraits of the same unseen face.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">REF // 1872</span>
+  
+Cantor and Dedekind arrived at equivalent constructions independently in the same year — a remarkable unison at the threshold of modern analysis.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // cardinality</span>
+  
+The reals are uncountable (Cantor's diagonal argument, 1891). There are strictly more real numbers than there are natural numbers, integers, or rationals — all three of which are equinumerous.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // gaps</span>
+  
+ℚ is dense but not complete. ℝ is both. Completeness — every Cauchy sequence converges — is the single property that makes calculus possible.
+
+</div>
+
+
+</div>
+
+<!-- §IV -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§04</div>
+  <div class="section-head-body">
+    <span class="section-label">§ IV.  The Table of Ascent</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">index</span>
+</div>
+
+<div class="main-cell">
+
+
+<div class="construction-wrap">
+  <div class="construction-caption">Construction chain // Peano → Continuum</div>
+  <table class="construction">
+    
+<thead>
+  <tr>
+    <th>Structure</th>
+    <th>Construction</th>
+    <th>Gain</th>
+    <th>Defect repaired</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>ℕ</td>
+    <td>Peano axioms; successor <em>S</em></td>
+    <td>Counting, addition, induction</td>
+    <td><em>—</em> (origin)</td>
+  </tr>
+  <tr>
+    <td>ℤ</td>
+    <td>Pairs <em>(a,b)</em> mod <em>a+d = b+c</em></td>
+    <td>Subtraction total</td>
+    <td>Subtraction may fail in ℕ</td>
+  </tr>
+  <tr>
+    <td>ℚ</td>
+    <td>Pairs <em>(p,q)</em> mod <em>ps = qr</em></td>
+    <td>Division by nonzero total</td>
+    <td>Division may fail in ℤ</td>
+  </tr>
+  <tr>
+    <td>ℝ</td>
+    <td>Dedekind cuts or Cauchy classes</td>
+    <td>Completeness: all limits exist</td>
+    <td>Cauchy sequences may not converge in ℚ</td>
+  </tr>
+</tbody>
+
+  </table>
+</div>
+
+
+<p>At each step a defect in the previous structure is repaired by a quotient construction — an act of deliberate forgetting, in which pairs of objects are declared identical so that an operation which was previously partial becomes total. The integers forget the individual values of <span class="math">a</span> and <span class="math">b</span>, remembering only their difference. The reals forget the particulars of a Cauchy sequence, remembering only its limit.</p>
+
+<p>What is remarkable is that the real line — the substrate of all geometry, analysis, and physics — contains nothing that was not already, in embryo, implicit in the bare act of counting. The <span class="rubric">continuum is the shadow cast by ℕ</span>, stretched through three quotient constructions into its full, unfathomable length. Peano gave us five axioms; Dedekind showed us they were enough.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // pattern</span>
+  
+Each construction is a Grothendieck completion: given a monoid with a partial operation, freely adjoin inverses. ℤ completes (ℕ, +). ℚ completes (ℤ\{0}, ×). ℝ completes (ℚ, Cauchy).
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // beyond ℝ</span>
+  
+The construction does not end here. ℂ adjoins √-1. The p-adic numbers ℚₚ complete ℚ under a different metric. The surreals extend ℝ to include infinitesimals. Each is a different answer to the question: <em>what are we willing to forget?</em>
+
+</div>
+
+
+</div>
+
+
+
+  
+  <div class="doc-footer">
+    <div class="footer-gutter"></div>
+    <div class="footer-body">
+      <span>doc: peano-reals.treatise // rev 2 // retrofuture-illuminated</span>
+      <span>ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</span>
+    </div>
+    <div class="footer-margin">§I–IV complete</div>
+  </div>
+
+</div>
+
+</body>
+</html>

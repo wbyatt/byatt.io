@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="accent-bar"></div>
+
+<div class="page">
+  <div class="doc-header">
+    <div class="header-inner">
+      <div class="header-gutter">
+        <span class="header-gutter-mark">index</span>
+      </div>
+      <div class="header-body">
+        <div class="doc-title">{{ .Title | default .Site.Title }}</div>
+      </div>
+      <div class="header-margin">
+        <div class="status-indicators">
+          <div class="status-pip active"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ partial "ornament.html" . }}
+
+  <div class="doc-footer" style="border-top: none;">
+    <div class="footer-gutter"></div>
+    <div class="footer-body" style="display: block; padding: 24px;">
+      <div class="treatise-list">
+        {{ range .Pages }}
+        <div class="treatise-entry">
+          <span class="treatise-entry-class">{{ .Params.doc_class | default "doc" }}</span>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ with .Params.subtitle }}
+          <span class="treatise-entry-subtitle">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    <div class="footer-margin"></div>
+  </div>
+</div>
+{{ end }}

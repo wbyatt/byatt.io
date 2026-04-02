@@ -1,0 +1,7 @@
+name = "Illuminated"
+license = "MIT"
+description = "A retrofuture terminal aesthetic with illuminated manuscript and Talmudic page construction"
+min_version = "0.112.0"
+
+[author]
+  name = "William Byatt"

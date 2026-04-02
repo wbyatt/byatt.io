@@ -1,39 +1,25 @@
 baseURL: "https://byatt.io/"
 languageCode: "en-us"
 title: "byatt.io"
-theme: ['papermod']
+theme: ['illuminated']
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 
 outputs:
   home:
     - HTML
-    - RSS
-    - JSON
 
 languages:
   en:
     languageName: "English"
     weight: 1
-    menu:
-      main:
-        - name: CV
-          url: /cv
-          weight: 10
 
 params:
   env: production
   description: "william byatt"
-
-  defaultTheme: auto
-
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowPostBreadCrumbs: true
-
-
-  homeInfoParams:
-    Title: william byatt
-    Content: Software development is a distributed, social enterprise. This is where I get to think about that.
-
 
   socialIcons:
     - name: linkedin

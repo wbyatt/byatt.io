@@ -1,0 +1,50 @@
+{{ define "main" }}
+<div class="accent-bar"></div>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="doc-header">
+    <div class="header-inner">
+      <div class="header-gutter">
+        <span class="header-gutter-mark">{{ .Params.doc_class | default .Section }}</span>
+      </div>
+      <div class="header-body">
+        <div class="doc-title">{{ .Title }}</div>
+        {{ with .Params.subtitle }}
+        <div class="doc-subtitle">{{ . }}</div>
+        {{ end }}
+        {{ with .Date }}
+        <div class="doc-subtitle">{{ .Format "2 January 2006" }}</div>
+        {{ end }}
+      </div>
+      <div class="header-margin">
+        <div class="status-indicators">
+          <div class="status-pip active"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ORNAMENT BAND ══ -->
+  {{ partial "ornament.html" . }}
+
+  <!-- ══ CONTENT — full-width prose ══ -->
+  <div class="prose-wrap">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="doc-footer">
+    <div class="footer-gutter"></div>
+    <div class="footer-body">
+      <span>{{ .Section | default "doc" }} // {{ .Title }}</span>
+      <span></span>
+    </div>
+    <div class="footer-margin"></div>
+  </div>
+
+</div><!-- end .page -->
+{{ end }}

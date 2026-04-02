@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="accent-bar"></div>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="doc-header">
+    <div class="header-inner">
+      <div class="header-gutter">
+        <span class="header-gutter-mark">{{ .Params.doc_class | default "doc" }}</span>
+      </div>
+      <div class="header-body">
+        <div class="doc-title">{{ .Title }}</div>
+        {{ with .Params.subtitle }}
+        <div class="doc-subtitle">{{ . }}</div>
+        {{ end }}
+      </div>
+      <div class="header-margin">
+        <div class="status-indicators">
+          {{ $pips := .Params.status_pips | default (slice "active" "amber" "dim") }}
+          {{ range $pips }}
+          <div class="status-pip {{ . }}"></div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ORNAMENT BAND ══ -->
+  {{ partial "ornament.html" . }}
+
+  <!-- ══ CONTENT ══ -->
+  {{ .Content }}
+
+  <!-- ══ FOOTER ══ -->
+  <div class="doc-footer">
+    <div class="footer-gutter"></div>
+    <div class="footer-body">
+      <span>doc: {{ .Params.doc_id | default "untitled" }} // {{ .Params.revision | default "rev 1" }} // retrofuture-illuminated</span>
+      <span>{{ .Params.chain | default "" }}</span>
+    </div>
+    <div class="footer-margin">{{ .Params.footer_status | default "" }}</div>
+  </div>
+
+</div><!-- end .page -->
+{{ end }}
