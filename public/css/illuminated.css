@@ -859,3 +859,54 @@ a.header-gutter-mark:hover {
 .colophon-social:hover {
   color: var(--slate-hi);
 }
+
+/* ── RESPONSA (comment section — below the document) ── */
+.responsa {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.responsa-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-inset);
+}
+
+.responsa-header::before,
+.responsa-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule-hi));
+}
+.responsa-header::after {
+  background: linear-gradient(90deg, var(--rule-hi), transparent);
+}
+
+.responsa-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--slate);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.responsa-body {
+  padding: 24px 24px 32px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Override Giscus iframe to blend */
+.giscus, .giscus-frame {
+  width: 100%;
+}
