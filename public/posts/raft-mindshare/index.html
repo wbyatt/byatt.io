@@ -18,18 +18,24 @@
   <div class="doc-header">
     <div class="header-inner">
       <div class="header-gutter">
-        <span class="header-gutter-mark">posts</span>
+        <span class="header-gutter-mark">doc/systems</span>
       </div>
       <div class="header-body">
         <div class="doc-title">The Raft Consensus</div>
         
-        
-        <div class="doc-subtitle">17 June 2024</div>
+        <div class="doc-subtitle">on the power of simplicity in distributed systems</div>
         
       </div>
       <div class="header-margin">
         <div class="status-indicators">
+          
+          
           <div class="status-pip active"></div>
+          
+          <div class="status-pip active"></div>
+          
+          <div class="status-pip dim"></div>
+          
         </div>
       </div>
     </div>
@@ -78,36 +84,211 @@
 
 
   
-  <div class="prose-wrap">
-    <div class="prose">
-      <h3 id="the-power-of-simplicity-why-raft-conquered-consensus">The Power of Simplicity: Why Raft Conquered Consensus</h3>
-<p>The distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the de facto standard for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.</p>
-<p>But what makes Raft so special? Here&rsquo;s the surprising truth: Raft wasn&rsquo;t designed to be the fastest or most computationally efficient algorithm. It wasn&rsquo;t built to outperform existing solutions in some theoretical domain. It was designed with a far more human-centric goal: understandability.</p>
-<p>This might seem counterintuitive. In a world obsessed with performance benchmarks and cutting-edge algorithms, wouldn&rsquo;t a more complex and optimized solution reign supreme? The success of Raft tells a different story. By prioritizing human understanding, Raft has democratized the development of distributed systems, leading to a surge in innovation.</p>
-<h4 id="simplicity-breeds-innovation-the-power-of-raft">Simplicity Breeds Innovation: The Power of Raft</h4>
-<p>Raft&rsquo;s core strength lies in its clear, concise design. The algorithm is easy to grasp, making it accessible to a broader range of developers. This ease of understanding empowers more people to build, debug, and contribute to distributed systems. Imagine a system where implementing consensus requires deciphering complex mathematical formulas. Only a select few with specialized knowledge could participate. Raft breaks down these barriers, allowing more minds to enter the distributed computing arena.</p>
-<p>This wider participation fosters a crucial element in any domain: the exchange of ideas. With more people involved, the potential for innovation explodes. New perspectives fuel discussions, leading to creative solutions and novel approaches to distributed system problems. This collective intelligence is the driving force behind the impressive applications built on Raft.</p>
-<h4 id="democratizing-computation-the-path-to-progress">Democratizing Computation: The Path to Progress</h4>
-<p>Raft&rsquo;s success points towards a larger truth: democratizing computation and the fundamental concepts that underpin it lies in the critical path of high-speed innovation. If we want to unlock new capabilities and possibilities in the distributed computing landscape, we need to focus on people as the originators of these ideas.</p>
-<p>By making core concepts accessible, we empower a wider range of minds to contribute. This not only expands the talent pool but also fosters a culture of collaboration. When developers can readily understand and build upon existing solutions, progress accelerates.</p>
-<p>This approach extends beyond consensus algorithms. Consider programming languages. Languages like Python and Go, with their focus on readability and simplicity, have seen widespread adoption and fueled a wave of innovation in various domains.</p>
-<h4 id="the-human-factor-beyond-algorithms">The Human Factor: Beyond Algorithms</h4>
-<p>The rise of Raft highlights a critical shift in mindset. While raw computational power and theoretical efficiency remain important, prioritizing human understanding can be equally, if not more, valuable. By designing systems that are clear, concise, and approachable, we unlock the true potential for innovation.</p>
-<p>This doesn&rsquo;t mean sacrificing performance entirely. Efficient algorithms still have a place. However, the focus should be on creating a balance between complexity and comprehension. Algorithms that are both powerful and understandable can truly unleash the creative potential of the human mind.</p>
-<p>So next time you&rsquo;re tackling a distributed system challenge, remember the Raft story. Consider the human factor and prioritize clarity alongside performance. By making your solution understandable, you might just open the door to a new wave of innovation.</p>
-<p>Want to dive deeper into Raft? Check out the original paper (much like the algorithm itself, it&rsquo;s known for its readability): <a href="https://raft.github.io/raft.pdf">https://raft.github.io/raft.pdf</a></p>
-
-    </div>
+  <div class="section-head-row">
+  <div class="section-head-gutter">§01</div>
+  <div class="section-head-body">
+    <span class="section-label">§ I.  The Rise of Raft</span>
   </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">consensus</span>
+</div>
+
+<div class="main-cell">
+
+
+<div class="dropcap-wrap">
+  <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+    
+    <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
+    
+    <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
+    
+    <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
+    <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
+    <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
+    <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
+    
+    <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#7ec8a0"
+          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">T</text>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#b8f0d0" opacity="0.15">T</text>
+  </svg>
+</div>
+
+
+<p>he distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the <span class="rubric">de facto standard</span> for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.</p>
+
+<p>But what makes Raft so special? Here's the surprising truth: Raft wasn't designed to be the fastest or most computationally efficient algorithm. It wasn't built to outperform existing solutions in some theoretical domain. It was designed with a far more human-centric goal: <span class="rubric">understandability</span>.</p>
+
+<p>This might seem counterintuitive. In a world obsessed with performance benchmarks and cutting-edge algorithms, wouldn't a more complex and optimized solution reign supreme? The success of Raft tells a different story. By prioritizing human understanding, Raft has democratized the development of distributed systems, leading to a surge in innovation.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">REF // Ongaro &amp;amp; Ousterhout 2014</span>
+  
+"In Search of an Understandable Consensus Algorithm" — the Raft paper explicitly states understandability as its primary design goal. This is itself a radical methodological claim.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // Paxos</span>
+  
+Lamport's Paxos (1998) is provably correct and theoretically elegant, but notoriously difficult to implement. Most production Paxos implementations diverge significantly from the paper — the gap between theory and practice is the problem Raft was designed to close.
+
+</div>
+
+
+</div>
+
+<!-- §II -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§02</div>
+  <div class="section-head-body">
+    <span class="section-label">§ II.  Simplicity Breeds Innovation</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">simplicity</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>Raft's core strength lies in its clear, concise design. The algorithm is easy to grasp, making it accessible to a broader range of developers. This ease of understanding empowers more people to build, debug, and contribute to distributed systems. Imagine a system where implementing consensus requires deciphering complex mathematical formulas. Only a select few with specialized knowledge could participate. Raft breaks down these barriers, allowing <span class="rubric">more minds to enter the distributed computing arena</span>.</p>
+
+<p>This wider participation fosters a crucial element in any domain: the exchange of ideas. With more people involved, the potential for innovation explodes. New perspectives fuel discussions, leading to creative solutions and novel approaches to distributed system problems. This collective intelligence is the driving force behind the impressive applications built on Raft.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // etcd</span>
+  
+etcd — the distributed key-value store at the heart of Kubernetes — is a Raft implementation. By extension, every Kubernetes cluster in production is a testament to Raft's practical viability.
+
+</div>
+
+
+</div>
+
+<!-- §III -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§03</div>
+  <div class="section-head-body">
+    <span class="section-label">§ III.  Democratizing Computation</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">democracy</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>Raft's success points towards a larger truth: <span class="rubric">democratizing computation</span> and the fundamental concepts that underpin it lies in the critical path of high-speed innovation. If we want to unlock new capabilities and possibilities in the distributed computing landscape, we need to focus on people as the originators of these ideas.</p>
+
+<p>By making core concepts accessible, we empower a wider range of minds to contribute. This not only expands the talent pool but also fosters a culture of collaboration. When developers can readily understand and build upon existing solutions, progress accelerates.</p>
+
+<p>This approach extends beyond consensus algorithms. Consider programming languages. Languages like Python and Go, with their focus on readability and simplicity, have seen widespread adoption and fueled a wave of innovation in various domains.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // Go</span>
+  
+Go's design philosophy mirrors Raft's: simplicity over cleverness, readability over expressiveness. Both prioritize the collective productivity of a team over the virtuosity of an individual.
+
+</div>
+
+
+</div>
+
+<!-- §IV -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§04</div>
+  <div class="section-head-body">
+    <span class="section-label">§ IV.  The Human Factor</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">human</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>The rise of Raft highlights a critical shift in mindset. While raw computational power and theoretical efficiency remain important, prioritizing human understanding can be equally, if not more, valuable. By designing systems that are clear, concise, and approachable, we unlock the <span class="rubric">true potential for innovation</span>.</p>
+
+<p>This doesn't mean sacrificing performance entirely. Efficient algorithms still have a place. However, the focus should be on creating a balance between complexity and comprehension. Algorithms that are both powerful and understandable can truly unleash the creative potential of the human mind.</p>
+
+<p>So next time you're tackling a distributed system challenge, remember the Raft story. Consider the human factor and prioritize clarity alongside performance. By making your solution understandable, you might just open the door to a new wave of innovation.</p>
+
+<p>Want to dive deeper into Raft? Check out the original paper (much like the algorithm itself, it's known for its readability): <a href="https://raft.github.io/raft.pdf">raft.github.io/raft.pdf</a></p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // balance</span>
+  
+The tension between theoretical optimality and practical understandability recurs across computing: RISC vs CISC, SQL vs NoSQL, REST vs RPC. In each case, the "simpler" option often wins in adoption, even when the "better" option wins on benchmarks.
+
+</div>
+
+
+</div>
+
+
 
   
   <div class="doc-footer">
     <div class="footer-gutter"></div>
     <div class="footer-body">
-      <span>posts // The Raft Consensus</span>
-      <span></span>
+      <span>doc: raft-consensus.essay // rev 1 // retrofuture-illuminated</span>
+      <span>Paxos → Raft → etcd → K8s</span>
     </div>
-    <div class="footer-margin"></div>
+    <div class="footer-margin">§I–IV complete</div>
   </div>
 
 </div>

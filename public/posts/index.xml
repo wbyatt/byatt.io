@@ -6,23 +6,32 @@
     <description>Recent content in Posts on byatt.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Sep 2024 12:27:00 -0400</lastBuildDate><atom:link href="https://byatt.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 12:45:18 -0400</lastBuildDate><atom:link href="https://byatt.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deconstructing the Instruction-Data Dichotomy</title>
+      <link>https://byatt.io/posts/deconstruction/</link>
+      <pubDate>Tue, 17 Sep 2024 12:45:18 -0400</pubDate>
+      
+      <guid>https://byatt.io/posts/deconstruction/</guid>
+      <description>§01 § I. The Myth    dichotomy  I I   n the software engineering discourse, a pervasive myth has long shaped our understanding of code and its relationship to data. This myth posits a clear, binary separation: code consists of instructions that operate on extrinsic data. It&#39;s a comforting notion, one that neatly compartmentalizes the complexities of programming into active agents (code) and passive recipients (data). This dichotomy has become so ingrained in our collective consciousness that it often goes unquestioned, forming the bedrock of how we conceptualize, teach, and practice software development.</description>
+    </item>
+    
     <item>
       <title>The Art of Technical Debt</title>
       <link>https://byatt.io/posts/technical-debt/</link>
       <pubDate>Mon, 16 Sep 2024 12:27:00 -0400</pubDate>
       
       <guid>https://byatt.io/posts/technical-debt/</guid>
-      <description>The Art of Technical Debt: When to Embrace It, When to Refactor A specter is haunting software, the specter of technical debt. Read any discussion space where software engineers are present&amp;ndash;Stack Overflow, the-website-formerly-known-as-Twitter, Mastodon&amp;ndash;and you&amp;rsquo;ll see &amp;ldquo;technical debt&amp;rdquo; discussed in terms ranging from frustration to contempt. The more level-headed commentators will acknowledge that technical debt is an inevitability, but generally with a sense that it&amp;rsquo;s a manifestation of living in an imperfect world.</description>
+      <description>§01 § I. Understanding Technical Debt    debt  A A    specter is haunting software, the specter of technical debt. Read any discussion space where software engineers are present — Stack Overflow, the-website-formerly-known-as-Twitter, Mastodon — and you&#39;ll see &#34;technical debt&#34; discussed in terms ranging from frustration to contempt. The more level-headed commentators will acknowledge that technical debt is an inevitability, but generally with a sense that it&#39;s a manifestation of living in an imperfect world.</description>
     </item>
     
     <item>
-      <title>Observability from the beginning</title>
+      <title>Observability from the Beginning</title>
       <link>https://byatt.io/posts/observability/</link>
       <pubDate>Fri, 13 Sep 2024 12:00:00 -0400</pubDate>
       
       <guid>https://byatt.io/posts/observability/</guid>
-      <description>Observability From the Beginning Eventually, every piece of software we build and deploy in production generates some user experience that requires us to examine the state of our application as it&amp;rsquo;s running in production. Maybe when we first launch some system, we can wrap it up in a VM or a container and fling it into the world, but eventually we find that we need more detailed information about our application&amp;rsquo;s actual running conditions.</description>
+      <description>§01 § I. The Problem    o11y  E E   ventually, every piece of software we build and deploy in production generates some user experience that requires us to examine the state of our application as it&#39;s running in production. Maybe when we first launch some system, we can wrap it up in a VM or a container and fling it into the world, but eventually we find that we need more detailed information about our application&#39;s actual running conditions.</description>
     </item>
     
     <item>
@@ -31,7 +40,7 @@
       <pubDate>Tue, 10 Sep 2024 15:12:00 -0400</pubDate>
       
       <guid>https://byatt.io/posts/literary-code/</guid>
-      <description>Code review as literary criticism It&amp;rsquo;s 9:30 AM on a Tuesday and I&amp;rsquo;ve just sat at my desk with a cup of coffee. I open up Slack, and ping goes the notification bubble in my taskbar. I have a DM asking for a PR review. I open the PR, and as I settle in and open my mind to the text as it scrolls lazily past me, I am teleported. But for once, not to a land of bytes and abstract syntax trees.</description>
+      <description>§01 § I. Code as Text    text  I I   t&#39;s 9:30 AM on a Tuesday and I&#39;ve just sat at my desk with a cup of coffee. I open up Slack, and ping goes the notification bubble in my taskbar. I have a DM asking for a PR review. I open the PR, and as I settle in and open my mind to the text as it scrolls lazily past me, I am teleported.</description>
     </item>
     
     <item>
@@ -40,8 +49,7 @@
       <pubDate>Mon, 17 Jun 2024 12:45:18 -0400</pubDate>
       
       <guid>https://byatt.io/posts/raft-mindshare/</guid>
-      <description>The Power of Simplicity: Why Raft Conquered Consensus The distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the de facto standard for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.
-But what makes Raft so special?</description>
+      <description>§01 § I. The Rise of Raft    consensus  T T   he distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the de facto standard for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.</description>
     </item>
     
     <item>
@@ -50,7 +58,7 @@ But what makes Raft so special?</description>
       <pubDate>Sat, 15 Jun 2024 12:45:18 -0400</pubDate>
       
       <guid>https://byatt.io/posts/ai-big-picture/</guid>
-      <description>The Big Picture of AI: Why You Don&amp;rsquo;t Need to Know Every Detail In the whirlwind of current AI advancements, trying to keep up with every new change can be dizzying. But unless you&amp;rsquo;re an active researcher in the field, you really don&amp;rsquo;t need to. You just need to keep abreast of the aggregate, because that&amp;rsquo;s where the real story is for the rest of us.
+      <description>§01 § I. The Paradigm    kuhn.1962  I I   n the whirlwind of current AI advancements, trying to keep up with every new change can be dizzying. But unless you&#39;re an active researcher in the field, you really don&#39;t need to. You just need to keep abreast of the aggregate, because that&#39;s where the real story is for the rest of us.
 Large Language Models (LLMs) have created a paradigm shift in computing.</description>
     </item>
     

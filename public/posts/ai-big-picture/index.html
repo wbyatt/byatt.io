@@ -18,18 +18,24 @@
   <div class="doc-header">
     <div class="header-inner">
       <div class="header-gutter">
-        <span class="header-gutter-mark">posts</span>
+        <span class="header-gutter-mark">doc/strategy</span>
       </div>
       <div class="header-body">
         <div class="doc-title">The Big Picture of AI</div>
         
-        
-        <div class="doc-subtitle">15 June 2024</div>
+        <div class="doc-subtitle">why you don&#39;t need to know every detail</div>
         
       </div>
       <div class="header-margin">
         <div class="status-indicators">
+          
+          
           <div class="status-pip active"></div>
+          
+          <div class="status-pip amber"></div>
+          
+          <div class="status-pip dim"></div>
+          
         </div>
       </div>
     </div>
@@ -78,43 +84,188 @@
 
 
   
-  <div class="prose-wrap">
-    <div class="prose">
-      <h3 id="the-big-picture-of-ai-why-you-dont-need-to-know-every-detail">The Big Picture of AI: Why You Don&rsquo;t Need to Know Every Detail</h3>
-<p>In the whirlwind of current AI advancements, trying to keep up with every new change can be dizzying. But unless you&rsquo;re an active researcher in the field, you really don&rsquo;t need to. You just need to keep abreast of the aggregate, because that&rsquo;s where the real story is for the rest of us.</p>
+  <div class="section-head-row">
+  <div class="section-head-gutter">§01</div>
+  <div class="section-head-body">
+    <span class="section-label">§ I.  The Paradigm</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">kuhn.1962</span>
+</div>
+
+<div class="main-cell">
+
+
+<div class="dropcap-wrap">
+  <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+    
+    <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
+    
+    <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
+    
+    <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
+    <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
+    <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
+    <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
+    
+    <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#7ec8a0"
+          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">I</text>
+    
+    <text x="36" y="57" text-anchor="middle"
+          font-family="Inconsolata, monospace"
+          font-size="52" font-weight="600"
+          fill="#b8f0d0" opacity="0.15">I</text>
+  </svg>
+</div>
+
+
+<p>n the whirlwind of current AI advancements, trying to keep up with every new change can be dizzying. But unless you're an active researcher in the field, you really don't need to. You just need to keep abreast of the aggregate, because that's where the <span class="rubric">real story</span> is for the rest of us.</p>
+
 <p>Large Language Models (LLMs) have created a paradigm shift in computing. One of the nice things about paradigm shifts, though, is that we know how they work. In 1962, philosopher of science Thomas Kuhn described the anatomy of a paradigm shift (and also coined the phrase itself) in <em>The Structure of Scientific Revolutions</em>.</p>
-<p>In the early phases of a new paradigm, there is an avalanche of &ldquo;normal science,&rdquo; where the new paradigm begets huge amounts of discovery based on the new premises and techniques. However, this normal science is incremental, each new advancement pushes the field only marginally. Kuhn called it &ldquo;puzzle-solving,&rdquo; it&rsquo;s applying the new paradigm in specific contexts to fit specific problems. It is only in aggregate, from the middle distance, that we can see the net effect of these incremental changes, or the abstractions that cut across solutions for multiple puzzles. It is only from a distance that the larger patterns of the new paradigm begin to emerge.</p>
-<p>For business and engineering leaders focused on improving customers' or clients' lives using AI, there is no utility in following every single advancement, in knowing in detail all the changes impacting the technical landscape. You don&rsquo;t need to dive into questions of LoRA vs QLoRA fine-tuning, or whether Kolmogorov-Arnold networks provide a marginal improvement over multilayer perceptrons. It may be valuable to know that we&rsquo;re making strides in both pre-training and fine-tuning costs, that it&rsquo;s getting easier and cheaper to run inference against multiple models at the same time, and that context windows are expanding. But even that might be more fine-grained than your requirements need.</p>
-<p>So don&rsquo;t worry about every detail. Understand the general architecture of the kinds of problems you hope to solve with AI, where the existing bottlenecks are, and keep an eye there. And spend your extra time reading some helpful philosophy of science.</p>
-<h4 id="the-importance-of-the-big-picture">The Importance of the Big Picture</h4>
-<p>While it&rsquo;s tempting to get caught up in the day-to-day details of AI research, focusing on the big picture can provide several benefits:</p>
+
+<p>In the early phases of a new paradigm, there is an avalanche of "normal science," where the new paradigm begets huge amounts of discovery based on the new premises and techniques. However, this normal science is incremental, each new advancement pushes the field only marginally. Kuhn called it <span class="rubric">"puzzle-solving,"</span> it's applying the new paradigm in specific contexts to fit specific problems. It is only in aggregate, from the middle distance, that we can see the net effect of these incremental changes, or the abstractions that cut across solutions for multiple puzzles. It is only from a distance that the larger patterns of the new paradigm begin to emerge.</p>
+
+<p>For business and engineering leaders focused on improving customers' or clients' lives using AI, there is no utility in following every single advancement, in knowing in detail all the changes impacting the technical landscape. You don't need to dive into questions of LoRA vs QLoRA fine-tuning, or whether Kolmogorov-Arnold networks provide a marginal improvement over multilayer perceptrons. It may be valuable to know that we're making strides in both pre-training and fine-tuning costs, that it's getting easier and cheaper to run inference against multiple models at the same time, and that context windows are expanding. But even that might be more fine-grained than your requirements need.</p>
+
+<p>So don't worry about every detail. Understand the general architecture of the kinds of problems you hope to solve with AI, where the existing bottlenecks are, and keep an eye there. And spend your extra time reading some helpful philosophy of science.</p>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">REF // Kuhn 1962</span>
+  
+<em>The Structure of Scientific Revolutions</em> introduced the concept of paradigm shifts and the cyclical nature of scientific progress. Kuhn argued that science does not advance by steady accumulation but through revolutionary breaks.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // normal science</span>
+  
+Kuhn's "puzzle-solving" is not pejorative. Normal science is productive and necessary — it fills out the new paradigm's implications. The mistake is confusing any single puzzle solution for the paradigm itself.
+
+</div>
+
+
+</div>
+
+<!-- §II -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§02</div>
+  <div class="section-head-body">
+    <span class="section-label">§ II.  The Importance of the Big Picture</span>
+  </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">strategy</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>While it's tempting to get caught up in the day-to-day details of AI research, focusing on the big picture can provide several benefits:</p>
+
 <ul>
-<li>Strategic Decision-Making: Understanding the overall direction of AI development can help you make informed decisions about where to invest your resources and efforts.</li>
-<li>Avoiding FOMO: By focusing on the key trends, you can avoid feeling overwhelmed by the constant stream of new advancements and ensure you&rsquo;re not missing out on anything truly significant.</li>
-<li>Identifying Opportunities: Understanding the broader context of AI can help you identify new opportunities and applications for this technology in your business or industry.</li>
-<li>Building a Strong Foundation: A solid understanding of the fundamental principles of AI will serve as a strong foundation for future learning and growth.</li>
-</ul>
-<h4 id="key-trends-to-watch">Key Trends to Watch</h4>
-<p>Here are some of the most important trends in AI that you should be aware of:</p>
-<ul>
-<li>Scaling: The ability to train larger and larger models on more data is driving significant advancements in AI performance.</li>
-<li>Cost Reduction: The cost of training and running AI models is decreasing, making AI more accessible to businesses of all sizes.</li>
-<li>Contextual Understanding: AI models are becoming increasingly capable of understanding and generating text and other forms of content in context.</li>
-<li>Multimodality: AI is starting to integrate multiple modalities, such as text, images, and audio, to create more powerful and versatile applications.</li>
-<li>Explainability: There is a growing focus on developing AI models that are more explainable and transparent, making it easier to understand how they arrive at their decisions.</li>
+<li><strong>Strategic Decision-Making</strong>: Understanding the overall direction of AI development can help you make informed decisions about where to invest your resources and efforts.</li>
+<li><strong>Avoiding FOMO</strong>: By focusing on the key trends, you can avoid feeling overwhelmed by the constant stream of new advancements and ensure you're not missing out on anything truly significant.</li>
+<li><strong>Identifying Opportunities</strong>: Understanding the broader context of AI can help you identify new opportunities and applications for this technology in your business or industry.</li>
+<li><strong>Building a Strong Foundation</strong>: A solid understanding of the fundamental principles of AI will serve as a strong foundation for future learning and growth.</li>
 </ul>
 
-    </div>
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // aggregate</span>
+  
+The aggregate view is not laziness — it is the correct level of abstraction for decision-makers. Individual advances are noise; the trend line is signal.
+
+</div>
+
+
+</div>
+
+<!-- §III -->
+<div class="section-rule">
+  <div></div><div></div><div></div>
+</div>
+
+<div class="section-head-row">
+  <div class="section-head-gutter">§03</div>
+  <div class="section-head-body">
+    <span class="section-label">§ III.  Key Trends to Watch</span>
   </div>
+  <div class="section-head-margin"></div>
+</div>
+
+<div class="gutter-cell">
+  <span class="sigil">trends</span>
+</div>
+
+<div class="main-cell">
+
+
+<p>Here are some of the most important trends in AI that you should be aware of:</p>
+
+<ul>
+<li><strong>Scaling</strong>: The ability to train larger and larger models on more data is driving significant advancements in AI performance.</li>
+<li><strong>Cost Reduction</strong>: The cost of training and running AI models is decreasing, making AI more accessible to businesses of all sizes.</li>
+<li><strong>Contextual Understanding</strong>: AI models are becoming increasingly capable of understanding and generating text and other forms of content in context.</li>
+<li><strong>Multimodality</strong>: AI is starting to integrate multiple modalities, such as text, images, and audio, to create more powerful and versatile applications.</li>
+<li><strong>Explainability</strong>: There is a growing focus on developing AI models that are more explainable and transparent, making it easier to understand how they arrive at their decisions.</li>
+</ul>
+
+
+</div>
+
+<div class="margin-cell">
+
+<div class="margin-note">
+  <span class="ref">NOTE // scaling laws</span>
+  
+The relationship between model size, data, and compute follows predictable power laws — the so-called "scaling laws" first characterized by Kaplan et al. at OpenAI. These laws are themselves a pattern visible only from the aggregate.
+
+</div>
+
+<div class="margin-note">
+  <span class="ref">NOTE // access</span>
+  
+Cost reduction and multimodality together represent a democratization of capability: what required a research lab in 2020 is available via API in 2024.
+
+</div>
+
+
+</div>
+
+
 
   
   <div class="doc-footer">
     <div class="footer-gutter"></div>
     <div class="footer-body">
-      <span>posts // The Big Picture of AI</span>
-      <span></span>
+      <span>doc: ai-big-picture.essay // rev 1 // retrofuture-illuminated</span>
+      <span>paradigm → puzzle → pattern</span>
     </div>
-    <div class="footer-margin"></div>
+    <div class="footer-margin">§I–III complete</div>
   </div>
 
 </div>

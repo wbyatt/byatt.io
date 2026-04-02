@@ -1,43 +1,119 @@
 ---
 title: "Code Review as Literary Criticism"
+subtitle: "on reading code as text"
 date: 2024-09-10T15:12:00-04:00
 draft: false
-cover:
-  image: /images/literary-banner.png
-  alt: Pencils near a computer, drawing attention to the relationship between text and code
-  relative: false
+layout: treatise
+doc_class: "doc/praxis"
+doc_id: "literary-code.essay"
+revision: "rev 1"
+chain: "text → author → convention → function"
+footer_status: "§I–IV complete"
+status_pips:
+  - active
+  - amber
+  - active
 ---
 
-### Code review as literary criticism
+{{< section num="01" label="§ I.  Code as Text" >}}
 
-It's 9:30 AM on a Tuesday and I've just sat at my desk with a cup of coffee. I open up Slack, and *ping* goes the notification bubble in my taskbar. I have a DM asking for a PR review. I open the PR, and as I settle in and open my mind to the text as it scrolls lazily past me, I am teleported. But for once, not to a land of bytes and abstract syntax trees. Instead, this time, I am transported to an undergraduate literature course. It is not merely code I am reading, not just the formal solutions to business problems, ticking its way through a Jira burndown chart. This is something far more important than that: this is a _text_.
+{{< gutter sigil="text" >}}
 
-#### Code as text
+{{< main-col >}}
 
-All code is, at its heart, a form of writing. It’s a text, like a novel or a poem. Its similarity to written and spoken language is neither a mistake nor happenstance, but a fundamental result of the way our brains are hardwired to reason across abstract ideas. This linguistic and textual form remains the most sophisticated tool humanity has ever developed to communicate ideas, and it can express complexities with remarkable clarity and precision. Just as an author carefully chooses words and constructs sentences to convey a story, a programmer writes lines of code to articulate a solution.
+{{< dropcap letter="I" >}}
 
-Well-crafted code has a narrative form. Each line, each function, each class tells a part of the story of how a problem is identified and solved, and a good encapsulation has an arc: we parse and extract our inputs, we reason across them, we resolve to form our outputs. It becomes a combined history of the programmer’s thinking and the data's lifecycle, a path from the problem to the solution.
+<p>t's 9:30 AM on a Tuesday and I've just sat at my desk with a cup of coffee. I open up Slack, and <em>ping</em> goes the notification bubble in my taskbar. I have a DM asking for a PR review. I open the PR, and as I settle in and open my mind to the text as it scrolls lazily past me, I am teleported. But for once, not to a land of bytes and abstract syntax trees. Instead, this time, I am transported to an undergraduate literature course. It is not merely code I am reading, not just the formal solutions to business problems, ticking its way through a Jira burndown chart. This is something far more important than that: this is a <span class="rubric">text</span>.</p>
 
-And like a novel, code communicates on multiple levels. At the most concrete level, it communicates the technical functionality of the program. It tells the computer what to do, what operations a CPU needs to perform. But it also communicates at abstract levels, as a way of sharing ideas between programmers. It’s a way for us to collaborate, to share knowledge, and to preserve our ideas and solutions over time. Each line of code is a reflection of the person who wrote it, and the team that helped bring it to life.
+<p>All code is, at its heart, a form of writing. It's a text, like a novel or a poem. Its similarity to written and spoken language is neither a mistake nor happenstance, but a fundamental result of the way our brains are hardwired to reason across abstract ideas. This linguistic and textual form remains the most sophisticated tool humanity has ever developed to communicate ideas, and it can express complexities with remarkable clarity and precision. Just as an author carefully chooses words and constructs sentences to convey a story, a programmer writes lines of code to articulate a solution.</p>
 
-As such, code is a form of communication, and it’s a rich one. Yes, it’s a way of expressing technical ideas with precision, but it’s also a way of telling a story, and for many of us, it is in this latter sense that we spend the majority of careers considering code. "We read much more code than we write," after all. The textual body of code, then, becomes the artifact of our mutual collaboration, a social product that interpenetrates but is distinct from the social organisms responsible for crafting and maintaining it.
+<p>Well-crafted code has a narrative form. Each line, each function, each class tells a part of the story of how a problem is identified and solved, and a good encapsulation has an arc: we parse and extract our inputs, we reason across them, we resolve to form our outputs. It becomes a combined history of the programmer's thinking and the data's lifecycle, a path from the problem to the solution.</p>
 
-#### Death of the author
+<p>And like a novel, code communicates on multiple levels. At the most concrete level, it communicates the technical functionality of the program. It tells the computer what to do, what operations a CPU needs to perform. But it also communicates at abstract levels, as a way of sharing ideas between programmers. It's a way for us to collaborate, to share knowledge, and to preserve our ideas and solutions over time. Each line of code is a reflection of the person who wrote it, and the team that helped bring it to life.</p>
 
-If code is text, let us do as the great critics and kill the author. Just as the interpretation of a piece of writing can be informed by, but shouldn’t be limited to, the author’s intention or biography, the person who wrote the code shouldn’t determine the structure of our critical reading during a code review. Instead, we should concentrate on the code itself, evaluating it based on its functionality, maintainability, and adherence to best practices.
+<p>As such, code is a form of communication, and it's a rich one. Yes, it's a way of expressing technical ideas with precision, but it's also a way of telling a story, and for many of us, it is in this latter sense that we spend the majority of careers considering code. "We read much more code than we write," after all. The textual body of code, then, becomes the artifact of our mutual collaboration, a <span class="rubric">social product</span> that interpenetrates but is distinct from the social organisms responsible for crafting and maintaining it.</p>
 
-Code review is a team sport, and the more eyes on the code, the better. By divorcing the code from its creator, you can look at the code with fresh eyes, free from any preconceived notions or biases. This allows for a more thorough and comprehensive review of the code, focusing on the code’s merits and deficiencies, rather than on who wrote it. This approach helps to foster a culture of continuous improvement, where the collective knowledge and expertise of the team is valued over individual authorship.
+{{< /main-col >}}
 
-### Role of convention
+{{< margin >}}
+{{< note ref="NOTE // language" >}}
+The claim that code is text is not merely metaphorical. Programming languages are formal languages with grammars, semantics, and pragmatics — the same structural layers that linguists identify in natural language.
+{{< /note >}}
+{{< note ref="NOTE // narrative" >}}
+The narrative arc of a good function — setup, transformation, resolution — mirrors Aristotle's three-act structure. This is not coincidence but convergent evolution: both are shaped by the constraints of human cognition.
+{{< /note >}}
+{{< /margin >}}
 
-In literature, conventions--stylistic, linguistic, and genre--establish a shared idiom for communication. They provide a framework and a context for the reader to make meaning from the raw textual content. These conventions can be arbitrary in the formal sense, without a strict epistemological grounding, but have taken on explanatory power through continued use and social consensus. There is nothing about film's shot-reverse-shot convention in-and-of-itself that communicates dialogue, there is quite literally nothing on screen that forces us to understand that the characters are speaking to each other. But this convention is so deeply baked into the grammar of film today that its meaning is obvious and unconscious to all who watch cinema. In fact, this convention is so strong that when there are narrative reasons for a literal dialogue to be impossible--two characters separated by time or space--a shot-reverse-shot sequence will still give us the sense of a dialogue, of a connection between the two characters, a sharedness of moment.
+<!-- §II -->
 
-So, to, is the role of convention and idiom in code. There is no concrete formal reason to choose whether an opening curly brace ends a line (as in JavaScript, Go, or Rust) or starts a new one (as in many Java and JVM-targeting codebases). What matters is not even the fact of convention itself, as many developers will often suggest. Instead, what matters is the *function* of convention: to efficiently communicate shared ideas.
+{{< section-rule >}}
 
-When negotiating conventions with our colleagues, the specific choices we make can be arbitrary, grounded in personal comfort, simple habit, or even IDE preconfiguration. But once those choices are made, every time the convention is followed or, perhaps more importantly, every time it is *broken*, there is meaning in that choice. The convention and its application communicates some meaning. If my codebase is colocating GraphQL queries with the components that rely on them, and I suddenly create a query near my project's root, I am communicating to all who read this code that this is a query that is shared broadly across the application, or perhaps is called exclusively by the application's root component.
+{{< section num="02" label="§ II.  Death of the Author" >}}
 
-#### Functional analysis of the text
+{{< gutter sigil="barthes" >}}
 
-In light of this textual understanding of code, when we review code, we should focus on the functional success of the code. But I do not mean "functional" to refer only to the technical aspects, but I very much include here that social and communicative function. We should read code to understand what it is communicating, what it is accomplishing, and whether or not it communicates what it accomplishes in a way that is expressive and meaningful to the reader. Rather than the arbitrary standards of pattern, form, or convention, our duty is to evaluate the code based on how effectively and efficiently it accomplishes its intended purpose. Our knowledge of a codebase or a community's conventions, idioms, and styles are important tools in understanding the success of the code in accomplishing those goals, but those conventions are simply a means to the ends of this functional analysis.
+{{< main-col >}}
 
-By placing ourselves in this functional, authorless analytical mode, we have an opportunity to approach code from a place that is simultaneously critical and humble, without contradiction or tension between these two apparent poles. Humility is about recognizing that there are many ways to skin a cat in programming, and that different people have different ways of working. It’s important to not be dogmatic about your own style and to be open to the idea that other people might have valid reasons for doing things differently. But criticality is also important to ensure that the code meets the necessary standards of quality, performance, and maintainability. This critical evaluation should focus on the code’s functionality, its adherence to best practices, and its overall effectiveness in achieving its goals.
+<p>If code is text, let us do as the great critics and <span class="rubric">kill the author</span>. Just as the interpretation of a piece of writing can be informed by, but shouldn't be limited to, the author's intention or biography, the person who wrote the code shouldn't determine the structure of our critical reading during a code review. Instead, we should concentrate on the code itself, evaluating it based on its functionality, maintainability, and adherence to best practices.</p>
+
+<p>Code review is a team sport, and the more eyes on the code, the better. By divorcing the code from its creator, you can look at the code with fresh eyes, free from any preconceived notions or biases. This allows for a more thorough and comprehensive review of the code, focusing on the code's merits and deficiencies, rather than on who wrote it. This approach helps to foster a culture of continuous improvement, where the collective knowledge and expertise of the team is valued over individual authorship.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="REF // Barthes 1967" >}}
+Roland Barthes' "The Death of the Author" argued that a text's meaning resides in the reader, not the writer. Applied to code: the reviewer's interpretation of clarity and intent is the ground truth, not the author's explanation in Slack.
+{{< /note >}}
+{{< /margin >}}
+
+<!-- §III -->
+
+{{< section-rule >}}
+
+{{< section num="03" label="§ III.  The Role of Convention" >}}
+
+{{< gutter sigil="convention" >}}
+
+{{< main-col >}}
+
+<p>In literature, conventions — stylistic, linguistic, and genre — establish a shared idiom for communication. They provide a framework and a context for the reader to make meaning from the raw textual content. These conventions can be arbitrary in the formal sense, without a strict epistemological grounding, but have taken on explanatory power through continued use and social consensus. There is nothing about film's shot-reverse-shot convention in-and-of-itself that communicates dialogue, there is quite literally nothing on screen that forces us to understand that the characters are speaking to each other. But this convention is so deeply baked into the grammar of film today that its meaning is obvious and unconscious to all who watch cinema. In fact, this convention is so strong that when there are narrative reasons for a literal dialogue to be impossible — two characters separated by time or space — a shot-reverse-shot sequence will still give us the sense of a dialogue, of a connection between the two characters, a sharedness of moment.</p>
+
+<p>So, too, is the role of convention and idiom in code. There is no concrete formal reason to choose whether an opening curly brace ends a line (as in JavaScript, Go, or Rust) or starts a new one (as in many Java and JVM-targeting codebases). What matters is not even the fact of convention itself, as many developers will often suggest. Instead, what matters is the <span class="rubric">function of convention</span>: to efficiently communicate shared ideas.</p>
+
+<p>When negotiating conventions with our colleagues, the specific choices we make can be arbitrary, grounded in personal comfort, simple habit, or even IDE preconfiguration. But once those choices are made, every time the convention is followed or, perhaps more importantly, every time it is <em>broken</em>, there is meaning in that choice. The convention and its application communicates some meaning. If my codebase is colocating GraphQL queries with the components that rely on them, and I suddenly create a query near my project's root, I am communicating to all who read this code that this is a query that is shared broadly across the application, or perhaps is called exclusively by the application's root component.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="NOTE // Saussure" >}}
+Saussure's insight that the linguistic sign is arbitrary — the word "tree" has no inherent connection to the thing — applies directly: <code>{</code> at end-of-line has no inherent meaning, only conventional meaning. But conventional meaning is the only kind that matters in communication.
+{{< /note >}}
+{{< note ref="NOTE // film grammar" >}}
+The shot-reverse-shot example illustrates that conventions can become so naturalized as to feel inevitable. The same is true of code conventions: snake_case "looks like Python" not because of any formal property, but because of accumulated habit.
+{{< /note >}}
+{{< /margin >}}
+
+<!-- §IV -->
+
+{{< section-rule >}}
+
+{{< section num="04" label="§ IV.  Functional Analysis of the Text" >}}
+
+{{< gutter sigil="function" >}}
+
+{{< main-col >}}
+
+<p>In light of this textual understanding of code, when we review code, we should focus on the <span class="rubric">functional success</span> of the code. But I do not mean "functional" to refer only to the technical aspects, but I very much include here that social and communicative function. We should read code to understand what it is communicating, what it is accomplishing, and whether or not it communicates what it accomplishes in a way that is expressive and meaningful to the reader. Rather than the arbitrary standards of pattern, form, or convention, our duty is to evaluate the code based on how effectively and efficiently it accomplishes its intended purpose. Our knowledge of a codebase or a community's conventions, idioms, and styles are important tools in understanding the success of the code in accomplishing those goals, but those conventions are simply a means to the ends of this functional analysis.</p>
+
+<p>By placing ourselves in this functional, authorless analytical mode, we have an opportunity to approach code from a place that is simultaneously critical and humble, without contradiction or tension between these two apparent poles. Humility is about recognizing that there are many ways to skin a cat in programming, and that different people have different ways of working. It's important to not be dogmatic about your own style and to be open to the idea that other people might have valid reasons for doing things differently. But criticality is also important to ensure that the code meets the necessary standards of quality, performance, and maintainability. This critical evaluation should focus on the code's functionality, its adherence to best practices, and its overall effectiveness in achieving its goals.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="NOTE // Russian Formalism" >}}
+The Formalist critics of the 1920s argued that literary study should concern itself with "literariness" — what makes a text work as literature. The parallel: code review should concern itself with what makes code work as code, not with the biography of its author.
+{{< /note >}}
+{{< note ref="NOTE // synthesis" >}}
+Criticality and humility are not opposites but complements. The best code reviews hold both simultaneously: rigorous about function, generous about form.
+{{< /note >}}
+{{< /margin >}}
