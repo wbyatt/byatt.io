@@ -7,7 +7,7 @@
   <div class="doc-header">
     <div class="header-inner">
       <div class="header-gutter">
-        <span class="header-gutter-mark">{{ .Params.doc_class | default "doc" }}</span>
+        <a href="/" class="header-gutter-mark">{{ .Params.doc_class | default "doc" }}</a>
       </div>
       <div class="header-body">
         <div class="doc-title">{{ .Title }}</div>
@@ -36,8 +36,8 @@
   <div class="doc-footer">
     <div class="footer-gutter"></div>
     <div class="footer-body">
-      <span>doc: {{ .Params.doc_id | default "untitled" }} // {{ .Params.revision | default "rev 1" }} // retrofuture-illuminated</span>
-      <span>{{ .Params.chain | default "" }}</span>
+      <a href="/" class="footer-nav">← index</a>
+      <span>doc: {{ .Params.doc_id | default "untitled" }} // {{ .Params.revision | default "rev 1" }}</span>
     </div>
     <div class="footer-margin">{{ .Params.footer_status | default "" }}</div>
   </div>

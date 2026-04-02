@@ -1,0 +1,88 @@
+{{ define "main" }}
+<div class="accent-bar"></div>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="doc-header">
+    <div class="header-inner">
+      <div class="header-gutter">
+        <span class="header-gutter-mark">index</span>
+      </div>
+      <div class="header-body">
+        <div class="doc-title">{{ .Site.Title }}</div>
+        <div class="doc-subtitle">{{ .Site.Params.description }}</div>
+      </div>
+      <div class="header-margin">
+        <div class="status-indicators">
+          <div class="status-pip active"></div>
+          <div class="status-pip active"></div>
+          <div class="status-pip amber"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ partial "ornament.html" . }}
+
+  <!-- ══ TABULA ══ -->
+  <div class="section-head-row">
+    <div class="section-head-gutter">§</div>
+    <div class="section-head-body">
+      <span class="section-label">Tabula</span>
+    </div>
+    <div class="section-head-margin"></div>
+  </div>
+
+  {{ range where .Site.RegularPages "Section" "!=" "" }}
+  {{ if not (or (eq .File.LogicalName "cv.md") (eq .File.LogicalName "search.md") (eq .File.LogicalName "archives.md")) }}
+  <div class="index-gutter">
+    <span class="index-class">{{ .Params.doc_class | default .Section }}</span>
+  </div>
+  <div class="index-main">
+    <a href="{{ .RelPermalink }}" class="index-title">{{ .Title }}</a>
+    {{ with .Params.subtitle }}
+    <span class="index-subtitle">{{ . }}</span>
+    {{ end }}
+  </div>
+  <div class="index-margin">
+    {{ .Date.Format "Jan 2006" }}
+  </div>
+  {{ end }}
+  {{ end }}
+
+  <!-- ══ COLOPHON ══ -->
+  <div class="section-rule">
+    <div></div><div></div><div></div>
+  </div>
+
+  <div class="section-head-row">
+    <div class="section-head-gutter"></div>
+    <div class="section-head-body">
+      <span class="section-label">Colophon</span>
+    </div>
+    <div class="section-head-margin"></div>
+  </div>
+
+  <div class="colophon-gutter"></div>
+  <div class="colophon-main">
+    <a href="/cv/" class="colophon-link">Curriculum Vitae</a>
+  </div>
+  <div class="colophon-margin">
+    {{ range .Site.Params.socialIcons }}
+    <a href="{{ .url }}" class="colophon-social" title="{{ .title }}">{{ .title }}</a>
+    {{ end }}
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="doc-footer">
+    <div class="footer-gutter"></div>
+    <div class="footer-body">
+      <span>{{ .Site.Title }} // index librorum // retrofuture-illuminated</span>
+      <span></span>
+    </div>
+    <div class="footer-margin"></div>
+  </div>
+
+</div><!-- end .page -->
+{{ end }}
