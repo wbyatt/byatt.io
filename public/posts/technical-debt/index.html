@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<nav class="mobile-nav" aria-label="Document position">
+  <a href="/" class="mobile-nav-sigil">byatt.io</a>
+  <span class="mobile-nav-location">
+    <span class="nav-section" id="navSection"></span>
+    <span id="navLabel"></span>
+  </span>
+  <div class="mobile-nav-pip"></div>
+</nav>
+
+
 <div class="accent-bar"></div>
 
 <div class="page">
@@ -87,7 +97,7 @@
   
 
   
-  <div class="section-head-row">
+  <div class="section-head-row" data-section="§01" data-label="Understanding Technical Debt">
   <div class="section-head-gutter">§01</div>
   <div class="section-head-body">
     <span class="section-label">§ I.  Understanding Technical Debt</span>
@@ -180,7 +190,7 @@ The MVP is a scope decision; technical debt is an implementation decision. An MV
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§02" data-label="The Financial Metaphor">
   <div class="section-head-gutter">§02</div>
   <div class="section-head-body">
     <span class="section-label">§ II.  The Financial Metaphor</span>
@@ -217,7 +227,7 @@ One failure of the financial metaphor: real debt has a known amortization schedu
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§03" data-label="Strategic Framework">
   <div class="section-head-gutter">§03</div>
   <div class="section-head-body">
     <span class="section-label">§ III.  Strategic Framework</span>
@@ -289,7 +299,7 @@ Isolability is the single best predictor of manageable debt. Debt behind a stabl
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§04" data-label="Portfolio Management">
   <div class="section-head-gutter">§04</div>
   <div class="section-head-body">
     <span class="section-label">§ IV.  Portfolio Management</span>
@@ -332,7 +342,7 @@ Some debt depreciates naturally: a module scheduled for replacement loses its de
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§05" data-label="Mitigating Risks">
   <div class="section-head-gutter">§05</div>
   <div class="section-head-body">
     <span class="section-label">§ V.  Mitigating Risks</span>
@@ -375,7 +385,7 @@ Tests around technical debt serve a dual purpose: they catch regressions now, an
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§06" data-label="Developer Joy">
   <div class="section-head-gutter">§06</div>
   <div class="section-head-body">
     <span class="section-label">§ VI.  Developer Joy</span>
@@ -465,5 +475,53 @@ The goal is not zero debt but optimal debt — the level that maximizes the team
 </div>
 
 
+
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.section-head-row[data-section]');
+  var navSection = document.getElementById('navSection');
+  var navLabel = document.getElementById('navLabel');
+  var navPip = document.querySelector('.mobile-nav-pip');
+  if (!navSection || !navLabel || sections.length === 0) return;
+
+  var current = -1;
+  var ticking = false;
+
+  function update() {
+    var scrollY = window.scrollY + 60;
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = i;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      var s = sections[active];
+      navSection.textContent = s.getAttribute('data-section');
+      var sep = navLabel.previousElementSibling ? ' · ' : '';
+      navLabel.textContent = s.getAttribute('data-label');
+      if (navPip) {
+        navPip.style.background = 'var(--amber)';
+        navPip.style.boxShadow = '0 0 8px rgba(212,145,58,0.8)';
+        setTimeout(function() {
+          navPip.style.background = 'var(--phosphor-dim)';
+          navPip.style.boxShadow = '0 0 4px rgba(126,200,160,0.3)';
+        }, 400);
+      }
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>

@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<nav class="mobile-nav" aria-label="Document position">
+  <a href="/" class="mobile-nav-sigil">byatt.io</a>
+  <span class="mobile-nav-location">
+    <span class="nav-section" id="navSection"></span>
+    <span id="navLabel"></span>
+  </span>
+  <div class="mobile-nav-pip"></div>
+</nav>
+
+
 <div class="accent-bar"></div>
 
 <div class="page">
@@ -87,7 +97,7 @@
   
 
   
-  <div class="section-head-row">
+  <div class="section-head-row" data-section="§01" data-label="The Problem">
   <div class="section-head-gutter">§01</div>
   <div class="section-head-body">
     <span class="section-label">§ I.  The Problem</span>
@@ -157,7 +167,7 @@ The observability gap is a classic principal-agent problem: the people who build
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§02" data-label="The Three Signals">
   <div class="section-head-gutter">§02</div>
   <div class="section-head-body">
     <span class="section-label">§ II.  The Three Signals</span>
@@ -205,7 +215,7 @@ The OpenTelemetry project aims to unify these three signals under a single instr
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§03" data-label="Observability for Operations">
   <div class="section-head-gutter">§03</div>
   <div class="section-head-body">
     <span class="section-label">§ III.  Observability for Operations</span>
@@ -253,7 +263,7 @@ Mean Time to Recovery is the metric most directly improved by mature observabili
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§04" data-label="The Product Pipeline">
   <div class="section-head-gutter">§04</div>
   <div class="section-head-body">
     <span class="section-label">§ IV.  The Product Pipeline</span>
@@ -301,7 +311,7 @@ Even in waterfall, the operations phase is the longest and most expensive. Front
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§05" data-label="The Launch Requirement">
   <div class="section-head-gutter">§05</div>
   <div class="section-head-body">
     <span class="section-label">§ V.  The Launch Requirement</span>
@@ -376,5 +386,53 @@ The minimum viable observability: structured logging, request latency histograms
 </div>
 
 
+
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.section-head-row[data-section]');
+  var navSection = document.getElementById('navSection');
+  var navLabel = document.getElementById('navLabel');
+  var navPip = document.querySelector('.mobile-nav-pip');
+  if (!navSection || !navLabel || sections.length === 0) return;
+
+  var current = -1;
+  var ticking = false;
+
+  function update() {
+    var scrollY = window.scrollY + 60;
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = i;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      var s = sections[active];
+      navSection.textContent = s.getAttribute('data-section');
+      var sep = navLabel.previousElementSibling ? ' · ' : '';
+      navLabel.textContent = s.getAttribute('data-label');
+      if (navPip) {
+        navPip.style.background = 'var(--amber)';
+        navPip.style.boxShadow = '0 0 8px rgba(212,145,58,0.8)';
+        setTimeout(function() {
+          navPip.style.background = 'var(--phosphor-dim)';
+          navPip.style.boxShadow = '0 0 4px rgba(126,200,160,0.3)';
+        }, 400);
+      }
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>

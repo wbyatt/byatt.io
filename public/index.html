@@ -11,6 +11,16 @@
 </head>
 <body>
 
+<nav class="mobile-nav" aria-label="Document position">
+  <a href="/" class="mobile-nav-sigil">byatt.io</a>
+  <span class="mobile-nav-location">
+    <span class="nav-section" id="navSection"></span>
+    <span id="navLabel"></span>
+  </span>
+  <div class="mobile-nav-pip"></div>
+</nav>
+
+
 <div class="accent-bar"></div>
 
 <div class="page">
@@ -90,14 +100,14 @@
     <span class="sigil">02.04</span>
   </div>
   <div class="ephemeron-main">
-    <a href="/ephemeron/" class="ephemeron-title">Open Source as Megamachine</a>
+    <a href="/ephemeron/" class="ephemeron-title">The Individuation Engine</a>
     
-    <p class="ephemeron-hook">Every morning, engineers contribute code to what they believe is a commons. Drawing on Mumford, Mauss, and Yuk Hui, this essay argues that open source is a megamachine converting voluntary participation into corporate value—and that genuine alternatives require not just different licenses or funding, but fundamentally different infrastructures of collaboration.</p>
+    <p class="ephemeron-hook">The question of whether LLMs &lsquo;understand&rsquo; language has calcified into a stale binary — stochastic parrots versus functional understanding. Both sides are wrong, and for the same reason: they treat understanding as a property an individual either possesses or lacks. Gilbert Simondon&rsquo;s theory of individuation dissolves this debate entirely, reframing it as a question about the <em>milieu</em> in which meaning emerges — and in doing so, generates a concrete engineering discipline that standard prompt engineering cannot reach.</p>
     
     <span class="ephemeron-hint">diurnal — preserved by comment</span>
   </div>
   <div class="ephemeron-margin">
-    <span class="ephemeron-chain">gift economy → monotechnics → cosmotechnics → polytechnic resistance</span>
+    <span class="ephemeron-chain">grounding → individuation → milieu → signal</span>
   </div>
 
   <div class="section-rule">
@@ -243,5 +253,53 @@
 
 </div>
 
+
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.section-head-row[data-section]');
+  var navSection = document.getElementById('navSection');
+  var navLabel = document.getElementById('navLabel');
+  var navPip = document.querySelector('.mobile-nav-pip');
+  if (!navSection || !navLabel || sections.length === 0) return;
+
+  var current = -1;
+  var ticking = false;
+
+  function update() {
+    var scrollY = window.scrollY + 60;
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = i;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      var s = sections[active];
+      navSection.textContent = s.getAttribute('data-section');
+      var sep = navLabel.previousElementSibling ? ' · ' : '';
+      navLabel.textContent = s.getAttribute('data-label');
+      if (navPip) {
+        navPip.style.background = 'var(--amber)';
+        navPip.style.boxShadow = '0 0 8px rgba(212,145,58,0.8)';
+        setTimeout(function() {
+          navPip.style.background = 'var(--phosphor-dim)';
+          navPip.style.boxShadow = '0 0 4px rgba(126,200,160,0.3)';
+        }, 400);
+      }
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>

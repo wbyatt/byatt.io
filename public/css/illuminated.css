@@ -1014,3 +1014,394 @@ a.header-gutter-mark:hover {
 .giscus, .giscus-frame {
   width: 100%;
 }
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE LAYER — the portable breviary form
+   Breakpoint: 700px and below
+   ════════════════════════════════════════════════════════════ */
+
+/* ── STICKY RUNNING HEADER (hidden on desktop) ── */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 700px) {
+
+  /* Reset body margins for edge-to-edge */
+  body {
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    font-size: 16px;
+  }
+
+  /* ── STICKY RUNNING HEADER ── */
+  .mobile-nav {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--bg-inset);
+    border-bottom: 1px solid var(--rule-hi);
+    align-items: center;
+    gap: 0;
+    height: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  }
+
+  .mobile-nav-sigil {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--amber-dim);
+    padding: 0 10px;
+    border-right: 1px solid var(--rule);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.08em;
+    background: var(--bg-raised);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .mobile-nav-location {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--phosphor-dim);
+    padding: 0 12px;
+    flex: 1;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-nav-location .nav-section {
+    color: var(--amber);
+  }
+
+  .mobile-nav-pip {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--phosphor-dim);
+    margin-right: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 0 4px rgba(126,200,160,0.3);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  /* ── COLLAPSE THREE-COLUMN GRID TO SINGLE COLUMN ── */
+  .page {
+    display: block;
+  }
+
+  /* Hide desktop gutter column entirely */
+  .gutter-cell {
+    display: none;
+  }
+
+  /* Hide desktop header gutter and margin panes */
+  .header-gutter,
+  .header-margin,
+  .section-head-gutter,
+  .section-head-margin,
+  .footer-gutter,
+  .footer-margin {
+    display: none;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    border-bottom: 1px solid var(--rule-hi);
+  }
+
+  .header-inner {
+    display: block;
+  }
+
+  .header-body {
+    padding: 24px 20px 20px;
+  }
+
+  .doc-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  .doc-subtitle {
+    font-size: 0.82rem;
+  }
+
+  /* ── ORNAMENT BAND — survives, more intense at narrow width ── */
+  .ornament-band {
+    height: 36px;
+  }
+
+  /* ── PROVENANCE ── */
+  .provenance {
+    display: block;
+  }
+
+  .provenance-gutter,
+  .provenance-margin {
+    display: none;
+  }
+
+  .provenance-body {
+    padding: 10px 20px;
+  }
+
+  /* ── SECTION HEADS ── */
+  .section-head-row {
+    display: block;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-top: 0;
+  }
+
+  .section-head-body {
+    padding: 8px 20px;
+  }
+
+  /* ── MAIN CONTENT CELL ── */
+  .main-cell {
+    padding: 20px 20px 8px;
+  }
+
+  /* ── DROP CAP — scaled down, same geometry ── */
+  .dropcap-wrap {
+    width: 52px;
+    height: 52px;
+    margin: 2px 12px 4px 0;
+  }
+
+  /* ── AXIOM BLOCK ── */
+  .axiom {
+    grid-template-columns: 44px 1fr;
+    font-size: 0.88rem;
+    padding: 6px 14px;
+  }
+
+  /* ── CODE BLOCK — collapse chrome, keep line numbers ── */
+  .codex-chrome {
+    display: none;
+  }
+
+  .codex-caption {
+    font-size: 0.56rem;
+    padding: 6px 10px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .codex-lang {
+    font-size: 0.56rem;
+    padding: 6px 10px;
+  }
+
+  .codex-body {
+    font-size: 0.74rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cl-num {
+    min-width: 32px;
+    padding: 0 8px;
+    font-size: 0.62rem;
+    margin-right: 10px;
+  }
+
+  /* ── TABLE — card stack pattern ── */
+  .construction-wrap {
+    margin: 16px 0 20px;
+  }
+
+  table.construction thead {
+    display: none;
+  }
+
+  table.construction,
+  table.construction tbody,
+  table.construction tr {
+    display: block;
+    width: 100%;
+  }
+
+  table.construction tr {
+    border: 1px solid var(--rule);
+    border-bottom: none;
+    position: relative;
+  }
+
+  table.construction tr:first-child {
+    border-top: none;
+  }
+
+  table.construction tr:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  table.construction td {
+    display: block;
+    padding: 5px 14px;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  table.construction td:first-child {
+    font-size: 0.9rem;
+    padding: 8px 14px 4px;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  table.construction td:first-child::before {
+    content: '▸';
+    color: var(--amber-dim);
+    font-size: 0.65rem;
+  }
+
+  table.construction td:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    color: var(--phosphor-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  table.construction td:last-child {
+    padding-bottom: 10px;
+  }
+
+  /* ── SECTION RULE ── */
+  .section-rule {
+    display: block;
+    height: 1px;
+    border-top: 1px solid var(--rule-hi);
+    grid-template-columns: none;
+  }
+
+  .section-rule > * {
+    display: none;
+  }
+
+  /* ── MARGIN NOTES — inline stage-whisper form ── */
+  .margin-cell {
+    display: block;
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding: 0;
+    margin: 0 20px 16px;
+    background: transparent;
+  }
+
+  .margin-note {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 12px 8px 10px;
+    margin-bottom: 0;
+    border-left: 2px solid var(--rule-hi);
+    background: var(--bg-inset);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .margin-note:last-child {
+    border-bottom: none;
+  }
+
+  .margin-cell .ref {
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    color: var(--slate-hi);
+    margin-bottom: 3px;
+  }
+
+  .margin-cell .ref::before {
+    content: '◂ ';
+    color: var(--amber-dim);
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    display: block;
+  }
+
+  .footer-body {
+    padding: 12px 20px;
+    font-size: 0.56rem;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  /* ── PROSE (single-column layout) ── */
+  .prose-wrap {
+    border-top: 1px solid var(--rule);
+  }
+
+  .prose {
+    padding: 24px 20px;
+  }
+
+  /* ── INDEX (home page) ── */
+  .index-gutter,
+  .index-margin,
+  .ephemeron-gutter,
+  .ephemeron-margin,
+  .colophon-gutter,
+  .colophon-margin {
+    display: none;
+  }
+
+  .index-main {
+    padding: 12px 20px;
+  }
+
+  .ephemeron-main {
+    padding: 14px 20px;
+  }
+
+  .colophon-main {
+    padding: 14px 20px;
+  }
+
+  /* ── RESPONSA ── */
+  .responsa-header {
+    padding: 10px 20px;
+  }
+
+  .responsa-body {
+    padding: 16px 20px 24px;
+  }
+
+} /* end @media (max-width: 700px) */
+
+/* ── Fine-tuning: narrow phones (< 420px) ── */
+@media (max-width: 420px) {
+  .doc-title {
+    letter-spacing: 0.12em;
+  }
+
+  .codex-body {
+    font-size: 0.68rem;
+  }
+
+  .section-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .dropcap-wrap {
+    width: 44px;
+    height: 44px;
+  }
+}

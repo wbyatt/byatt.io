@@ -1,4 +1,4 @@
-<div class="section-head-row">
+<div class="section-head-row" data-section="§{{ .Get "num" }}" data-label="{{ .Get "label" | replaceRE `§\s*[IVXLC]+\.\s*` `` }}">
   <div class="section-head-gutter">§{{ .Get "num" }}</div>
   <div class="section-head-body">
     <span class="section-label">{{ .Get "label" }}</span>

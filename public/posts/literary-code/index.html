@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<nav class="mobile-nav" aria-label="Document position">
+  <a href="/" class="mobile-nav-sigil">byatt.io</a>
+  <span class="mobile-nav-location">
+    <span class="nav-section" id="navSection"></span>
+    <span id="navLabel"></span>
+  </span>
+  <div class="mobile-nav-pip"></div>
+</nav>
+
+
 <div class="accent-bar"></div>
 
 <div class="page">
@@ -87,7 +97,7 @@
   
 
   
-  <div class="section-head-row">
+  <div class="section-head-row" data-section="§01" data-label="Code as Text">
   <div class="section-head-gutter">§01</div>
   <div class="section-head-body">
     <span class="section-label">§ I.  Code as Text</span>
@@ -168,7 +178,7 @@ The narrative arc of a good function — setup, transformation, resolution — m
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§02" data-label="Death of the Author">
   <div class="section-head-gutter">§02</div>
   <div class="section-head-body">
     <span class="section-label">§ II.  Death of the Author</span>
@@ -207,7 +217,7 @@ Roland Barthes' "The Death of the Author" argued that a text's meaning resides i
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§03" data-label="The Role of Convention">
   <div class="section-head-gutter">§03</div>
   <div class="section-head-body">
     <span class="section-label">§ III.  The Role of Convention</span>
@@ -255,7 +265,7 @@ The shot-reverse-shot example illustrates that conventions can become so natural
   <div></div><div></div><div></div>
 </div>
 
-<div class="section-head-row">
+<div class="section-head-row" data-section="§04" data-label="Functional Analysis of the Text">
   <div class="section-head-gutter">§04</div>
   <div class="section-head-body">
     <span class="section-label">§ IV.  Functional Analysis of the Text</span>
@@ -337,5 +347,53 @@ Criticality and humility are not opposites but complements. The best code review
 </div>
 
 
+
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.section-head-row[data-section]');
+  var navSection = document.getElementById('navSection');
+  var navLabel = document.getElementById('navLabel');
+  var navPip = document.querySelector('.mobile-nav-pip');
+  if (!navSection || !navLabel || sections.length === 0) return;
+
+  var current = -1;
+  var ticking = false;
+
+  function update() {
+    var scrollY = window.scrollY + 60;
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = i;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      var s = sections[active];
+      navSection.textContent = s.getAttribute('data-section');
+      var sep = navLabel.previousElementSibling ? ' · ' : '';
+      navLabel.textContent = s.getAttribute('data-label');
+      if (navPip) {
+        navPip.style.background = 'var(--amber)';
+        navPip.style.boxShadow = '0 0 8px rgba(212,145,58,0.8)';
+        setTimeout(function() {
+          navPip.style.background = 'var(--phosphor-dim)';
+          navPip.style.boxShadow = '0 0 4px rgba(126,200,160,0.3)';
+        }, 400);
+      }
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
