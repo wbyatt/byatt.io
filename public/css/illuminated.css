@@ -22,13 +22,14 @@
   --font-mono:    'Inconsolata', 'Courier New', monospace;
 
   --col-left:     48px;
-  --col-margin:   180px;
+  --col-margin:   240px;
   --col-gap:      24px;
 }
 
 html {
   background: #050807;
   min-height: 100vh;
+  font-size: 21px;
 }
 
 /* Scanline overlay on entire viewport */
@@ -51,10 +52,10 @@ html::before {
 body {
   color: var(--phosphor);
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 1.8;
   font-weight: 300;
-  max-width: 1020px;
+  max-width: 1140px;
   margin: 40px auto;
   padding: 0;
   position: relative;
@@ -316,6 +317,18 @@ em { font-style: italic; color: var(--phosphor-hi); }
   font-style: normal;
 }
 
+/* Links in main content */
+.main-cell a {
+  color: var(--slate-hi);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-hi);
+}
+
+.main-cell a:hover {
+  color: var(--phosphor-hi);
+  border-bottom-color: var(--phosphor-dim);
+}
+
 .math {
   font-style: italic;
   color: var(--phosphor-hi);
@@ -480,7 +493,7 @@ em { font-style: italic; color: var(--phosphor-hi); }
   content: counter(codeline, decimal-leading-zero);
 }
 
-.cl-code { flex: 1; }
+.cl-code { flex: 1; white-space: pre; }
 
 /* Syntax */
 .kw  { color: var(--phosphor-hi); font-weight: 500; }
@@ -966,7 +979,7 @@ a.header-gutter-mark:hover {
 
 /* ── RESPONSA (comment section — below the document) ── */
 .responsa {
-  max-width: 1020px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -1027,12 +1040,15 @@ a.header-gutter-mark:hover {
 
 @media (max-width: 700px) {
 
-  /* Reset body margins for edge-to-edge */
+  /* Reset for mobile */
+  html {
+    font-size: 17px;
+  }
+
   body {
     margin: 0;
     border-left: none;
     border-right: none;
-    font-size: 16px;
   }
 
   /* ── STICKY RUNNING HEADER ── */
