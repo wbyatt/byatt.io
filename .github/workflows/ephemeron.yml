@@ -1,0 +1,40 @@
+name: Ephemeron
+
+on:
+  schedule:
+    # 10:00 UTC = 6:00 AM EDT / 5:00 AM EST
+    - cron: '0 10 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  discussions: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Babashka
+        run: |
+          curl -sL "https://github.com/babashka/babashka/releases/download/v1.12.196/babashka-1.12.196-linux-amd64-static.tar.gz" \
+            -o /tmp/bb.tar.gz
+          tar xzf /tmp/bb.tar.gz -C /usr/local/bin
+          bb --version
+
+      - name: Configure git
+        run: |
+          git config user.name "ephemeron-bot"
+          git config user.email "ephemeron@byatt.io"
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bb scripts/ephemeron.clj
