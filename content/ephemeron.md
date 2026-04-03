@@ -24,11 +24,11 @@ generated_date: "2 April 2026"
 
 {{< main-col >}}
 
-{{< dropcap letter="B" >}}
+{{< dropcap letter="E" >}}
 
-<p>oth sides assume they are disagreeing about LLMs. They are actually disagreeing about the ontology of meaning itself, and neither has the apparatus to notice.</p>
+<p>very few months, the discourse cycles back: do large language models <em>understand</em> language? The camps are well-rehearsed. On one side, Bender, Koller, and their co-authors insist that LLMs are "stochastic parrots," manipulating form without access to meaning, ungrounded in the world of reference that gives language its semantic content. On the other side, a growing contingent of functionalists — Andreas, Shanahan, and others — argue that if a system exhibits the functional competencies associated with understanding, the question of whether some additional metaphysical ingredient is present is idle.</p>
 
-<p>Every few months, the discourse cycles back: do large language models <em>understand</em> language? The camps are well-rehearsed. On one side, Bender, Koller, and their co-authors insist that LLMs are "stochastic parrots," manipulating form without access to meaning, ungrounded in the world of reference that gives language its semantic content. On the other side, a growing contingent of functionalists — Andreas, Shanahan, and others — argue that if a system exhibits the functional competencies associated with understanding, the question of whether some additional metaphysical ingredient is present is idle.</p>
+<p>Both sides assume they are disagreeing about LLMs. They are actually disagreeing about the ontology of meaning itself, and neither has the apparatus to notice.</p>
 
 <p>Gilbert Simondon does. His theory of individuation, developed in the late 1950s and only recently gaining serious traction in anglophone philosophy of technology, provides the frame that both camps lack. But to see why, we need to be precise about where each argument breaks down — not merely wave at category errors, but identify the specific structural failure in each position.</p>
 
