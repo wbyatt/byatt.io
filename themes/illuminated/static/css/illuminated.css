@@ -756,6 +756,110 @@ a.header-gutter-mark:hover {
   color: var(--phosphor);
 }
 
+/* ── EPHEMERON (daily featured piece on home page) ── */
+.ephemeron-label {
+  color: var(--slate-hi);
+  text-shadow: 0 0 10px rgba(122,170,187,0.3);
+}
+
+.ephemeron-gutter {
+  border-right: 1px solid var(--rule);
+  padding: 16px 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ephemeron-main {
+  padding: 16px var(--col-gap);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ephemeron-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--phosphor-hi);
+  text-decoration: none;
+  line-height: 1.4;
+  text-shadow: 0 0 16px rgba(184,240,208,0.15);
+  transition: text-shadow 0.2s;
+}
+
+.ephemeron-title:hover {
+  text-shadow: 0 0 20px rgba(184,240,208,0.35);
+}
+
+.ephemeron-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--phosphor-dim);
+}
+
+.ephemeron-hook {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--phosphor-dim);
+  margin: 6px 0 8px;
+  font-weight: 300;
+}
+
+.ephemeron-hint {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--slate);
+  letter-spacing: 0.12em;
+  margin-top: 4px;
+}
+
+.ephemeron-margin {
+  border-left: 1px solid var(--rule);
+  padding: 16px 14px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.ephemeron-chain {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--slate);
+  letter-spacing: 0.06em;
+}
+
+/* ── PROVENANCE (machine-generation attribution) ── */
+.provenance {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: var(--col-left) 1fr var(--col-margin);
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-inset);
+}
+
+.provenance-gutter {
+  border-right: 1px solid var(--rule);
+}
+
+.provenance-body {
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  line-height: 1.7;
+  color: var(--slate);
+  letter-spacing: 0.03em;
+}
+
+.provenance-body strong {
+  color: var(--slate-hi);
+  font-weight: 600;
+}
+
+.provenance-margin {
+  border-left: 1px solid var(--rule);
+}
+
 /* ── INDEX (home page) ── */
 .index-gutter {
   border-right: 1px solid var(--rule);

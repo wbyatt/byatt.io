@@ -29,6 +29,17 @@
   <!-- ══ ORNAMENT BAND ══ -->
   {{ partial "ornament.html" . }}
 
+  <!-- ══ PROVENANCE (if machine-generated) ══ -->
+  {{ with .Params.generated_by }}
+  <div class="provenance">
+    <div class="provenance-gutter"></div>
+    <div class="provenance-body">
+      This text was generated entirely by <strong>{{ . }}</strong>{{ with $.Params.generated_date }} on {{ . }}{{ end }}, without human authorial input. It was produced through a multi-stage pipeline of ideation, adversarial critique, writing, and editorial review. The site author has not edited the output.
+    </div>
+    <div class="provenance-margin"></div>
+  </div>
+  {{ end }}
+
   <!-- ══ CONTENT ══ -->
   {{ .Content }}
 

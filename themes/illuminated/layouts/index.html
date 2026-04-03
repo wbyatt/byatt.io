@@ -25,6 +25,35 @@
 
   {{ partial "ornament.html" . }}
 
+  <!-- ══ EPHEMERON ══ -->
+  {{ with .Site.GetPage "/ephemeron" }}
+  <div class="section-head-row">
+    <div class="section-head-gutter"></div>
+    <div class="section-head-body">
+      <span class="section-label ephemeron-label">Ephemeron</span>
+    </div>
+    <div class="section-head-margin"></div>
+  </div>
+
+  <div class="ephemeron-gutter">
+    <span class="sigil">{{ .Date.Format "02.01" }}</span>
+  </div>
+  <div class="ephemeron-main">
+    <a href="{{ .RelPermalink }}" class="ephemeron-title">{{ .Title }}</a>
+    {{ with .Params.hook }}
+    <p class="ephemeron-hook">{{ . | markdownify }}</p>
+    {{ end }}
+    <span class="ephemeron-hint">diurnal — preserved by comment</span>
+  </div>
+  <div class="ephemeron-margin">
+    <span class="ephemeron-chain">{{ .Params.chain }}</span>
+  </div>
+
+  <div class="section-rule">
+    <div></div><div></div><div></div>
+  </div>
+  {{ end }}
+
   <!-- ══ TABULA ══ -->
   <div class="section-head-row">
     <div class="section-head-gutter">§</div>
@@ -35,7 +64,7 @@
   </div>
 
   {{ range where .Site.RegularPages "Section" "!=" "" }}
-  {{ if not (or (eq .File.LogicalName "cv.md") (eq .File.LogicalName "search.md") (eq .File.LogicalName "archives.md")) }}
+  {{ if not (or (eq .File.LogicalName "cv.md") (eq .File.LogicalName "search.md") (eq .File.LogicalName "archives.md") (eq .File.LogicalName "ephemeron.md")) }}
   <div class="index-gutter">
     <span class="index-class">{{ .Params.doc_class | default .Section }}</span>
   </div>
