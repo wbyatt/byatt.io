@@ -405,44 +405,61 @@
 ;; ── Persistence check ──────────────────────────────────────────────
 
 (defn check-comments
-  "Query GitHub Discussions to see if yesterday's ephemeron has comments.
-   If so, persist it before overwriting."
+  "Query GitHub Discussions to see if the current ephemeron has comments.
+   Each ephemeron gets its own discussion via data-mapping='specific' with
+   data-term set to the doc_id (e.g., 'ephemeron.2026-04-02'). We read the
+   current ephemeron's doc_id from its front matter and look for a matching
+   discussion."
   []
   (println "═══ Checking for comments on current ephemeron ═══")
-  (let [gh-token (System/getenv "GITHUB_TOKEN")
-        query    "{\"query\": \"{ repository(owner: \\\"wbyatt\\\", name: \\\"byatt.io\\\") { discussions(categoryId: \\\"DIC_kwDOMvtUZM4C56QU\\\", first: 20) { nodes { title url comments { totalCount } } } } }\"}"
-        resp     (when gh-token
-                   (try
-                     (http/post "https://api.github.com/graphql"
-                                {:headers {"Authorization" (str "Bearer " gh-token)
-                                           "Content-Type"  "application/json"}
-                                 :body    query})
-                     (catch Exception e
-                       (println "  → GitHub API error:" (.getMessage e))
-                       nil)))]
-    (if (and resp (= 200 (:status resp)))
-      (let [parsed      (json/parse-string (:body resp) true)
-            discussions  (get-in parsed [:data :repository :discussions :nodes])
-            ephemeron-d  (first (filter #(str/includes? (or (:title %) "") "ephemeron")
-                                        discussions))
-            has-comments (and ephemeron-d
-                              (pos? (get-in ephemeron-d [:comments :totalCount] 0)))]
-        (when has-comments
-          (println "  → Comments found! Persisting current ephemeron.")
-          (let [source   (str (:repo-root config) "/content/ephemeron.md")
-                content  (slurp source)
-                ;; Extract date from front matter
-                date-m   (re-find #"date:\s*(\d{4}-\d{2}-\d{2})" content)
-                date-str (or (second date-m) "undated")
-                dest     (str (:repo-root config) "/content/posts/ephemeron-" date-str ".md")]
-            ;; Copy to posts, remove ephemeral-specific fields
-            (spit dest (-> content
-                           (str/replace #"footer_status:.*\n" "footer_status: \"preserved from ephemeron\"\n")
-                           (str/replace #"doc_class:.*\n" "doc_class: \"ephemeron/preserved\"\n")
-                           (str/replace #"hook:.*\n" "")))
-            (println "  → Persisted to" dest)))
-        (println "  → No comments found, ephemeron will be overwritten."))
-      (println "  → No GITHUB_TOKEN or API error, skipping persistence check."))))
+  (let [gh-token     (System/getenv "GITHUB_TOKEN")
+        source       (str (:repo-root config) "/content/ephemeron.md")
+        source-exists (fs/exists? source)]
+    (if-not source-exists
+      (println "  → No existing ephemeron.md, nothing to check.")
+      (let [content  (slurp source)
+            ;; Extract doc_id from front matter
+            id-match (re-find #"doc_id:\s*\"?([^\"\n]+)\"?" content)
+            doc-id   (when id-match (str/trim (second id-match)))]
+        (if-not doc-id
+          (println "  → Could not extract doc_id from current ephemeron, skipping.")
+          (let [query (json/generate-string
+                        {:query (str "{ repository(owner: \"wbyatt\", name: \"byatt.io\") {"
+                                     "  discussions(categoryId: \"DIC_kwDOMvtUZM4C56QU\", first: 50) {"
+                                     "    nodes { title comments { totalCount } }"
+                                     "  }"
+                                     "}}")})
+                resp  (when gh-token
+                        (try
+                          (http/post "https://api.github.com/graphql"
+                                     {:headers {"Authorization" (str "Bearer " gh-token)
+                                                "Content-Type"  "application/json"}
+                                      :body    query})
+                          (catch Exception e
+                            (println "  → GitHub API error:" (.getMessage e))
+                            nil)))]
+            (if (and resp (= 200 (:status resp)))
+              (let [parsed      (json/parse-string (:body resp) true)
+                    discussions  (get-in parsed [:data :repository :discussions :nodes])
+                    ;; Find the discussion whose title matches this ephemeron's doc_id
+                    match        (first (filter #(= (:title %) doc-id) discussions))
+                    has-comments (and match
+                                     (pos? (get-in match [:comments :totalCount] 0)))]
+                (if has-comments
+                  (do
+                    (println "  → Comments found on" doc-id "— persisting.")
+                    (let [date-m   (re-find #"date:\s*(\d{4}-\d{2}-\d{2})" content)
+                          date-str (or (second date-m) "undated")
+                          dest     (str (:repo-root config) "/content/posts/ephemeron-" date-str ".md")]
+                      (spit dest (-> content
+                                     (str/replace #"footer_status:.*\n"
+                                                  "footer_status: \"preserved from ephemeron\"\n")
+                                     (str/replace #"doc_class:.*\n"
+                                                  "doc_class: \"ephemeron/preserved\"\n")
+                                     (str/replace #"hook:.*\n" "")))
+                      (println "  → Persisted to" dest)))
+                  (println "  → No comments on" doc-id "— ephemeron will be overwritten.")))
+              (println "  → No GITHUB_TOKEN or API error, skipping persistence check."))))))))
 
 ;; ── Git operations ─────────────────────────────────────────────────
 
