@@ -318,6 +318,18 @@ em { font-style: italic; color: var(--phosphor-hi); }
 }
 
 /* Links in main content */
+/* Sub-headings within main content (role titles, etc.) */
+.main-cell p > strong:first-child:last-child {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: -0.5em;
+}
+
 .main-cell a {
   color: var(--slate-hi);
   text-decoration: none;

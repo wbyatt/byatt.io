@@ -1,147 +1,200 @@
 ---
-title: "CV"
+title: "William Byatt"
+subtitle: "architect, cloud control plane — Akamai Technologies"
 date: 2024-09-10T13:45:18-04:00
 draft: false
+layout: treatise
+doc_class: "curriculum vitae"
+doc_id: "cv.byatt"
+revision: "rev 5"
+chain: "architecture → leadership → engineering → craft"
+footer_status: "current"
+status_pips:
+  - active
+  - active
+  - active
 ---
 
-# William Byatt
-## Director, Software Engineering
+{{< section num="01" label="§ I.  Profile" >}}
 
-With over 15 years of experience in software engineering and leadership, I consistently deliver results by pairing a commitment to process and team development with top-tier engineering standards. My expertise spans regulation-heavy industries, including healthcare and finance, where I've created market-defining professional solutions. I have extensive experience building systems with Ruby-on-Rails, Go/gRPC, Elixir/Phoenix, Python/Flask, and a wide range of modern front-end technologies. My proficiency extends to deploying distributed, cloud-native SaaS solutions across AWS, Azure, and GCP. This comprehensive experience has enabled me to build action-biased, high-performance teams capable of rapidly executing ambitious projects and providing long-term support.
+{{< gutter sigil="profile" >}}
 
-## Professional Experience
+{{< main-col >}}
 
-### Kaufman Rossin (Miami, FL)
-#### Director, Software Engineering
-*December 2023 - Present*
+<p>Over fifteen years in software engineering and leadership, across healthcare, finance, and cloud infrastructure. I build teams and systems in regulated, high-stakes environments — pairing process discipline with engineering standards that don't compromise. Extensive experience with Go, Ruby, Python, Elixir, and modern front-end technologies, deployed as distributed cloud-native systems across AWS, Azure, and GCP.</p>
 
-- Spearheaded an agreement with an AI partner, leading to a successful rollout of multiple GenAI-based applications, positioning the company at the forefront of AI adoption in the industry.
-- Identified and procured strategic partnerships to accelerate the firm's path to widespread AI adoption.
-- Facilitated firm-wide workshops on AI and generative AI, improving literacy and driving submissions to an internal AI brainstorm competition.
-- Authored and owned all application-development company policies, including code standards, SDLC policies, and security policies, based on priorities developed by CIO, COO, and CISO.
-- Collaborated directly with CISO to enhance security posture maturity, including aligning formal SDLC with WISP.
-- Established first-ever cross-team collaborative processes involving appdev, data, and IT teams, resulting in simplified data architectures and improved business intelligence pipelines.
-- Led a large-scale migration from AWS ECS to Azure AKS, demonstrating adaptability and expertise across cloud platforms.
-- Migrated CI/CD processes to GitHub Actions, streamlining development workflows and improving deployment efficiency.
-- Spearheaded an initiative to introduce deep observability using Prometheus and Grafana, enhancing system monitoring and performance analysis capabilities.
-- Introduced detailed and controlled FinOps practices, providing crucial insights into application and platform costs.
+{{< /main-col >}}
 
-#### Engineering Manager
-*May 2022 - December 2023*
+{{< margin >}}
+{{< note ref="NOTE // orientation" >}}
+I am interested in the intersection of systems architecture, team design, and the social dimensions of software. The essays on this site reflect that interest.
+{{< /note >}}
+{{< /margin >}}
 
-- Maximized cost savings and performance by migrating DB clusters to AWS Aurora Serverless, reducing DB costs by 80% and improving P99 latencies.
-- Increased productivity by enabling developers to onboard in less than an hour with Kubernetes-based CDE deployment.
-- Successfully implemented a 1:1 framework, resulting in improved professional growth, successful performance reviews, and drastically reduced turnover.
-- Reformed hiring and managing practices, reducing voluntary turnover from ~25% to 0% and increasing diversity in the applicant pool and team composition.
+{{< section-rule >}}
 
-#### Senior Software Engineer
-*February 2019 - May 2022*
+{{< section num="02" label="§ II.  Akamai Technologies" >}}
 
-- Successfully planned, built, and launched a confidential document delivery platform in Ruby-on-Rails and React, handling more than 10,000 tax returns per year.
-- Implemented a comprehensive CI/CD pipeline using AWS CodePipeline, enhancing deployment efficiency and reliability.
-- Rolled out comprehensive test coverage for Ruby applications with RSpec and JavaScript applications with Jest, significantly improving code quality and reducing bugs.
-- Initiated a book club to encourage team-wide continuous improvement, working through several key software engineering texts.
-- Mentored less experienced developers in software development best practices, leading to all mentees' elevation to senior developer roles.
+{{< gutter sigil="akamai" >}}
 
-### CivicPro (Miami, FL)
-#### Technical Lead
-*June 2018 - Present*
+{{< main-col >}}
 
-- Designed and implemented a system, initially in Python and Django and later migrated to Ruby on Rails and ReactJS, capable of ingesting bulk legislative data and parsing it using GPT-3.5-turbo.
-- Collaborated directly with NGO leadership to provide deep policy and legislative behavior analysis for elected officials, influencing partner endorsement and campaign operations.
-- Partnered with journalists and leadership at local NPR affiliate and the Miami Herald to produce in-depth data reporting on local governments.
+<p><strong>Architect, Cloud Control Plane</strong></p>
 
-### Senior Software Engineer (Various Companies)
-*April 2015 - May 2022*
+<p>Designing Akamai/Linode's next-generation cloud-native control plane for public cloud offerings.</p>
 
-#### Bar None Systems (Miami/Fort Lauderdale Area)
-*March 2017 - February 2019*
+{{< /main-col >}}
 
-- Performed SDLC audits for clients
-- Managed and executed emergency software project rescues for clients
-- Consulted on digital infrastructure for nonprofits and political campaigns
+{{< margin >}}
+{{< note ref="Nov 2024 — present" >}}
+Remote
+{{< /note >}}
+{{< /margin >}}
 
-#### Kipu Systems (Miami/Fort Lauderdale Area)
-*August 2016 - March 2018*
+{{< section-rule >}}
 
-- Built SaaS systems in Ruby on Rails compliant with HIPAA and HL7 standards.
-- Developed features to facilitate secure patient data management and healthcare provider communications.
+{{< section num="03" label="§ III.  Kaufman Rossin" >}}
 
-#### LocalSearch (Brisbane, Queensland, Australia)
-*April 2015 - October 2015*
+{{< gutter sigil="kaufman" >}}
 
-- Built contract management tools using Ruby-on-Rails and AngularJS
-- Used RabbitMQ for asynchronous communications in a broad microservices architecture
+{{< main-col >}}
 
-### CarePaths (Jupiter, FL)
-#### Software Engineer
-*June 2011 - April 2015*
+<p><strong>Director, Software Engineering</strong></p>
 
-- Built features in compliance with HIPAA regulations and HL7 interoperability standards.
-- Created tooling to communicate with insurers over HL7 to facilitate billing.
-- Designed and implemented scheduling systems to coordinate patient/clinician interactions, including risk level identification.
+<p>Spearheaded an agreement with an AI partner, leading to a successful rollout of multiple GenAI-based applications, positioning the company at the forefront of AI adoption in the industry. Identified and procured strategic partnerships to accelerate the firm's path to widespread AI adoption. Facilitated firm-wide workshops on AI and generative AI, improving literacy and driving submissions to an internal AI brainstorm competition.</p>
 
-## Technical Expertise
+<p>Authored and owned all application-development company policies, including code standards, SDLC policies, and security policies. Collaborated directly with CISO to enhance security posture maturity, including aligning formal SDLC with WISP. Established first-ever cross-team collaborative processes involving appdev, data, and IT teams, resulting in simplified data architectures and improved business intelligence pipelines.</p>
 
-### Programming Languages
-- Proficient in: Go, Python, Ruby, JavaScript, TypeScript
-- Experienced with: Elixir
+<p>Led a large-scale migration from AWS ECS to Azure AKS. Migrated CI/CD processes to GitHub Actions. Spearheaded an initiative to introduce deep observability using Prometheus and Grafana. Introduced detailed and controlled FinOps practices, providing crucial insights into application and platform costs.</p>
 
-### Frameworks & Libraries
-- Ruby on Rails
-- Go/gRPC
-- Elixir/Phoenix
-- Python/Django
-- ReactJS (including NextJS)
+<p><strong>Engineering Manager</strong></p>
 
-### Database Technologies
-- PostgreSQL
-- MongoDB
-- Redis
-- DuckDB
+<p>Maximized cost savings and performance by migrating DB clusters to AWS Aurora Serverless, reducing DB costs by 80% and improving P99 latencies. Increased productivity by enabling developers to onboard in less than an hour with Kubernetes-based CDE deployment. Implemented a 1:1 framework resulting in improved professional growth, successful performance reviews, and drastically reduced turnover. Reformed hiring and managing practices, reducing voluntary turnover from ~25% to 0% and increasing diversity in the applicant pool and team composition.</p>
 
-### Message Brokers & Streaming Platforms
-- Apache Kafka
-- Redpanda
-- RabbitMQ
+<p><strong>Senior Software Engineer</strong></p>
 
-### Cloud Platforms
-- Amazon Web Services (AWS)
-- Microsoft Azure
-- Google Cloud Platform (GCP)
-- Fly.io
+<p>Planned, built, and launched a confidential document delivery platform in Ruby-on-Rails and React, handling more than 10,000 tax returns per year. Implemented comprehensive CI/CD pipeline using AWS CodePipeline. Rolled out comprehensive test coverage for Ruby applications with RSpec and JavaScript applications with Jest. Initiated a book club to encourage team-wide continuous improvement. Mentored less experienced developers, leading to all mentees' elevation to senior developer roles.</p>
 
-### Container Orchestration & DevOps
-- Kubernetes (extensive experience with cloud-native deployments)
-- Docker/Docker Compose/Docker Swarm
-- CI/CD (AWS CodePipeline, GitHub Actions)
-- Infrastructure as Code (Terraform)
+{{< /main-col >}}
 
-### Monitoring & Observability
-- Prometheus
-- Grafana
-- DataDog
+{{< margin >}}
+{{< note ref="Dec 2023 — Nov 2024" >}}
+Director, Software Engineering
+{{< /note >}}
+{{< note ref="May 2022 — Dec 2023" >}}
+Engineering Manager
+{{< /note >}}
+{{< note ref="Feb 2019 — May 2022" >}}
+Senior Software Engineer
+{{< /note >}}
+{{< note ref="NOTE // arc" >}}
+Three promotions in five years. The trajectory moved from delivery to team design to organizational policy — each role widened the scope from code to people to process.
+{{< /note >}}
+{{< /margin >}}
 
-### Software Development Practices
-- Test-Driven Development (TDD)
-- Agile methodologies
-- Service-oriented architecture, including microservice-oriented
-- Distributed systems design
-- 12 Factor
+{{< section-rule >}}
 
-## Leadership & Management Skills
+{{< section num="04" label="§ IV.  Earlier Work" >}}
 
-- Team Building & Mentorship: Successfully built and led high-performance engineering teams, focusing on professional development and retention.
-- Strategic Planning: Developed and implemented technology roadmaps aligned with business objectives.
-- Process Improvement: Introduced and optimized development processes, including SDLC, code standards, and security policies.
-- Cross-functional Collaboration: Facilitated partnerships between engineering, IT, operations, and business units to drive innovation and efficiency.
-- Financial Management: Implemented FinOps practices for better cost control and resource allocation in cloud environments.
+{{< gutter sigil="prior" >}}
 
-## Professional Development
+{{< main-col >}}
 
-- Initiated and led engineering book clubs, fostering a culture of continuous learning and improvement.
-- Regular attendee and occasional speaker at technology conferences and meetups.
+<p><strong>CivicPro — Technical Lead</strong></p>
 
-## References
+<p>Designed and implemented a system for ingesting bulk legislative data and parsing it using GPT-3.5-turbo, initially in Python/Django and later migrated to Ruby on Rails and ReactJS. Collaborated with NGO leadership to provide deep policy and legislative behavior analysis for elected officials. Partnered with journalists at local NPR affiliate and the Miami Herald to produce data reporting on local governments.</p>
 
-Available upon request
+<p><strong>Bar None Systems — Senior Software Engineer</strong></p>
+
+<p>Performed SDLC audits for clients. Managed and executed emergency software project rescues. Consulted on digital infrastructure for nonprofits and political campaigns.</p>
+
+<p><strong>Kipu Systems — Senior Software Engineer</strong></p>
+
+<p>Built SaaS systems in Ruby on Rails compliant with HIPAA and HL7 standards. Developed features to facilitate secure patient data management and healthcare provider communications.</p>
+
+<p><strong>LocalSearch — Senior Software Engineer</strong></p>
+
+<p>Built contract management tools using Ruby-on-Rails and AngularJS. Used RabbitMQ for asynchronous communications in a broad microservices architecture.</p>
+
+<p><strong>CarePaths — Software Engineer</strong></p>
+
+<p>Built features in compliance with HIPAA regulations and HL7 interoperability standards. Created tooling to communicate with insurers over HL7 to facilitate billing. Designed and implemented scheduling systems to coordinate patient/clinician interactions.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="2018 — present" >}}
+CivicPro (Miami, FL)
+{{< /note >}}
+{{< note ref="2017 — 2019" >}}
+Bar None Systems (Miami, FL)
+{{< /note >}}
+{{< note ref="2016 — 2018" >}}
+Kipu Systems (Miami, FL)
+{{< /note >}}
+{{< note ref="2015" >}}
+LocalSearch (Brisbane, QLD, Australia)
+{{< /note >}}
+{{< note ref="2011 — 2015" >}}
+CarePaths (Jupiter, FL)
+{{< /note >}}
+{{< /margin >}}
+
+{{< section-rule >}}
+
+{{< section num="05" label="§ V.  Technical Expertise" >}}
+
+{{< gutter sigil="craft" >}}
+
+{{< main-col >}}
+
+{{< construction caption="Languages, platforms, and practices" >}}
+<thead>
+  <tr>
+    <th>Domain</th>
+    <th>Detail</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Languages</td>
+    <td data-label="Detail">Go, Python, Ruby, JavaScript/TypeScript, Elixir</td>
+  </tr>
+  <tr>
+    <td>Frameworks</td>
+    <td data-label="Detail">Go/gRPC, Ruby on Rails, Elixir/Phoenix, Python/Django, React/Next.js</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td data-label="Detail">PostgreSQL, MongoDB, Redis, DuckDB</td>
+  </tr>
+  <tr>
+    <td>Messaging</td>
+    <td data-label="Detail">Apache Kafka, Redpanda, RabbitMQ</td>
+  </tr>
+  <tr>
+    <td>Cloud</td>
+    <td data-label="Detail">AWS, Azure, GCP, Fly.io, Akamai/Linode</td>
+  </tr>
+  <tr>
+    <td>Infrastructure</td>
+    <td data-label="Detail">Kubernetes, Docker, Terraform, GitHub Actions</td>
+  </tr>
+  <tr>
+    <td>Observability</td>
+    <td data-label="Detail">Prometheus, Grafana, DataDog</td>
+  </tr>
+  <tr>
+    <td>Practices</td>
+    <td data-label="Detail">TDD, distributed systems design, service-oriented architecture, 12 Factor, agile</td>
+  </tr>
+</tbody>
+{{< /construction >}}
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="NOTE // breadth" >}}
+The range here reflects deliberate moves across domains — healthcare, finance, civic tech, cloud infrastructure — each adding regulatory, operational, or scale constraints that shaped the engineering sensibility.
+{{< /note >}}
+{{< /margin >}}
