@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="{{ "css/illuminated.css" | relURL }}">
 </head>
 <body>
+
+<!-- Theme toggle — fixed bottom-right, persistent via localStorage -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+  <div class="theme-toggle-icon"></div>
+</button>
+
 <!-- Mobile sticky running header — hidden on desktop via CSS -->
 <nav class="mobile-nav" aria-label="Document position">
   <a href="/" class="mobile-nav-sigil">{{ .Site.Title }}</a>
@@ -21,8 +27,30 @@
 
 {{ block "main" . }}{{ end }}
 
-<!-- Mobile scroll tracker -->
+<!-- Theme system + scroll tracker -->
 <script>
+// Theme toggle with localStorage persistence
+(function() {
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('byatt-theme', theme);
+  }
+
+  var saved = localStorage.getItem('byatt-theme') || 'dark';
+  applyTheme(saved);
+
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      var current = root.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+})();
+
+// Mobile scroll tracker
 (function() {
   var sections = document.querySelectorAll('.section-head-row[data-section]');
   var navSection = document.getElementById('navSection');
@@ -45,14 +73,14 @@
       current = active;
       var s = sections[active];
       navSection.textContent = s.getAttribute('data-section');
-      var sep = navLabel.previousElementSibling ? ' · ' : '';
       navLabel.textContent = s.getAttribute('data-label');
       if (navPip) {
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
         navPip.style.background = 'var(--amber)';
-        navPip.style.boxShadow = '0 0 8px rgba(212,145,58,0.8)';
+        navPip.style.boxShadow = isLight ? 'none' : '0 0 8px rgba(212,145,58,0.8)';
         setTimeout(function() {
-          navPip.style.background = 'var(--phosphor-dim)';
-          navPip.style.boxShadow = '0 0 4px rgba(126,200,160,0.3)';
+          navPip.style.background = isLight ? 'var(--rule-hi)' : 'var(--phosphor-dim)';
+          navPip.style.boxShadow = isLight ? 'none' : '0 0 4px rgba(126,200,160,0.3)';
         }, 400);
       }
     }

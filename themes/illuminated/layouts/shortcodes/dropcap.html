@@ -1,27 +1,52 @@
+{{- $letter := .Get "letter" -}}
+{{- $id := $letter | lower -}}
 <div class="dropcap-wrap">
-  <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
-    <!-- Outer frame -->
+
+  <!-- DARK: boxed phosphor initial -->
+  <svg class="dc-dark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
-    <!-- Inner frame -->
     <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
-    <!-- Corner geometric accents -->
     <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
     <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
     <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
     <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
-    <!-- Diagonal cross hairlines -->
     <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
     <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
-    <!-- The letter -->
     <text x="36" y="57" text-anchor="middle"
           font-family="Inconsolata, monospace"
           font-size="52" font-weight="600"
           fill="#7ec8a0"
-          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">{{ .Get "letter" }}</text>
-    <!-- Phosphor glow layer -->
+          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">{{ $letter }}</text>
     <text x="36" y="57" text-anchor="middle"
           font-family="Inconsolata, monospace"
           font-size="52" font-weight="600"
-          fill="#b8f0d0" opacity="0.15">{{ .Get "letter" }}</text>
+          fill="#b8f0d0" opacity="0.15">{{ $letter }}</text>
   </svg>
+
+  <!-- LIGHT: bare crosshatch letterform -->
+  <svg class="dc-light" viewBox="0 14 50 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <pattern id="hatch-{{ $id }}" patternUnits="userSpaceOnUse"
+               width="3.5" height="3.5" patternTransform="rotate(40)">
+        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#2a3a4a" stroke-width="1.0"/>
+      </pattern>
+      <pattern id="hatch-x-{{ $id }}" patternUnits="userSpaceOnUse"
+               width="3.5" height="3.5" patternTransform="rotate(-40)">
+        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#4a5a6a" stroke-width="0.5" opacity="0.6"/>
+      </pattern>
+      <clipPath id="dc-clip-{{ $id }}">
+        <text x="1" y="62" font-family="Crimson Pro, Georgia, serif"
+              font-size="66" font-weight="700">{{ $letter }}</text>
+      </clipPath>
+    </defs>
+    <rect x="-4" y="0" width="60" height="72"
+          fill="url(#hatch-{{ $id }})" clip-path="url(#dc-clip-{{ $id }})"/>
+    <rect x="-4" y="0" width="60" height="72"
+          fill="url(#hatch-x-{{ $id }})" clip-path="url(#dc-clip-{{ $id }})"/>
+    <text x="1" y="62"
+          font-family="Crimson Pro, Georgia, serif"
+          font-size="66" font-weight="700"
+          fill="none" stroke="#b53422" stroke-width="0.7" opacity="0.45">{{ $letter }}</text>
+  </svg>
+
 </div>
