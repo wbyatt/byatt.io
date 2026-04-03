@@ -107,6 +107,14 @@
       <div class="treatise-list">
         
         <div class="treatise-entry">
+          <span class="treatise-entry-class">ephemeron/preserved</span>
+          <a href="/posts/ephemeron-2026-04-02/">The Individuation Engine</a>
+          
+          <span class="treatise-entry-subtitle">Simondon, Wittgenstein, and the LLM understanding debate</span>
+          
+        </div>
+        
+        <div class="treatise-entry">
           <span class="treatise-entry-class">doc/theory</span>
           <a href="/posts/deconstruction/">Deconstructing the Instruction-Data Dichotomy</a>
           
@@ -168,9 +176,23 @@
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
+  function giscusThemeUrl(theme) {
+    return theme === 'light'
+      ? '/css/giscus-illuminated-light.css'
+      : '/css/giscus-illuminated.css';
+  }
+
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
+    
+    var giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (giscusFrame) {
+      giscusFrame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
+        'https://giscus.app'
+      );
+    }
   }
 
   var saved = localStorage.getItem('byatt-theme') || 'dark';

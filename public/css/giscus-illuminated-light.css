@@ -1,0 +1,93 @@
+/*! Giscus custom theme — illuminated responsa palette (light) */
+
+main {
+  --color-canvas-default: #f7f3ec;
+  --color-canvas-subtle: #f0ebe1;
+  --color-canvas-inset: #ede7dc;
+  --color-border-default: #d4ccc0;
+  --color-border-muted: #d4ccc0;
+  --color-neutral-muted: rgba(28,37,53,0.06);
+  --color-accent-fg: #3a5068;
+  --color-accent-emphasis: #5a6e82;
+  --color-fg-default: #3a5068;
+  --color-fg-muted: #5a6e82;
+  --color-fg-subtle: #7a8799;
+  --color-btn-bg: #f0ebe1;
+  --color-btn-border: #d4ccc0;
+  --color-btn-text: #3a5068;
+  --color-btn-hover-bg: #ede7dc;
+  --color-btn-hover-border: #b0a898;
+  --color-btn-primary-bg: #b53422;
+  --color-btn-primary-border: #d4856e;
+  --color-btn-primary-text: #f7f3ec;
+  --color-btn-primary-hover-bg: #9a2a1a;
+  --color-social-reaction-bg-hover: rgba(28,37,53,0.08);
+  --color-social-reaction-bg-reacted-hover: rgba(58,80,104,0.12);
+}
+
+main .gsc-comment-box {
+  border-color: #d4ccc0;
+  background: #ede7dc;
+}
+
+main .gsc-comment {
+  background: transparent;
+}
+
+main .gsc-timeline {
+  border-color: #d4ccc0;
+}
+
+main .gsc-header {
+  padding-bottom: 0.5rem;
+}
+
+main .gsc-comments > .gsc-comment {
+  border-top-color: #d4ccc0;
+}
+
+main .gsc-comment-box textarea,
+main .gsc-comment-box input {
+  background: #f7f3ec;
+  border-color: #d4ccc0;
+  color: #1c2535;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+main .gsc-comment-box textarea:focus,
+main .gsc-comment-box input:focus {
+  border-color: #b0a898;
+  box-shadow: 0 0 0 1px #b0a898;
+}
+
+main .gsc-comment-box textarea::placeholder {
+  color: #7a8799;
+}
+
+main a {
+  color: #3a5068;
+}
+
+main a:hover {
+  color: #0e1720;
+}
+
+main .gsc-reply .gsc-tl-line {
+  border-left-color: #d4ccc0;
+}
+
+main .gsc-direct-reaction-buttons button {
+  border-color: #d4ccc0;
+  background: #f0ebe1;
+  color: #5a6e82;
+}
+
+main .gsc-direct-reaction-buttons button:hover {
+  background: #ede7dc;
+  color: #3a5068;
+}
+
+main .gsc-direct-reaction-buttons button.has-reacted {
+  border-color: #b0a898;
+  color: #3a5068;
+}

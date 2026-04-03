@@ -120,9 +120,23 @@
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
+  function giscusThemeUrl(theme) {
+    return theme === 'light'
+      ? '/css/giscus-illuminated-light.css'
+      : '/css/giscus-illuminated.css';
+  }
+
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
+    
+    var giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (giscusFrame) {
+      giscusFrame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
+        'https://giscus.app'
+      );
+    }
   }
 
   var saved = localStorage.getItem('byatt-theme') || 'dark';

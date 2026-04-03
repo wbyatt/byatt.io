@@ -118,17 +118,17 @@
   </div>
 
   <div class="ephemeron-gutter">
-    <span class="sigil">02.04</span>
+    <span class="sigil">03.04</span>
   </div>
   <div class="ephemeron-main">
-    <a href="/ephemeron/" class="ephemeron-title">The Individuation Engine</a>
+    <a href="/ephemeron/" class="ephemeron-title">The Prompt as Question</a>
     
-    <p class="ephemeron-hook">The question of whether LLMs &lsquo;understand&rsquo; language has calcified into a stale binary — stochastic parrots versus functional understanding. Both sides are wrong, and for the same reason: they treat understanding as a property an individual either possesses or lacks. Gilbert Simondon&rsquo;s theory of individuation dissolves this debate entirely, reframing it as a question about the <em>milieu</em> in which meaning emerges — and in doing so, generates a concrete engineering discipline that standard prompt engineering cannot reach.</p>
+    <p class="ephemeron-hook">The command line endures not because it is efficient or beautiful but because it is the last common interface that sustains a genuine interpretive relationship with the machine. Drawing on Gadamer&rsquo;s concept of play, this essay argues that the terminal&rsquo;s real value is hermeneutic: understanding emerges through dialogue, not selection.</p>
     
     <span class="ephemeron-hint">diurnal — preserved by comment</span>
   </div>
   <div class="ephemeron-margin">
-    <span class="ephemeron-chain">grounding → individuation → milieu → signal</span>
+    <span class="ephemeron-chain">play → interpretation → tradition → literacy → dialogue</span>
   </div>
 
   <div class="section-rule">
@@ -145,6 +145,21 @@
     <div class="section-head-margin"></div>
   </div>
 
+  
+  
+  <div class="index-gutter">
+    <span class="index-class">ephemeron/preserved</span>
+  </div>
+  <div class="index-main">
+    <a href="/posts/ephemeron-2026-04-02/" class="index-title">The Individuation Engine</a>
+    
+    <span class="index-subtitle">Simondon, Wittgenstein, and the LLM understanding debate</span>
+    
+  </div>
+  <div class="index-margin">
+    Apr 2026
+  </div>
+  
   
   
   <div class="index-gutter">
@@ -282,9 +297,23 @@
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
+  function giscusThemeUrl(theme) {
+    return theme === 'light'
+      ? '/css/giscus-illuminated-light.css'
+      : '/css/giscus-illuminated.css';
+  }
+
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
+    
+    var giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (giscusFrame) {
+      giscusFrame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
+        'https://giscus.app'
+      );
+    }
   }
 
   var saved = localStorage.getItem('byatt-theme') || 'dark';

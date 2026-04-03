@@ -369,26 +369,43 @@ Criticality and humility are not opposites but complements. The best code review
   <div class="responsa-header">
     <span class="responsa-label">Responsa</span>
   </div>
-  <div class="responsa-body">
-    <script src="https://giscus.app/client.js"
-      data-repo="wbyatt/byatt.io"
-      data-repo-id="R_kgDOMvtUZA"
-      data-category="Comments"
-      data-category-id="DIC_kwDOMvtUZM4C56QU"
-      data-mapping="specific"
-      data-term="literary-code.essay"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="/css/giscus-illuminated.css"
-      data-lang="en"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async>
-    </script>
+  <div class="responsa-body" id="responsa-body"
+       data-repo="wbyatt/byatt.io"
+       data-repo-id="R_kgDOMvtUZA"
+       data-category="Comments"
+       data-category-id="DIC_kwDOMvtUZM4C56QU"
+       data-term="literary-code.essay">
+    
   </div>
 </div>
+<script>
+(function() {
+  var container = document.getElementById('responsa-body');
+  if (!container) return;
+  var theme = localStorage.getItem('byatt-theme') || 'dark';
+  var themeUrl = theme === 'light'
+    ? '/css/giscus-illuminated-light.css'
+    : '/css/giscus-illuminated.css';
+  var s = document.createElement('script');
+  s.src = 'https://giscus.app/client.js';
+  s.setAttribute('data-repo', container.getAttribute('data-repo'));
+  s.setAttribute('data-repo-id', container.getAttribute('data-repo-id'));
+  s.setAttribute('data-category', container.getAttribute('data-category'));
+  s.setAttribute('data-category-id', container.getAttribute('data-category-id'));
+  s.setAttribute('data-mapping', 'specific');
+  s.setAttribute('data-term', container.getAttribute('data-term'));
+  s.setAttribute('data-strict', '0');
+  s.setAttribute('data-reactions-enabled', '1');
+  s.setAttribute('data-emit-metadata', '0');
+  s.setAttribute('data-input-position', 'top');
+  s.setAttribute('data-theme', themeUrl);
+  s.setAttribute('data-lang', 'en');
+  s.setAttribute('data-loading', 'lazy');
+  s.setAttribute('crossorigin', 'anonymous');
+  s.async = true;
+  container.appendChild(s);
+})();
+</script>
 
 
 
@@ -399,9 +416,23 @@ Criticality and humility are not opposites but complements. The best code review
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
+  function giscusThemeUrl(theme) {
+    return theme === 'light'
+      ? '/css/giscus-illuminated-light.css'
+      : '/css/giscus-illuminated.css';
+  }
+
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
+    
+    var giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (giscusFrame) {
+      giscusFrame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
+        'https://giscus.app'
+      );
+    }
   }
 
   var saved = localStorage.getItem('byatt-theme') || 'dark';
