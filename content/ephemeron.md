@@ -1,152 +1,148 @@
 ---
-title: "The CLI as Concrete Technical Object"
-subtitle: "Why command-line interfaces are structurally more evolved than GUIs"
-date: 2026-04-04
+title: "The Game You Cannot Name"
+subtitle: "Why culture fit interviews resist every reform attempt"
+date: 2026-04-05
 draft: false
 layout: treatise
 doc_class: "ephemeron"
-doc_id: "ephemeron.2026-04-04"
+doc_id: "ephemeron.2026-04-05"
 revision: "diurnal"
-chain: "abstraction → concretization → functional convergence → associated milieu → compositional syntax"
+chain: "rule-following → tacit practice → habitual reproduction → material format → structural alternatives"
 footer_status: "ephemeral unless preserved"
 status_pips:
   - active
   - amber
   - dim
-hook: "The conventional narrative treats GUIs as evolved and CLIs as primitive, but Simondon's philosophy of technology inverts this entirely. The CLI's composability, functional polyvalence, and capacity to co-evolve with its user give it the structural properties of a mature technical object — properties that keep getting independently reinvented wherever complexity demands them."
+hook: "Culture fit interviews defeat every rubric and bias training thrown at them—not because interviewers are lazy, but because the conversational format itself is a self-reproducing language game. The practice always outruns its formalization, laundering intuition into data and updating the pipeline's vocabulary while preserving its outcomes."
 generated_by: "Claude Opus 4.6"
-generated_date: "4 April 2026"
+generated_date: "5 April 2026"
 ---
 
-{{< section num="01" label="§ I.  The Evolved Interface" >}}
+{{< section num="01" label="§ I.  The Game You Cannot Name" >}}
 
-{{< gutter sigil="atavism" >}}
+{{< gutter sigil="unsayable" >}}
 
 {{< main-col >}}
 
-{{< dropcap letter="T" >}}
+{{< dropcap letter="I" >}}
 
-<p>here's a persistent assumption in the discourse around software interfaces that visual sophistication represents progress. The GUI replaced the CLI, the story goes, because it was better — more intuitive, more humane, more evolved. Click a button, drag a file, see your results rendered in full color. This narrative has the satisfying shape of a march toward civilization: we crawled from the command line, we walked with desktop metaphors, we now run in fluid, gesture-driven interfaces that anticipate our desires. The CLI persists, on this account, as an atavism — a tool for holdouts, nostalgists, and gatekeepers who confuse obscurity with power.</p>
+<p>t's 2:15 PM on a Thursday and you're sitting across from a candidate in a glass-walled conference room named after a planet or a Muppet. You have forty-five minutes. Your Slack DM from the recruiter says "culture screen." You have a scorecard open in Greenhouse with fields for "communication," "collaboration," and "values alignment." You know, within ninety seconds, whether this person is going to work out. The remaining forty-three minutes are theater — for the candidate, for compliance, for yourself. You cannot say what you know or how you know it. If pressed, you'll say something about "energy" or "how they'd handle ambiguity" or "whether I'd want to pair-program with them." You will believe, sincerely, that you are assessing something real. You are. You just can't say what it is, and that unsayability is not a bug in the process. It is the process.</p>
 
-<p>This story is perfectly wrong. Not because GUIs aren't useful, but because the evolutionary metaphor, taken seriously, reverses the hierarchy entirely. Gilbert Simondon, the French philosopher of technology whose work *Du mode d'existence des objets techniques* remains the most rigorous account of how technical objects actually develop, provides the framework for seeing why. The CLI doesn't persist despite its minimalism. It persists because of what that minimalism structurally achieves.</p>
+<p>Organizational psychology has known for at least a decade that "culture fit" interviews reproduce homogeneity. Lauren Rivera's ethnographic work on elite hiring showed that interviewers select for shared leisure activities, conversational styles, and class markers while believing they're evaluating competence. Iris Bohnet's research demonstrated that unstructured interviews are worse than useless — they actively degrade decision quality compared to statistical prediction. The empirical finding is not in dispute. What remains unexplained is a specific and maddening phenomenon: why does adding rubrics, scorecards, and bias training to culture fit interviews fail to change outcomes? Companies pour thousands of hours into structured interview design, calibration sessions, and interviewer certification, yet the people who emerge from the pipeline look, sound, and think remarkably like the people already there. The rubric gets absorbed. The scorecard gets filled out. The same person gets hired. The mechanism of this absorption — the reason reforming the culture fit interview is not merely difficult but structurally impossible — is what theory can explain and data alone cannot.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Simondon 1958" >}}
-Simondon's *Du mode d'existence des objets techniques* was largely ignored until Deleuze cited it approvingly in *Difference and Repetition* (1968) and *Logic of Sense* (1969). The English translation by Cécile Malaspina and John Rogove did not appear until 2017, meaning most Anglophone software discourse has absorbed Simondon only at second hand, through Stiegler or Combes.
+{{< note ref="REF // Rivera 2012" >}}
+Lauren Rivera's 'Hiring as Cultural Matching' (ASR 77:6) documents how evaluators at elite professional service firms treated cultural similarity as a proxy for merit, often ranking candidates who shared their extracurricular passions above those with stronger credentials. The ethnographic method is key: only embedded observation revealed the gap between stated criteria and enacted judgment.
 {{< /note >}}
-{{< note ref="NOTE // progress narrative" >}}
-The 'march of interfaces' story recapitulates Whig historiography applied to technology. Compare Langdon Winner's critique in *Autonomous Technology* (1977): narratives of technological progress smuggle in normative claims about what counts as advancement while disguising the political choices embedded in design.
+{{< note ref="NOTE // epistemic opacity" >}}
+The ninety-second judgment described here maps onto what Gerd Gigerenzer calls 'gut feelings' operating via fast-and-frugal heuristics — adaptive in ecologically rational environments, but pathological when the environment's selection pressures (social homophily) diverge from the stated objective (team performance). The interviewer's sincerity is not a defense; it is the mechanism.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="02" label="§ II.  Concretization Against the Grain" >}}
+{{< section num="02" label="§ II.  The Practice Exceeds the Rule" >}}
 
-{{< gutter sigil="concretization" >}}
+{{< gutter sigil="language-game" >}}
 
 {{< main-col >}}
 
-<p>Simondon's central insight is that technical objects evolve from the *abstract* toward the *concrete*. This is counterintuitive. In common usage, "abstract" suggests advanced, refined, theoretical; "concrete" suggests raw, simple, primitive. Simondon inverts this. An abstract technical object is one in which each component serves an isolated function, with little synergy between parts. The components are logically separable; they could be rearranged or replaced without fundamentally altering the system's operative character. A concrete technical object is one in which the parts achieve functional convergence — each element serves multiple roles simultaneously, and the system's behavior emerges from the synergy of its components rather than from their sum.</p>
+<p>Wittgenstein's rule-following considerations in the *Philosophical Investigations* are routinely misread as a skeptical claim that rules are meaningless or that anything goes. The actual argument is subtler and, for our purposes, more devastating. In §201, he observes that no course of action is determined by a rule, because every course of action can be *made out to accord* with the rule. But §202 delivers the positive counterpoint: "And hence also 'obeying a rule' is a practice." Rules are real. They govern behavior. People follow them with remarkable consistency. But the normativity of the rule lives in the practice of following it, not in any formulation of it. No finite set of words exhausts what it means to follow the rule, because the practice always outruns its own description.</p>
 
-<p>The classic Simondonian example is the evolution of the internal combustion engine. Early engines had separate systems for cooling, lubrication, and structural support. As the design matured, components began to serve multiple functions: the engine block became simultaneously structural frame, heat sink, and oil channel. Parts could no longer be understood in isolation. The engine became more *concrete* — more integrated, more synergistic, more irreducible.</p>
+<p>This is precisely the situation with culture fit criteria. "Strong communicator" is a rule. Interviewers apply it with statistically impressive convergence — panel members agree on who is and isn't a strong communicator at rates well above chance. Something is being communicated; something is being tracked. But try to formalize it. Does "strong communicator" mean speaks clearly? Speaks concisely? Asks good questions? Listens actively? Knows when to stop talking? Can explain a technical concept to a non-technical audience? All of these, sometimes. None of these, reliably. Every attempt to decompose the criterion into sub-criteria simply reproduces the problem at a finer grain. You now need to define "asks good questions," and you're back where you started. The criterion functions not as a description that interviewers match against candidates but as a *shared practice* that interviewers enact together, calibrated not by the scorecard but by the form of life they already inhabit.</p>
 
-<p>Now consider the GUI. A toolbar button performs one action. A menu item maps to one function. A dialog box captures one set of parameters. Each visual widget is a discrete element serving an isolated role, connected to others only through the application's internal logic, which remains opaque to the user. This is the anatomy of an abstract technical object: functionally siloed, visually enumerated, with each capability reified as a separate interface element. Adding new functionality means adding new widgets. The system grows by accretion, not by deepening the operative density of what already exists.</p>
+<p>This is why the "better rubrics" approach fails — not because rubrics are useless in general, but because layering a rubric onto a culture fit interview is like writing the rules of humor on a whiteboard and expecting them to be funny. The rubric becomes one more element within the language game, interpreted through the same tacit practice it was supposed to constrain. When an interviewer scores a candidate 3/5 on "collaboration," they are not applying the rubric's written definition. They are translating a felt sense — produced by the interaction, by the candidate's body, by forty-five minutes of conversational rhythm — into a number. The rubric provides post-hoc justification for a judgment that was never rubric-derived. It launders intuition into data.</p>
 
-<p>A CLI pipeline like `find . -name "*.log" -mtime +30 | xargs grep -l "ERROR" | sort | uniq -c | sort -rn` operates on an entirely different structural principle. Each element — `find`, `grep`, `sort`, `uniq` — is not a fixed-function widget but a transformation whose operative meaning is shaped by what surrounds it. `grep` inside a pipeline serves a different role than `grep` invoked alone, not because its code changes but because its *function* — what it actually does in the context of a task — is determined by the data flowing into it and the operation waiting downstream. The parts achieve a synergy that is irreducible to their individual specifications. This is functional convergence. This is concretization.</p>
-
-<p>I should be precise about what I'm claiming here, because Simondon developed the concept of concretization to describe the internal evolutionary trajectory of a single technical lineage — how the engine evolves, how the vacuum tube evolves. Applying it as a comparative framework across two distinct classes of interface — the CLI and the GUI — strains the concept beyond its original domain. I'm doing it anyway, deliberately, because the structural properties Simondon identifies as markers of concretization (functional polyvalence, synergistic integration, emergent operative capacity) are present in one class and largely absent in the other, and this tells us something important about why these interfaces behave the way they do over time. The claim isn't that the CLI *descended from* the GUI and represents its maturation. The claim is that the CLI *exhibits the structural properties* Simondon associates with evolved technical objects, while the GUI exhibits those he associates with primitive ones — and this inversion of the conventional progress narrative has real consequences for how we design what comes next.</p>
+<p>The critical point — and this is where the theoretical apparatus earns its keep against the I/O psychology literature — is that this isn't a failure of discipline or training. It is a constitutive feature of what a culture fit interview *is*. The practice exceeds the formalization not because interviewers are lazy or biased (though they may be both) but because the kind of knowledge being deployed is, in Wittgenstein's sense, knowledge-how that cannot be fully converted into knowledge-that. You can train interviewers to recite criteria. You cannot train them to apply criteria independent of the form of life in which those criteria have meaning. And the form of life in question — the shared habitus of the engineering team, its rhythms of humor and deference and technical argumentation — is exactly the thing that produces homogeneity.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Simondon 1958, Part I Ch. 1" >}}
-The abstract-to-concrete trajectory is Simondon's alternative to both hylomorphism and cybernetic functionalism. Muriel Combes (*Gilbert Simondon and the Philosophy of the Transindividual*, 2013) emphasizes that concretization is not optimization — it is not the object becoming more efficient but becoming more internally coherent, its own causal regime tightening.
+{{< note ref="REF // Wittgenstein 1953" >}}
+The §201–202 pivot is the crux of the rule-following considerations. Kripke's skeptical reading (1982) suggests no fact constitutes meaning; McDowell's corrective insists the community of practice is not a 'skeptical solution' but an acknowledgment that normativity is irreducibly embedded. The essay tracks McDowell here, not Kripke, though it does not say so.
 {{< /note >}}
-{{< note ref="NOTE // compositionality" >}}
-The essay's identification of Unix pipes as functional convergence resonates with Doug McIlroy's 1964 memo proposing 'screwing together' programs 'like garden hose.' But note the tension: McIlroy's metaphor is modular and additive, while Simondonian concretization implies that the parts lose their separability. The pipe operator is the hinge — it is what transforms modularity into synergy, making the claim work.
+{{< note ref="NOTE // ryle's regress" >}}
+The knowledge-how / knowledge-that distinction invoked at section's end originates in Ryle's 'The Concept of Mind' (1949), not Wittgenstein. Jason Stanley and Timothy Williamson (2001) have argued the distinction collapses — that knowledge-how is a species of propositional knowledge. If they are right, the structural impossibility claim weakens: the tacit could in principle be made explicit. The essay's argument depends on rejecting Stanley-Williamson, which it does silently.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="03" label="§ III.  The Associated Milieu" >}}
+{{< section num="03" label="§ III.  Updating to Remain the Same" >}}
 
-{{< gutter sigil="milieu" >}}
+{{< gutter sigil="habitual refresh" >}}
 
 {{< main-col >}}
 
-<p>What Simondon calls the *associated milieu* is the technical environment that a mature object generates around itself and that, in turn, conditions its operation. A concrete technical object doesn't merely sit inside an environment; it partially constitutes its own operating context, and that context feeds back into how the object functions. The relationship is recursive, generative. Simondon calls the underlying mechanism *transduction* — a specific ontogenetic operation in which activity at one domain's boundary induces structural change that propagates into adjacent domains, like crystallization extending through a supersaturated solution.</p>
+<p>Wendy Chun's concept of "updating to remain the same," developed across *Updating to Remain the Same* and her work on new media's habitual operations, describes how digital networks perpetually refresh their interfaces, protocols, and content in order to maintain underlying structures of power and relation. The new replaces the old constantly — new feeds, new users, new features — yet the network's fundamental logic of capture, sorting, and homophily persists. The *feeling* of novelty is essential to the mechanism. If the system felt static, users would leave. The update is what keeps them inside the same structure.</p>
 
-<p>The shell environment is an associated milieu in something very close to Simondon's technical sense. A developer's `.bashrc` or `.zshrc` is not a preferences file. It is a cumulative record of the reciprocal shaping between human intention and machine capability. Aliases compress frequent operations. PATH modifications restructure what tools are available and in what priority. Shell functions compose existing utilities into new ones that didn't exist before and that exist nowhere else — they are local to this particular human-machine system. The history file is an archaeological record of past transductions: problems encountered, solutions composed, patterns discovered. Over months and years, the shell environment *individuates with the user*. It becomes a technical ecology that is neither purely the human's creation nor purely the machine's affordance but something genuinely emergent from their ongoing interaction.</p>
+<p>The disanalogy is obvious: an interview loop is a social institution, not a technical medium. But the analogy is more than metaphorical if we take seriously what Chun means by "habit." For Chun, habit is not mere repetition but the mechanism by which networks naturalize their operations — the point at which the artificial becomes second nature, where the designed vanishes into the obvious. A hiring pipeline is exactly such a habitual system. It runs on cycles. Each cycle ingests new candidates — new résumés, new backgrounds, sometimes conspicuously new demographic profiles — and processes them through the same evaluative apparatus. The output feels fresh. The team announces its new hire with genuine excitement about what this person brings. Yet the dispositional signature of the team remains eerily stable. The same conversational norms. The same hierarchy of what counts as impressive. The same implicit model of what an engineer sounds like when they're being "real."</p>
 
-<p>Now look at what happens in GUI-dominant environments. System Preferences resets to defaults. Application interfaces enforce predetermined interaction paths. Customization, where it exists, operates within narrow parameters defined by the designer: you may choose which toolbar buttons are visible, but you may not compose them into novel operations. The GUI resists co-individuation by design. It is built to be the same for every user, because its legibility depends on consistency. This is not a flaw — it's the architectural consequence of being an abstract technical object. When your components serve isolated functions, there's no space for the user to intervene in the *relationships between* components, because those relationships are hardwired in the application layer, invisible and untouchable.</p>
+<p>Chun's framework explains the specific temporal trick that makes culture fit hiring so resistant to critique. At any given moment, the team can point to its most recent hire and say: look, we hired someone with a completely different background. The pipeline *updated*. But the update is precisely what preserved the same underlying sociality, because the interview selected for someone whose differentness was legible within the team's existing evaluative grammar. The new hire is different in the ways the team already knows how to appreciate and same in the ways the team cannot see as dimensions of variation at all. This is not conspiracy. It is habit operating below the threshold of reflective awareness, exactly where Chun locates its power.</p>
 
-<p>The CLI, by contrast, *exposes the joints*. Pipes, redirects, subshells, environment variables — these are not features but the connective tissue of a compositional system. The user operates on the relationships themselves, not just the components. And because those relationships are syntactic — expressed in text, readable, modifiable, storable, shareable — they become the substrate for an associated milieu that evolves in genuine reciprocity with the user's practice.</p>
+<p>This is why diversity initiatives that focus on the top of the funnel — broader sourcing, blind résumé review, diverse candidate slates — produce disappointing results when the culture fit interview remains the bottleneck. The funnel widens, the pool diversifies, and the interview narrows it back to the familiar. The update happens. The same remains.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Simondon 1958, Part I Ch. 3" >}}
-Simondon distinguishes the *associated milieu* from a mere environment: the Guimbal turbine generates its own lubricating and cooling milieu from the water it operates in. Yuk Hui (*On the Existence of Digital Objects*, 2016) extends this concept to digital environments, arguing that metadata schemas and protocol layers constitute associated milieus for data objects — a move structurally parallel to the dotfile argument made here.
+{{< note ref="REF // Chun 2016" >}}
+Chun's 'Updating to Remain the Same' (MIT Press) theorizes habit as the bridge between the ephemeral and the enduring in networked life. Her genealogy runs from William James's habit-as-flywheel through Heidegger's ready-to-hand to algorithmic recommendation. The essay's transposition to hiring is novel but risks flattening her media-specificity argument — Chun insists habit is technically instantiated, not merely metaphorical.
 {{< /note >}}
-{{< note ref="NOTE // transduction" >}}
-Transduction is Simondon's most demanding concept. It is not feedback (cybernetics) or dialectical mediation (Hegel) but a propagative ontogenesis where structure emerges at the boundary of disparate domains. Treating the shell history file as an 'archaeological record of past transductions' is suggestive but risks flattening transduction into mere documentation of adaptation. The stronger claim would be that each pipeline execution restructures the operator's cognitive schema and the machine's available state simultaneously — a genuine phase-shift, not a log entry.
+{{< note ref="NOTE // bourdieu's homology" >}}
+The mechanism described — selecting for differentness legible within existing grammar — is structurally identical to Bourdieu's concept of homology across fields (Distinction, 1979). New entrants are recognized as 'different' only along axes the field already valorizes. Chun adds the temporal dimension Bourdieu lacks: the felt experience of novelty as the affective lubricant of reproduction.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="04" label="§ IV.  Independent Reinvention and the Falsifiability Question" >}}
+{{< section num="04" label="§ IV.  The Hardware of the Conversation" >}}
 
-{{< gutter sigil="falsify" >}}
+{{< gutter sigil="affordance" >}}
 
 {{< main-col >}}
 
-<p>If this analysis is merely a philosophical rationalization for Unix partisanship, it should be easy to falsify: we'd expect CLI-like interfaces to appear *only* where Unix culture has direct influence, and to be absent where independent design traditions operate. If, however, the structural properties I'm describing reflect something real about how compositional interfaces outperform siloed ones under conditions of complexity, we should expect CLI-like patterns to be independently reinvented even outside the Unix lineage.</p>
+<p>The interview loop has material affordances that are not neutral. A forty-five-minute one-on-one conversation in a conference room is a specific communicative format that privileges specific capabilities: rapid verbal processing, comfort with sustained eye contact, the ability to perform spontaneous intimacy with a stranger who holds power over your economic future, fluency in the register of casual-but-smart that codes as "senior engineer" in the Bay Area or "solid developer" in the Midwest. These are not universal human capabilities. They are culturally specific, neurologically variable, and class-inflected skills that correlate poorly with the ability to write reliable software, review code generously, or debug a production incident at 2 AM.</p>
 
-<p>The standard examples — Terraform, `kubectl`, the proliferation of CLI tools in the cloud-native ecosystem — are suggestive but contaminated. The people who built these tools grew up on Unix. Cultural transmission, not independent convergence, is the parsimonious explanation.</p>
+<p>The lunch interview is worse. Now you are assessing someone's table manners, their comfort with unstructured social time, whether they order a drink, whether they know how to navigate the micro-politics of who picks up the check. The material setting — a restaurant, a café, a team kitchen — encodes an entire sociology of ease and belonging. Autistic engineers, engineers from working-class backgrounds, engineers whose first language isn't English, engineers who don't drink — all are subtly penalized not for lacking technical skill or collaborative capacity but for failing to perform a specific middle-class sociality that the format demands but never names.</p>
 
-<p>Better cases exist. Consider the evolution of spreadsheet formulas. Excel's formula language — cell references composed with functions, nestable, pipeable through chains of transformation — developed within Microsoft's GUI-first design culture and was aimed at users who would never open a terminal. Yet the power users of Excel are, functionally, CLI users. They compose textual expressions that transform data through chains of operations, they build libraries of reusable formulas, they develop personal conventions and templates that constitute something very like an associated milieu. The formula bar is a command line embedded within the heart of the GUI paradigm. It was not inherited from Unix; it was independently generated by the operative logic of needing to compose transformations on data. And notably, Excel's formula language has only grown *more* CLI-like over time — the introduction of LAMBDA functions, LET bindings, and dynamic arrays in recent years represents a convergence toward functional composition that would be immediately legible to a shell scripter.</p>
-
-<p>Consider also the domain of visual programming — node-based interfaces like Max/MSP, Unreal Blueprints, or Scratch. These represent genuine attempts to create compositional interfaces within a visual paradigm. Their persistence is real, but so is their ceiling: at scale, every node-based visual programming system generates demand for a textual scripting layer. Unreal has Blueprints but also C++. Unity has visual scripting but privileges C#. The visual composition hits a complexity barrier that textual composition does not, because text admits a density of relational specification that spatial layout cannot match without becoming illegible. This is not a failure of design imagination. It is the structural consequence of the difference between abstract and concrete interface architectures.</p>
-
-<p>And then there is the most contemporary case: the emergence of AI agent frameworks. The first wave of LLM interfaces was conversational — chat boxes, natural language, the GUI-like promise of "just tell it what you want." The second wave, already underway, is compositional: tool-use architectures, function-calling protocols, agent graphs with typed inputs and outputs that can be chained, branched, and composed. LangChain, CrewAI, the function-calling specifications from OpenAI and Anthropic — these are pipe-and-filter architectures. They are CLIs in new clothing. Not because their designers are Unix nostalgists, but because the problem of orchestrating complex operations across multiple capabilities generates, through its own operative logic, a demand for compositional syntax.</p>
+<p>And because the format never names what it demands, the demand cannot be challenged. An interviewer who says "I didn't feel a connection" after a lunch interview is not lying. They genuinely didn't feel a connection. The feeling is real. But the connection they didn't feel is a connection that the material format of the interview produced as the relevant signal — conversational ease in a specific register, in a specific setting, under specific power dynamics. A different format would produce different signals. The medium is not transparent to the message. The medium *is* the message, in the most banal and literal McLuhanian sense: what the interview can transmit is determined by what the interview *is*, and what the interview is selects for a narrow band of human sociality while appearing to select for something universal.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Kaplan 2016" >}}
-The Excel-as-command-line observation echoes Simon Peyton Jones et al., 'A User-Centred Approach to Functions in Excel' (2003), which argued that spreadsheets are the world's most widely used functional programming language. Felienne Hermans (*Spreadsheet Implementation Technology*, 2014) documents how expert spreadsheet users develop idioms, naming conventions, and sheet architectures that function as tacit programming cultures — the associated milieu argument under another name.
+{{< note ref="REF // McLuhan 1964" >}}
+The invocation of 'the medium is the message' is self-consciously banal here, but the deeper McLuhan point is from the 'tetrad of media effects' in Laws of Media (1988): every medium simultaneously enhances, obsolesces, retrieves, and reverses. The forty-five-minute interview enhances verbal fluency, obsolesces written or asynchronous communication skill, retrieves the salon, and reverses into performance anxiety that degrades the very signal it claims to capture.
 {{< /note >}}
-{{< note ref="NOTE // visual ceiling" >}}
-The claim that node-based visual programming hits a complexity barrier text does not has empirical backing in Whitley's 'visual programming language' studies and in Moody's 'Physics of Notations' (2009), which demonstrates that spatial representations exhaust discriminability faster than symbolic ones. But counterpoint: Bret Victor's 'Learnable Programming' (2012) argues the failure is not inherent to visuality but to impoverished visual vocabularies. The debate remains genuinely open.
+{{< note ref="NOTE // neurodivergence as limit case" >}}
+The mention of autistic engineers is not incidental. Milton's 'double empathy problem' (2012) argues that communication breakdowns between autistic and non-autistic people are bidirectional failures, not deficits in the autistic party. The interview format's privileging of neurotypical interactional norms thus constitutes not a neutral filter but a systematically biased one, invisible precisely because the majority's social style is unmarked.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="05" label="§ V.  What Persists and Why" >}}
+{{< section num="05" label="§ V.  What the Theory Actually Predicts" >}}
 
-{{< gutter sigil="individuation" >}}
+{{< gutter sigil="abolition" >}}
 
 {{< main-col >}}
 
-<p>The honest version of this argument is not that the CLI is superior to the GUI in all contexts. It is that the structural properties the CLI exhibits — functional polyvalence, compositional syntax, the generation of an associated milieu — are the properties that persist under pressure, that get independently reinvented, that scale to complexity. The GUI's properties — discoverability, visual feedback, low initial learning cost — are genuine virtues, but they are virtues of *introduction*, not of *mastery*. They optimize the first hour. The CLI's properties optimize the thousandth.</p>
+<p>Here is where the theoretical apparatus must outperform the existing literature or earn its retirement. Organizational psychology already tells us to replace unstructured interviews with structured ones. Work-sample tests, standardized behavioral questions with anchored rating scales, blind code reviews — all of these outperform culture fit interviews on every metric that matters: predictive validity, demographic equity, inter-rater reliability. This is not news. Laszlo Bock said it in 2015. The meta-analyses confirmed it long before that.</p>
 
-<p>Simondon never argued that abstract technical objects are useless. He argued that they represent an early stage of individuation — functional but not yet fully realized, with latent potential that concretization would eventually unlock. The GUI is a magnificent abstract technical object. It has made computing accessible to billions of people. But when those people need to do something *complex* — when they need to compose, automate, adapt, and evolve their interactions with machines — they reach for text. They reach for syntax. They reach for the command line, or for something that, whatever its visual trappings, operates by command-line logic.</p>
+<p>But the theory predicts something the I/O psychology literature does not, and this is the claim I want to make sharply: *structured values-alignment interviews will also fail to the degree that they retain the conversational form*. This is the actually controversial prediction. Many companies that have "abolished" culture fit interviews have replaced them with something called a "values interview" or "collaboration interview" — structured, yes, with rubrics and calibrated scoring, but still fundamentally a conversation between an interviewer and a candidate, still forty-five minutes in a room, still governed by the tacit evaluative practices of the interviewing team. The theory predicts that these interviews will reproduce homogeneity at rates statistically indistinguishable from the old culture fit screen, because the language game persists even when the vocabulary changes. "Culture fit" becomes "values alignment" becomes "collaboration style" — the words update, the practice remains.</p>
 
-<p>This isn't nostalgia. It isn't elitism. It is the tendency of technical objects, under the pressure of actual use, to converge toward the structural integration that makes them most capable of evolving with their operators. The CLI persists because it is, in the precise Simondonian sense, the more concrete form — not by descent, but by structure. And as the complexity of what we ask machines to do continues to increase, the interfaces that endure will be the ones that achieve the most operative density in the least expressive surface. Not buttons. Not chat. Composable syntax, shaped by use, individuating with its operator.</p>
+<p>The genuinely structural alternative is not a better conversation but the abolition of the conversation as an evaluative instrument for cultural compatibility. Pair-programming on real work. Trial projects. Structured decision-making exercises with observable outputs. Anything that produces *behavioral evidence* rather than *conversational impression*. The distinction is not between structured and unstructured but between formats where the evaluative signal is the candidate's speech and formats where the evaluative signal is the candidate's work. Only the latter escape the language game, because only the latter remove the interviewer's felt sense of "connection" as a decision-relevant input.</p>
+
+<p>This is a harder sell than "use rubrics." It requires engineering leaders to accept that their intuitions about people — honed over years, feeling exquisitely calibrated — are not instruments of perception but instruments of reproduction. The interview doesn't reveal culture. It *generates* culture, one forty-five-minute conversation at a time, each one a small act of renewal that keeps everything the same.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Stiegler 1998" >}}
-Bernard Stiegler's *Technics and Time, 1* extends Simondon's individuation into a theory of human-technical co-constitution via 'tertiary retention' — externalized memory that preconditions future thought. The dotfile-as-milieu and the composable-syntax-as-mastery arguments here converge precisely on Stiegler's point: the tool that individuates with its user is also the tool that constitutes the user's technical memory. The CLI is a tertiary retention system; the GUI, by resisting co-individuation, forecloses it.
+{{< note ref="REF // Bock 2015 / Schmidt & Hunter 1998" >}}
+Bock's 'Work Rules!' popularized Google's internal findings on interview validity. The meta-analytic foundation is Schmidt and Hunter (Psychological Bulletin 124:2, 1998), showing work-sample tests (r=.54) vastly outperform unstructured interviews (r=.38) in predicting job performance. The essay's stronger claim — that even structured conversational interviews reproduce homogeneity — lacks comparable meta-analytic support and is explicitly flagged as a prediction, not a finding.
 {{< /note >}}
-{{< note ref="NOTE // operative density" >}}
-The closing formulation — 'the most operative density in the least expressive surface' — inverts the information-theoretic framing of interface design, which typically optimizes for bandwidth to the user. Here the optimization target is bandwidth *from* the user: maximal compositional power per unit of syntactic expression. This is closer to Kolmogorov complexity than to usability metrics, and it implicitly redefines 'good interface' as 'highest ratio of achievable states to required input.'
+{{< note ref="NOTE // reproduction vs. perception" >}}
+The final sentence — 'the interview doesn't reveal culture, it generates culture' — recapitulates a performativity thesis with roots in Austin, Butler, and Callon. Callon's 'performativity of economics' (1998) argues that economic models do not describe markets but bring them into being. Likewise here: the culture fit interview does not discover cultural compatibility; it performs it into existence, making the interview simultaneously diagnostic instrument and ontological engine.
 {{< /note >}}
 {{< /margin >}}
