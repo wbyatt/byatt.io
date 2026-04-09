@@ -1,131 +1,181 @@
 ---
-title: "Culture Fit as Discourse Network"
-subtitle: "How hiring mistakes shared media literacy for collaborative capacity"
-date: 2026-04-08
+title: "Maintainer Burnout and the Receptive Void"
+subtitle: "Why open source maintenance demands self-emptying that no payment can fix"
+date: 2026-04-09
 draft: false
 layout: treatise
 doc_class: "ephemeron"
-doc_id: "ephemeron.2026-04-08"
+doc_id: "ephemeron.2026-04-09"
 revision: "diurnal"
-chain: "discourse networks → inscription systems → situated action → epistemic reflexivity"
+chain: "attention → decreation → gift economy → architectural contradiction → attentional infrastructure"
 footer_status: "ephemeral unless preserved"
 status_pips:
   - active
   - amber
   - dim
-hook: "Culture-fit interviews don't detect collaborative capacity; they detect shared media socialization. Drawing on Kittler, Haraway, and Suchman, this essay argues that \"not a culture fit\" marks the limit of an interviewer's perceptual apparatus, not a candidate's ability, and that homogeneous teams degrade precisely when novel problems demand genuine cognitive diversity."
+hook: "Open source maintainer burnout is not a compensation problem or a governance failure. Drawing on Simone Weil's concept of attention as self-emptying receptivity, this essay argues that deep maintenance demands sustained ego-dissolution while platforms and culture force ego-assertion, creating an unresolvable contradiction that no funding model can address."
 generated_by: "Claude Opus 4.6"
-generated_date: "8 April 2026"
+generated_date: "9 April 2026"
 ---
 
-{{< section num="01" label="§ I.  The Recognition Scene" >}}
+{{< section num="01" label="§ I.  The Receptive Void" >}}
 
-{{< gutter sigil="illegibility" >}}
+{{< gutter sigil="receptive void" >}}
 
 {{< main-col >}}
 
-{{< dropcap letter="I" >}}
+{{< dropcap letter="S" >}}
 
-<p>t's 2:15 PM on a Wednesday and a senior engineer is explaining to me why we shouldn't hire a candidate who solved our system design problem more elegantly than anyone in the current loop. "She's technically strong," he says, "but I just can't see pairing with her." He pauses, searches for language. "She doesn't feel like one of us." He is not being dishonest. He is not, in any straightforward sense, being bigoted. He is performing an act of pattern recognition so deeply trained that it registers as instinct — the gut-feel of encountering someone who has been inscribed by the same media environment as you, or the subtle dissonance of encountering someone who hasn't. What he's detecting is not collaborative capacity. It's a shared inscription system. And the entire hiring apparatus is designed to treat these as the same thing.</p>
+<p>omewhere right now, a maintainer is reading an issue filed by a stranger. The issue is poorly formatted. It contains a stack trace pasted without code fences, a version number that's three releases behind, and a tone that oscillates between entitlement and helplessness. The maintainer reads it anyway. Not skims—reads. They hold the stranger's confusion in mind alongside the codebase's architecture, the interaction between the deprecated API the stranger is using and the migration path that was documented but apparently not documented well enough. They begin composing a response that will meet the stranger exactly where they are. This act—this specific cognitive and moral posture—is what Simone Weil called attention, and it is destroying people.</p>
 
-<p>Friedrich Kittler's concept of discourse networks offers the sharpest tool I know for understanding what's actually happening in culture-fit interviews. Kittler argued that what counts as meaningful communication in any era is determined not by the content of messages but by the material systems — technologies, institutions, pedagogical practices — that produce, store, and transmit those messages. A discourse network is the apparatus that determines who can speak, what counts as sense, and how subjects are produced as literate within a given system. Kittler's insight was that these networks are not neutral infrastructure. They actively select for subjects shaped by specific material histories of inscription, and they render other subjects illegible — not wrong, not incompetent, but literally unreadable.</p>
+<p>The dominant narrative around open source maintainer burnout is economic. Maintainers are not paid enough, or not paid at all, for work that constitutes critical digital infrastructure. The solution, accordingly, is compensation: GitHub Sponsors, Tidelift subscriptions, Open Collective funds, corporate contributions. When compensation alone fails—and it does, regularly, with well-funded maintainers burning out alongside unfunded ones—the narrative shifts to governance. Better codes of conduct, clearer contribution guidelines, healthier community norms. When that also fails, the discourse reaches for the concept of "gift economy," borrowed at several removes from Marcel Mauss, to explain why the social contract keeps breaking down.</p>
 
-<p>Culture fit, understood through Kittler, is not a failure of implementation that better rubrics could fix. It is a functioning discourse network: a material-institutional apparatus that selects for candidates who have been inscribed by the same media environments as their interviewers. Fluency in the particular register of technical-casual speech that marks the Hacker News commenter. Comfort with adversarial Socratic questioning as a mode of intellectual exchange rather than a dominance display. Familiarity with the canonical texts — SICP, the Gang of Four, specific podcast ecosystems, the oral folklore of "how Google does it" that circulates through blog posts and conference talks. These aren't personality traits. They're media literacies. And the culture-fit interview is a media literacy test masquerading as a personality assessment.</p>
-
-<p>This is the strong version of the claim, and I want to commit to it fully before complicating it: what hiring managers experience phenomenologically as "I could see pairing with this person" is not the detection of collaborative capacity but the recognition of a shared inscription system. The warmth of that recognition is real. The inference from warmth to predicted collaboration is not.</p>
+<p>All of these interventions address real problems. None of them touch the actual structure of the crisis.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Kittler 1990" >}}
-Kittler's 'Discourse Networks 1800/1900' traces how the shift from Romantic hermeneutics to typewriter-era media restructured who could count as an author or reader. The application here extends Kittler's periodization into a third, post-internet discourse network whose inscription technologies (forums, blogs, open-source repos) have never been systematically theorized as a unified apparatus in his framework.
+{{< note ref="REF // Weil 1947" >}}
+Weil's definition of attention appears in 'Reflections on the Right Use of School Studies with a View to the Love of God' (Waiting for God, 1951 trans.). The passage cited here—'suspending our thought, leaving it detached'—is frequently excerpted but rarely situated within its original pedagogical context, where Weil argues that geometry homework cultivates the same faculty as prayer.
 {{< /note >}}
-{{< note ref="NOTE // gut-feel as trained illegibility" >}}
-The phenomenological register of 'gut feel' in hiring maps closely to what Bourdieu calls 'sens pratique' — the bodily, pre-reflective recognition of social homology. The interviewer's body is doing classificatory work that his discursive consciousness disavows. Cf. Bourdieu, 'The Logic of Practice' (1990), esp. ch. 3 on belief and the body.
+{{< note ref="NOTE // infrastructure-as-commons" >}}
+The framing of open source as 'critical digital infrastructure' owes much to Nadia Eghbal's Roads and Bridges (Ford Foundation, 2016), which inaugurated the policy discourse the essay claims is insufficient. The economic narrative critiqued here is largely Eghbal's legacy, refined in her later Working in Public (2020), which itself moved toward attention-scarcity as the deeper constraint.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="02" label="§ II.  The Specific Subject of Fit" >}}
+{{< section num="02" label="§ II.  Attention as Decreation" >}}
 
-{{< gutter sigil="unmarked" >}}
+{{< gutter sigil="decreation" >}}
 
 {{< main-col >}}
 
-<p>Every discourse network produces a specific subject as its native speaker. The discourse network of contemporary software engineering culture — the one that culture-fit interviews detect fluency in — has a specific historical figure at its center, though this figure is rarely named as such because the whole point of a dominant inscription system is that its native speakers experience it as universal.</p>
+<p>Weil's concept of attention has almost nothing in common with what productivity culture means by the word. She does not mean focus, concentration, or the effortful direction of cognitive resources toward a task. She means something closer to the opposite: "Attention consists of suspending our thought, leaving it detached, empty, and ready to be penetrated by the object." Attention in Weil's sense is a posture of receptive self-negation. You do not bring yourself to the problem; you empty yourself so the problem can become fully present. The ego does not direct attention; attention requires the ego's suspension.</p>
 
-<p>This figure was immersed in Anglophone internet culture from adolescence. He — and the pronoun is doing statistical, not essential, work — learned to argue in IRC channels and mailing lists where status was performed through a combination of technical one-upmanship and ironic detachment. He encountered programming not through formal pedagogy but through tinkering, and he carries the autodidact's mix of genuine resourcefulness and quiet contempt for institutional knowledge. He speaks in a register that blends precision with informality. He treats pair programming as a natural mode because it mirrors the collaborative debugging sessions of open-source development. He can riff on the tradeoffs between consistency and availability not because he's worked on systems where the choice mattered, but because he's absorbed the discourse through blog posts, conference talks, and Hacker News comment threads. His knowledge is real, but its texture — the way it's held, the cadence in which it's expressed — is a product of specific media channels, not of universal technical reasoning.</p>
+<p>Weil linked this to what she called *decreation*—not destruction, but the voluntary withdrawal of the self to make room for reality. Decreation is the creature's undoing of its own creaturely assertion so that something true can appear in the space left behind. It is, in her theological framework, the highest human capacity and the most dangerous, because it requires sustaining a condition that the self naturally resists.</p>
 
-<p>Donna Haraway's epistemological point is not that this subject is wrong or that his knowledge is invalid. It is that his position is *particular* while being experienced as *unmarked*. The culture-fit interview takes the communicative norms of this subject — his comfort with being challenged, his style of technical narration, his sense of humor, his way of signaling uncertainty — and treats them as indicators of a general capacity for collaboration. But they are not general. They are the specific communicative competencies produced by a specific media environment. A candidate who learned to program through a university's formal curriculum in Bangalore, who argues by building careful consensus rather than through adversarial thrust-and-parry, who doesn't pepper her technical explanations with self-deprecating jokes about past failures — this candidate is not failing to demonstrate collaborative capacity. She is failing to perform fluency in a discourse network she was never inscribed by. The interviewer does not experience this as "she was trained in different communicative norms." He experiences it as "something felt off."</p>
+<p>Now consider what deep maintenance actually involves. Not writing new features—that's creation, and it can be ego-fueled without contradiction. Maintenance. Holding the mental model of a codebase on behalf of people you will never meet. Reviewing a pull request not for whether it matches your aesthetic preferences but for whether it correctly addresses the contributor's intent while preserving the project's invariants. Triaging an issue that requires you to suppress your own first reaction ("this is a duplicate," "read the docs") in order to genuinely receive the reporter's experience of the software. Responding to a hostile message in a way that de-escalates without capitulating, which requires understanding the hostility without being captured by it.</p>
 
-<p>Haraway insists that all observation is positioned — that the "view from nowhere" is always the view from a particular somewhere that has the power to deny its own locality. The hiring manager's judgment of culture fit is precisely this kind of positioned observation pretending to universality. Making the inscription system visible means recognizing that "I can't see pairing with her" is not a report about her but about the limits of his perceptual apparatus. The knowledge he needs — about whether she can actually collaborate on hard problems — is exactly the knowledge his inscription system cannot produce, because his apparatus is calibrated to detect similarity, not capacity.</p>
+<p>This is not gift-giving. It is not emotional labor, at least not in the way Hochschild originally defined it, because there is no employing institution managing the feeling rules. It is not care work in the feminist-economic sense, because the relational bond is absent—the maintainer cares for strangers at scale, which is structurally different from caring for known dependents. What it most closely resembles is Weilian attention: a sustained, self-emptying receptivity directed at the reality of others' needs, held open across time, without the ego-rewards that normally sustain prolonged cognitive effort.</p>
+
+<p>The maintainer who burns out has not given too many gifts. They have found it impossible to keep decreating.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Haraway 1988" >}}
-'Situated Knowledges' argues that objectivity is not the absence of position but the acknowledgment of partial perspective. The essay's deployment of Haraway here is precise: the unmarked subject of tech hiring is not 'biased' in the colloquial sense but occupies a particular somewhere that has been infrastructurally empowered to pass as nowhere. This is the 'god trick' Haraway names.
+{{< note ref="REF // Weil 1947 / Hochschild 1983" >}}
+The distinction from Hochschild's 'emotional labor' (The Managed Heart, 1983) is precise and important. Hochschild's concept requires institutional feeling rules imposed on workers; the maintainer operates without such institutional scaffolding. Cf. also Guy Standing's concept of 'work-for-labour' in precarious contexts, where the absence of an employer does not eliminate alienation but restructures it.
 {{< /note >}}
-{{< note ref="NOTE // IRC as pedagogical apparatus" >}}
-The specificity of the autodidact figure — IRC, mailing lists, adversarial banter — recapitulates what Lave and Wenger call 'legitimate peripheral participation,' but in an informal community of practice whose norms of legitimate membership are never codified, only felt. This makes them harder to contest than formal credentialing, not easier. Cf. Lave & Wenger, 'Situated Learning' (1991).
+{{< note ref="NOTE // ego-dissolution" >}}
+The phenomenological claim—that maintenance is structurally unlike creation because it demands ego-suspension—parallels Iris Murdoch's account of 'unselfing' in The Sovereignty of Good (1970), where attention to reality requires the defeat of the 'fat relentless ego.' Murdoch and Weil are in explicit dialogue; the essay's silence on Murdoch is a notable gap, since Murdoch's secular framing might be more portable to the technical context.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="03" label="§ III.  Against the Plans Model of Collaboration" >}}
+{{< section num="03" label="§ III.  The Gift Economy as Misdiagnosis" >}}
 
-{{< gutter sigil="situated" >}}
+{{< gutter sigil="mauss" >}}
 
 {{< main-col >}}
 
-<p>There is a seductive counter-argument: even if culture fit selects for shared inscription rather than raw talent, shared communicative norms genuinely *do* reduce coordination costs. Teams that can talk to each other fluently ship faster. This is not wrong. But it mistakes fluency for collaboration, and coordination cost reduction for adaptive capacity.</p>
+<p>Mauss's *The Gift* is routinely invoked in open source discourse, but almost always in bowdlerized form. The actual argument of the *Essai sur le don* is darker and more useful than its popularizers suggest. Mauss demonstrated that in archaic societies, gifts are never free. They carry *hau*—the spirit of the gift that demands return. Gift exchange creates obligation, establishes hierarchy, and can become a form of domination. The potlatch is not a celebration of generosity; it is a competition for status through conspicuous giving that can impoverish the giver.</p>
 
-<p>Lucy Suchman's work on situated action provides the framework for understanding why this mistake is consequential. Suchman's central argument — developed through close study of how people actually interact with complex systems — is that effective action is not the execution of pre-formed plans but an ongoing, improvisational response to the concrete specifics of a situation as it unfolds. Plans, in Suchman's framework, are not the causes of action but post-hoc rationalizations of it. We narrate our behavior as plan-following after the fact; in the moment, we are always navigating contingency.</p>
+<p>This means Mauss is partially an ally to the diagnosis I'm offering, not an opponent. His framework predicts exactly the reciprocity trap that maintainers experience: you give your code freely, and the gift's *hau* generates an obligation that returns as entitlement. Users feel owed support because they received the gift. The maintainer feels compelled to provide it because the gift-relation demands reciprocity, even when no explicit contract exists. So far, so Maussian.</p>
 
-<p>The bridge from Suchman's situated action to team composition requires an additional step, but it is not a long one. If effective collaboration is improvisational rather than plan-based, then its essential resource is not shared fluency but the capacity to make *heterogeneous* knowledge resources mutually intelligible under pressure. When a team encounters a truly novel problem — a system failure with no precedent, a design constraint that invalidates established patterns — what they need is not the ability to finish each other's sentences. They need the ability to surface genuinely different models of the situation, to negotiate between conflicting interpretive frameworks, and to construct a shared understanding that none of the participants could have reached alone. This is what Suchman calls the interactional work of situated action: the real-time, contingent labor of making sense together across difference.</p>
+<p>But Mauss's framework also misses something crucial, because it assumes that what the maintainer is doing *is* giving. The gift economy model positions the maintainer as an agent who possesses something (code, expertise, time) and transfers it to others. This preserves the ego-structure of the giver. Even in Mauss's most coercive version of gift exchange—even when the gift enslaves the giver to obligation—the giver remains a subject who *has* and *gives*. The phenomenology of deep maintenance is different. The maintainer who is genuinely attending to an issue is not giving from a position of possession. They are emptying themselves to receive. The direction is reversed. This is why the gift framing, even Mauss's sophisticated version, generates the wrong interventions: it suggests the problem is that the gift cycle is unbalanced (not enough reciprocity, not enough compensation flowing back), when the actual problem is that maintenance at its deepest is not an exchange at all.</p>
 
-<p>Homogeneity of inscription actively degrades this capacity. When every member of a team has been shaped by the same discourse network, they share not only communicative norms but cognitive defaults — the same set of canonical examples they reach for, the same space of solutions they consider natural, the same failure modes they've been trained to anticipate. The fluent conversation this produces looks like collaboration from the inside but is often a kind of collective confirmation bias. The team converges quickly because its members are navigating the same map, not because they are navigating the territory well. When the territory diverges from the map — when the novel problem demands a genuinely different cognitive approach — the team's fluency becomes a liability. They agree their way into a bad solution because they lack the internal friction that would force them to actually look at what's in front of them.</p>
+<p>Lewis Hyde's *The Gift*, the other text that haunts open source ideology, makes the misdiagnosis more explicit. Hyde argues that creative work circulates in a gift economy that commerce destroys. Open source advocates adopted this eagerly: code wants to be free, the gift must keep moving, commerce corrupts the commons. But Hyde's artist-as-giver is still an artist—a creator whose ego is implicated in the act of making. The maintainer is not primarily a creator. They are a *sustainer*, and sustaining requires precisely the ego-dissolution that Hyde's framework cannot accommodate because it remains organized around the figure of the inspired maker.</p>
 
-<p>This produces a falsifiable empirical prediction: teams assembled through culture-fit filtering should show lower adaptability when encountering problems that require fundamentally new approaches compared to teams assembled through structured technical evaluation without culture-fit screens. The evidence base for testing this is imperfect but suggestive. Google's own internal research through Project Aristotle found that psychological safety — the willingness to take interpersonal risks — predicted team performance far better than team composition homogeneity. And psychological safety is precisely the capacity for productive disagreement, not the absence of friction but the ability to make friction generative. There is a persistent finding in the organizational behavior literature that cognitively diverse teams underperform homogeneous teams on routine tasks but outperform them on novel, complex problems — exactly the problems that matter most in software engineering. Culture fit optimizes for the routine case while degrading performance in the cases that determine whether a system survives contact with reality.</p>
+<p>The result is a double bind. The maintainer is told—by the culture, the conferences, the blog posts—that they are participating in a gift economy. They should feel the glow of generosity, the satisfaction of contributing to the commons. But what they actually experience in the deep work is closer to what Weil called *affliction*: the crushing of the self under the weight of impersonal necessity. The gap between the narrative and the experience is itself a source of burnout. You cannot sustain a practice of self-emptying while being told you are engaged in self-expression.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Suchman 1987" >}}
-'Plans and Situated Actions' was originally a critique of AI planning models at Xerox PARC; its redeployment here as a theory of team cognition is a genuine extension. Suchman herself moved toward this in later work on human-machine reconfiguration (2007), arguing that all coordination — not just human-computer interaction — is fundamentally improvisational and interactionally achieved.
+{{< note ref="REF // Mauss 1925 / Hyde 1983" >}}
+The bifurcation of 'the two Gifts' is astute. Mauss's Essai sur le don (1925) theorizes obligation and coercion; Hyde's The Gift (1983) romanticizes creative circulation. Open source discourse typically collapses both into a feel-good commons narrative, ignoring that Mauss's hau—the compulsion to reciprocate—predicts the entitlement dynamics maintainers actually report. See also Annette Weiner's Inalienable Possessions (1992), which argues Mauss undertheorized the things that must not be given away.
 {{< /note >}}
-{{< note ref="REF // Page 2007" >}}
-The claim that cognitively diverse teams outperform homogeneous ones on complex problems has its strongest formal treatment in Scott Page's 'The Difference: How the Power of Diversity Creates Better Groups, Firms, Schools, and Societies.' Page's diversity prediction theorem shows mathematically that collective error is a function of both individual accuracy and diversity of predictive models — a result that gives the essay's Suchman-derived argument unexpected formalization.
+{{< note ref="NOTE // affliction-mislabel" >}}
+Weil's 'affliction' (malheur) is a technical term denoting the simultaneous destruction of the physical, social, and psychological self—she insists it is categorically different from mere suffering. Applying it to maintainer experience risks inflation, but the essay's point may be narrower: that the gap between the gift-narrative and the lived experience of self-emptying produces a cognitive dissonance structurally analogous to what Weil describes when affliction goes unrecognized by its surrounding social framework.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="04" label="§ IV.  The Reflexivity Trap" >}}
+{{< section num="04" label="§ IV.  The Architectural Contradiction" >}}
 
-{{< gutter sigil="recursion" >}}
+{{< gutter sigil="oscillation" >}}
 
 {{< main-col >}}
 
-<p>Here is where I have to turn the framework against itself, because Kittler would be the first to insist on it: you cannot escape a discourse network by designing a better one. Any replacement for culture-fit evaluation will itself constitute a new inscription system that selects for subjects fluent in its particular norms. Replace adversarial Socratic questioning with structured collaboration simulations, and you select for people comfortable in facilitated environments — people who have internalized the norms of psychological safety discourse, who know how to perform "productive disagreement" in the specific register that structured interviews reward. The unmarked subject shifts, but it does not disappear.</p>
+<p>The platforms make this worse, and not accidentally. GitHub's contribution graph quantifies output as a visible, identity-linked metric. npm download counts attach the maintainer's name to a measure of impact. Twitter and conference circuits require the maintainer to perform as a public figure—to have opinions, a brand, a persona—as the condition of attracting contributors, funding, and corporate support. GitHub Sponsors literally requires a profile page where the maintainer narrates their own value proposition.</p>
 
-<p>This is a real problem, and pretending otherwise would be the intellectual cowardice the thesis is trying to avoid. There is no view from nowhere, no hiring apparatus that detects "pure" collaborative capacity without also detecting fluency in some particular communicative regime. The question is not how to build an unbiased filter — there is no such thing — but how to build a filter whose biases are visible, explicit, and oriented toward the capacities you actually need rather than the inscription histories that feel most familiar.</p>
+<p>This is not a cultural problem that better norms could fix. It is an architectural contradiction between two incompatible modes of being. The work demands decreation; the infrastructure demands ego-assertion. You must empty yourself to attend, then refill yourself to fundraise. You must suppress your preferences to review fairly, then perform your preferences to maintain a public identity. Every day, maintainers oscillate between these two postures, and the oscillation itself is exhausting in a way that neither posture alone would be.</p>
 
-<p>The practical difference between culture-fit hiring and structured collaboration assessment is not that the latter is neutral while the former is biased. It is that culture-fit hiring selects on a *proxy* — shared media socialization — that is only weakly correlated with collaborative capacity and strongly correlated with demographic and educational homogeneity, while well-designed work-sample tests select more directly on the behavior you care about. This is not a move from biased to unbiased. It is a move from *opaque selection on proxies* to *transparent selection on performances*. The new discourse network is still a discourse network. But its selection criteria are legible, auditable, and revisable in a way that "I can't see pairing with her" never can be.</p>
-
-<p>This means the recommendation for engineering leaders is not the anodyne "use structured interviews" — advice that has been available from I/O psychology for decades and that most organizations ignore not from ignorance but because the recognition-pleasure of culture fit is too powerful to override with a best-practices memo. The recommendation is more specific and more uncomfortable: treat every instance of "not a culture fit" as an *epistemic event* — a moment where your apparatus has reached the limit of what it can perceive. Investigate what that limit is. Ask what media environment the candidate *was* inscribed by and whether the communicative norms of that environment might contain resources your team currently lacks. Build evaluation processes that create the conditions for unfamiliar competence to become legible — novel problem domains, explicit negotiation phases, structured disagreement protocols — rather than processes that reward the performance of fluency in your team's existing discourse.</p>
-
-<p>The goal is not to stop filtering. You will always filter. The goal is to stop mistaking the comfort of recognition for the detection of skill — to stop letting the discourse network do your thinking for you while telling you it's intuition.</p>
+<p>The obvious counterexample is Linus Torvalds, who has maintained Linux for over thirty years while being flamboyantly, sometimes abusively, ego-driven. Doesn't his longevity refute the thesis? It does not, but it complicates it in a way that's worth taking seriously. Torvalds does not do the kind of maintenance I've been describing. He has, over decades, constructed an architecture—both social and technical—that delegates the attentional labor to lieutenants. The kernel's subsystem maintainer hierarchy exists precisely to distribute the decreative work across many people so that no single person must sustain it indefinitely. Torvalds himself operates primarily as a decision-maker and taste-arbiter, roles that are ego-compatible. His sustainability is not evidence against the thesis; it is evidence that the Linux project accidentally solved the attention problem through structural delegation, while the single maintainer of a popular JavaScript library has no such luxury. The pathology of ego-driven maintenance, meanwhile, is visible in the kernel community's well-documented culture of hostility, which Torvalds himself eventually acknowledged required intervention. Ego-assertion sustains the maintainer but damages the community's capacity for the very receptivity that maintenance requires at every other level.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="NOTE // no outside to discourse networks" >}}
-The self-reflexive turn here — any structured alternative is itself a discourse network — echoes Luhmann's point that observation always has a blind spot constitutive of its operation. The essay's resolution (legibility, auditability, revisability) is essentially a Luhmannian second-order observation: you cannot eliminate the blind spot, but you can observe the fact that you have one. Cf. Luhmann, 'Observations on Modernity' (1998).
+{{< note ref="NOTE // torvalds-exception" >}}
+The Torvalds analysis echoes Conway's Law (1968)—that systems mirror their communication structures—but inverts it: the kernel's social architecture was designed to distribute an attentional burden, not merely reflect organizational topology. The 2018 adoption of a Code of Conduct and Torvalds's temporary leave suggest the ego-driven model reached its own crisis point, confirming rather than refuting the thesis.
 {{< /note >}}
-{{< note ref="NOTE // recognition-pleasure" >}}
-The final formulation — 'the comfort of recognition' — inverts Hegel's master-slave dialectic of Anerkennung. In Hegel, recognition is the agonistic achievement of intersubjectivity; here, recognition is its foreclosure. The interviewer recognizes only the already-same and mistakes this tautology for knowledge of the other. This is why best-practices memos fail: they target the rational will while the libidinal reward of narcissistic recognition remains unaddressed.
+{{< note ref="REF // Eghbal 2020" >}}
+Eghbal's Working in Public distinguishes 'stadiums' (many users, few contributors) from other project topologies. The essay's 'single maintainer of a popular JavaScript library' is her stadium archetype. The architectural contradiction described here—decreation for the work, ego-assertion for the platform—maps onto Eghbal's observation that GitHub's design optimizes for contribution visibility rather than maintenance sustainability.
+{{< /note >}}
+{{< /margin >}}
+
+{{< section-rule >}}
+
+{{< section num="05" label="§ V.  What Would Attentional Infrastructure Look Like?" >}}
+
+{{< gutter sigil="falsify" >}}
+
+{{< main-col >}}
+
+<p>Here is a falsifiable prediction, stated as precisely as I can make it: projects that adopt structural features protecting the attentional mode—features I'll specify below—will show lower maintainer attrition than projects matched for scope, user base, and demand intensity that rely instead on improved compensation or governance. The key control is demand intensity, not project size. The simple hypothesis "small projects have less work" doesn't explain cases where high-demand projects with certain structural features retain maintainers, and I am predicting that such cases exist and can be identified.</p>
+
+<p>The structural features I mean are specific. First: *attentional rotation*. Not just "take a break" policies, which merely interrupt burnout, but formal rotation of the reviewing-and-triaging role among a pool of maintainers on a cadence short enough (weekly, biweekly) that no single person must sustain the decreative posture for long enough to be crushed by it. The Linux subsystem hierarchy achieves something like this at scale; the proposal is to make it explicit and available to smaller projects.</p>
+
+<p>Second: *identity separation*. Not anonymity—the xz utils backdoor demonstrated that pseudonymous trust without accountability creates catastrophic security risks. Instead, a separation between the maintainer's *reviewing identity* and their *public identity*. Concretely: code review and issue triage happen under a role-based account (maintainer-on-duty, not jane-doe), while the public-facing work of advocacy and fundraising is handled by a different role or a different person in the rotation. This doesn't require anonymity; it requires that the platform stop collapsing the attentional role and the performative role into a single profile. The xz attack exploited a situation where a lone maintainer under pressure accepted a pseudonymous contributor's escalating access. Identity separation as I'm describing it does the opposite of that: it increases the number of real, accountable people in the reviewing role while preventing any one of them from being individually targeted by social engineering or individually crushed by the attentional demand.</p>
+
+<p>Third: *intentional de-metrification of the maintenance function*. Not abolishing metrics—funders need them, and pretending otherwise is fantasy—but partitioning them. Measure the project's health (response times, bug closure rates, release cadence) without attributing those metrics to individual maintainers. The funder sees that the project is well-maintained. The maintainer is freed from the quantified-self apparatus that forces ego-assertion into the heart of the attentional practice.</p>
+
+<p>None of this is easy. All of it cuts against current trends, which move toward greater individual visibility, personal branding as a funding mechanism, and metrics-driven accountability. The trend is toward making every maintainer a micro-celebrity, which is precisely the architecture designed to make sustained attention impossible.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="NOTE // attentional rotation" >}}
+The proposal for role-based reviewing identities recalls Stafford Beer's Viable System Model, where functional roles are distinguished from the persons who occupy them to prevent structural overload at any node. The xz utils caveat is crucial: the 2024 backdoor (CVE-2024-3094) demonstrated that lone-maintainer vulnerability is not merely psychological but a concrete security attack surface, lending empirical urgency to the structural argument.
+{{< /note >}}
+{{< note ref="NOTE // de-metrification" >}}
+The tension between funder-facing metrics and maintainer-facing liberation from metrics echoes Goodhart's Law and its formalization by Marilyn Strathern: 'When a measure becomes a target, it ceases to be a good measure.' The proposal to partition metrics—project health visible, individual attribution hidden—is an institutional design problem akin to what James C. Scott (Seeing Like a State, 1998) calls making legible to the state without making legible to the self.
+{{< /note >}}
+{{< /margin >}}
+
+{{< section-rule >}}
+
+{{< section num="06" label="§ VI.  The Uncompensable" >}}
+
+{{< gutter sigil="uncompensable" >}}
+
+{{< main-col >}}
+
+<p>There is a deeper reason why compensation-based fixes will keep failing, and it is not that maintainers don't deserve money. They do. Pay them. But payment operates on the logic of exchange: I give you money, you give me maintenance. This logic requires that what the maintainer does is a *thing that can be given*—a service, a product, a measurable output. Attention in Weil's sense is not a thing that can be given, because it is constituted by the withdrawal of the self that would do the giving. You cannot compensate someone for decreation, because compensation is addressed to the very ego that decreation suspends.</p>
+
+<p>This does not mean money is irrelevant. Money removes material desperation, which Weil herself recognized as a precondition for attention—you cannot attend to others' code when you're worried about rent. But money framed as compensation for the attentional work itself converts that work into a commodity and thereby destroys its structure. The maintainer who is paid to review pull requests now reviews pull requests as a job. The ego is present as employee. The attentional posture changes from receptive self-emptying to professional service delivery, which is sustainable in the way that all jobs are sustainable—adequate, often soul-deadening, and fundamentally different from what open source maintenance was at its best.</p>
+
+<p>The crisis of maintainer burnout is, finally, a crisis of what a technological civilization does with practices that require self-negation. We have no institutions for this. Monasteries once provided it; hospitals in their original sense; certain forms of teaching before assessment metrics colonized them. Open source maintenance emerged as an accidental site of genuine attention—people holding complex systems in mind on behalf of strangers, for no reason that exchange logic can capture—and our inability to sustain it is not a bug in the funding model. It is a revelation about the poverty of every framework we have for understanding why someone would empty themselves for a codebase, and what it costs them, and what we owe to that cost that is not, and cannot be, repayment.</p>
+
+{{< /main-col >}}
+
+{{< margin >}}
+{{< note ref="REF // Weil 1949 / Simone 2001" >}}
+Weil's recognition that material security is a precondition for attention appears in The Need for Roots (L'Enracinement, 1949), where she lists physical needs (food, shelter) as prior to the needs of the soul (order, truth, freedom). The essay's move—pay them, but know that payment cannot touch the core of the crisis—is structurally identical to Weil's argument that a just wage is necessary but categorically insufficient for meaningful work.
+{{< /note >}}
+{{< note ref="NOTE // monasticism-analogy" >}}
+The closing gesture toward monasteries, hospitals, and teaching as lost institutions of self-negation invokes what Alasdair MacIntyre (After Virtue, 1981) calls 'practices'—activities whose internal goods are accessible only to practitioners and are corrupted when subordinated to external goods like money or prestige. Open source maintenance may be the first new practice of this kind to emerge at civilizational scale since modern nursing, and its institutional failure follows the same pattern MacIntyre diagnosed: practices cannot survive without institutions, but institutions invariably tend to corrupt the practices they house.
 {{< /note >}}
 {{< /margin >}}
