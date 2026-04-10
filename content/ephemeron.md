@@ -1,181 +1,160 @@
 ---
-title: "Maintainer Burnout and the Receptive Void"
-subtitle: "Why open source maintenance demands self-emptying that no payment can fix"
-date: 2026-04-09
+title: "Consensus Protocols and Hidden Hierarchies"
+subtitle: "How Raft's dominance reveals cultural assumptions about coordination and authority"
+date: 2026-04-10
 draft: false
 layout: treatise
 doc_class: "ephemeron"
-doc_id: "ephemeron.2026-04-09"
+doc_id: "ephemeron.2026-04-10"
 revision: "diurnal"
-chain: "attention → decreation → gift economy → architectural contradiction → attentional infrastructure"
+chain: "contingent authority → cognitive habituation → cultural selection → naturalized hierarchy"
 footer_status: "ephemeral unless preserved"
 status_pips:
   - active
   - amber
   - dim
-hook: "Open source maintainer burnout is not a compensation problem or a governance failure. Drawing on Simone Weil's concept of attention as self-emptying receptivity, this essay argues that deep maintenance demands sustained ego-dissolution while platforms and culture force ego-assertion, creating an unresolvable contradiction that no funding model can address."
+hook: "Raft, the consensus protocol underlying Kubernetes and most critical infrastructure, is celebrated for being more understandable than Paxos. But understandable to whom? Its legibility derives not from inherent simplicity but from how closely it mirrors the hierarchical organizations engineers already inhabit, rendering genuinely egalitarian alternatives invisible."
 generated_by: "Claude Opus 4.6"
-generated_date: "9 April 2026"
+generated_date: "10 April 2026"
 ---
 
-{{< section num="01" label="§ I.  The Receptive Void" >}}
+{{< section num="01" label="§ I.  The Quiet Election" >}}
 
-{{< gutter sigil="receptive void" >}}
+{{< gutter sigil="heartbeat" >}}
 
 {{< main-col >}}
 
-{{< dropcap letter="S" >}}
+{{< dropcap letter="E" >}}
 
-<p>omewhere right now, a maintainer is reading an issue filed by a stranger. The issue is poorly formatted. It contains a stack trace pasted without code fences, a version number that's three releases behind, and a tone that oscillates between entitlement and helplessness. The maintainer reads it anyway. Not skims—reads. They hold the stranger's confusion in mind alongside the codebase's architecture, the interaction between the deprecated API the stranger is using and the migration path that was documented but apparently not documented well enough. They begin composing a response that will meet the stranger exactly where they are. This act—this specific cognitive and moral posture—is what Simone Weil called attention, and it is destroying people.</p>
+<p>very five seconds, or every ten, or whenever a timeout fires into the void of a missed heartbeat, a small election takes place inside the infrastructure you depend on. A node in an etcd cluster notices the leader has gone silent. It increments its term, votes for itself, and solicits votes from its peers. If a majority responds, it becomes the new leader. Log entries flow downward. Followers replicate in sequence. The system resumes.</p>
 
-<p>The dominant narrative around open source maintainer burnout is economic. Maintainers are not paid enough, or not paid at all, for work that constitutes critical digital infrastructure. The solution, accordingly, is compensation: GitHub Sponsors, Tidelift subscriptions, Open Collective funds, corporate contributions. When compensation alone fails—and it does, regularly, with well-funded maintainers burning out alongside unfunded ones—the narrative shifts to governance. Better codes of conduct, clearer contribution guidelines, healthier community norms. When that also fails, the discourse reaches for the concept of "gift economy," borrowed at several removes from Marcel Mauss, to explain why the social contract keeps breaking down.</p>
+<p>This is Raft, and it runs beneath almost everything: Kubernetes service discovery, Consul's service mesh, CockroachDB's transaction layer, TiKV's distributed storage. It is one of the most consequential governance algorithms in the world, and almost nobody thinks of it as governance. The Raft paper's founding claim — that its primary contribution over Paxos is *understandability* — has been accepted so completely that it functions as a closed question. Raft is easier to understand. Raft is therefore better for production systems. End of discussion.</p>
 
-<p>All of these interventions address real problems. None of them touch the actual structure of the crisis.</p>
+<p>But "understandable to whom, and within what form of life?" is not a settled question. It is, in fact, the question.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Weil 1947" >}}
-Weil's definition of attention appears in 'Reflections on the Right Use of School Studies with a View to the Love of God' (Waiting for God, 1951 trans.). The passage cited here—'suspending our thought, leaving it detached'—is frequently excerpted but rarely situated within its original pedagogical context, where Weil argues that geometry homework cultivates the same faculty as prayer.
+{{< note ref="REF // Ongaro & Ousterhout 2014" >}}
+The Raft paper (In Search of an Understandable Consensus Algorithm, USENIX ATC 2014) explicitly positions understandability as a first-order design constraint, not merely a secondary benefit. This rhetorical move is itself unusual in systems research, where performance and correctness typically occupy the justificatory foreground.
 {{< /note >}}
-{{< note ref="NOTE // infrastructure-as-commons" >}}
-The framing of open source as 'critical digital infrastructure' owes much to Nadia Eghbal's Roads and Bridges (Ford Foundation, 2016), which inaugurated the policy discourse the essay claims is insufficient. The economic narrative critiqued here is largely Eghbal's legacy, refined in her later Working in Public (2020), which itself moved toward attention-scarcity as the deeper constraint.
+{{< note ref="NOTE // governance-as-infrastructure" >}}
+The framing of consensus protocols as governance echoes Langdon Winner's 'Do Artifacts Have Politics?' (1980), but with a crucial difference: Winner's examples (bridges, nuclear plants) are static artifacts, whereas Raft's leader election is a continuously re-enacted political ceremony. The temporality of the politics changes the analysis.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="02" label="§ II.  Attention as Decreation" >}}
+{{< section num="02" label="§ II.  Contingent Leaders, Constitutive Leaders" >}}
 
-{{< gutter sigil="decreation" >}}
+{{< gutter sigil="constitutive" >}}
 
 {{< main-col >}}
 
-<p>Weil's concept of attention has almost nothing in common with what productivity culture means by the word. She does not mean focus, concentration, or the effortful direction of cognitive resources toward a task. She means something closer to the opposite: "Attention consists of suspending our thought, leaving it detached, empty, and ready to be penetrated by the object." Attention in Weil's sense is a posture of receptive self-negation. You do not bring yourself to the problem; you empty yourself so the problem can become fully present. The ego does not direct attention; attention requires the ego's suspension.</p>
+<p>The naïve version of the argument I want to make would go like this: Paxos is a leaderless protocol of symmetric peers, Raft imposes hierarchy, and the transition from one to the other mirrors the historical enclosure of the commons. This is wrong, or at least far too crude. Lamport's original single-decree Paxos does define asymmetric roles — proposers, acceptors, learners — and Multi-Paxos, which is what every serious Paxos deployment actually uses, designates a distinguished proposer that functions as a de facto leader. Google's Chubby, the most famous Paxos implementation, is thoroughly leader-based. Anyone who has read the Paxos Made Live paper knows that the distance between academic Paxos and deployed Paxos is vast, and that deployed Paxos converges on leadership as a performance optimization.</p>
 
-<p>Weil linked this to what she called *decreation*—not destruction, but the voluntary withdrawal of the self to make room for reality. Decreation is the creature's undoing of its own creaturely assertion so that something true can appear in the space left behind. It is, in her theological framework, the highest human capacity and the most dangerous, because it requires sustaining a condition that the self naturally resists.</p>
+<p>So the interesting distinction is not leader versus leaderless. It is between a protocol that treats leadership as *contingent* — an optimization that can be adopted or abandoned, one configuration among many in a space of possible roles — and a protocol that treats leadership as *constitutive*, baked into the definition of correctness itself. In basic Paxos, any node can propose a value at any time. The protocol's safety properties hold regardless of whether a stable leader exists. Leadership, when it appears, is an emergent performance hack layered on top of a fundamentally symmetric substrate. In Raft, by contrast, there is no protocol without a leader. The entire log replication mechanism presupposes a single authority from which entries flow. A Raft cluster without a leader is not operating in a degraded mode; it is not operating at all. It is *between* governments, waiting for the next election to conclude.</p>
 
-<p>Now consider what deep maintenance actually involves. Not writing new features—that's creation, and it can be ego-fueled without contradiction. Maintenance. Holding the mental model of a codebase on behalf of people you will never meet. Reviewing a pull request not for whether it matches your aesthetic preferences but for whether it correctly addresses the contributor's intent while preserving the project's invariants. Triaging an issue that requires you to suppress your own first reaction ("this is a duplicate," "read the docs") in order to genuinely receive the reporter's experience of the software. Responding to a hostile message in a way that de-escalates without capitulating, which requires understanding the hostility without being captured by it.</p>
+<p>This distinction — contingent versus constitutive authority — is not a metaphor imported from political philosophy. It is a precise structural property of the algorithms. And it matters because the design space forecloses certain possibilities. A Paxos-based system can, in principle, be reconfigured to operate with rotating proposers, multiple concurrent proposers, or no stable proposer at all, while preserving safety. A Raft-based system cannot shed its leader without becoming a different protocol entirely. The governance structure is load-bearing.</p>
 
-<p>This is not gift-giving. It is not emotional labor, at least not in the way Hochschild originally defined it, because there is no employing institution managing the feeling rules. It is not care work in the feminist-economic sense, because the relational bond is absent—the maintainer cares for strangers at scale, which is structurally different from caring for known dependents. What it most closely resembles is Weilian attention: a sustained, self-emptying receptivity directed at the reality of others' needs, held open across time, without the ego-rewards that normally sustain prolonged cognitive effort.</p>
+<p>Recent work in the consensus protocol space makes this even more concrete. EPaxos (Egalitarian Paxos), designed by Iulian Moraru, David Andersen, and Michael Kaminsky, achieves strong consistency with no distinguished leader in the common case. When commands don't conflict, any replica can commit independently. When they do conflict, a dependency-graph resolution mechanism handles ordering without centralizing authority. Mencius, another leaderless variant, partitions the sequence space across all servers, letting each take turns proposing. These are not theoretical curiosities — they have been benchmarked, peer-reviewed, and shown to match or exceed Raft's throughput under workloads with low contention, while offering better latency in geographically distributed deployments precisely because they avoid routing all decisions through a single node.</p>
 
-<p>The maintainer who burns out has not given too many gifts. They have found it impossible to keep decreating.</p>
+<p>And yet, when HashiCorp built Consul, they chose Raft. When CoreOS built etcd, they chose Raft. When CockroachDB and TiKV needed consensus, they chose Raft. The pattern is so consistent that it demands an explanation beyond "Raft is correct and performant," because EPaxos is also correct and in some regimes more performant. Something else is being selected for.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Weil 1947 / Hochschild 1983" >}}
-The distinction from Hochschild's 'emotional labor' (The Managed Heart, 1983) is precise and important. Hochschild's concept requires institutional feeling rules imposed on workers; the maintainer operates without such institutional scaffolding. Cf. also Guy Standing's concept of 'work-for-labour' in precarious contexts, where the absence of an employer does not eliminate alienation but restructures it.
+{{< note ref="REF // Moraru, Andersen & Kaminsky 2013" >}}
+EPaxos (SOSP 2013) achieves optimal commit latency in the common case (one round-trip) without a stable leader, using a dependency-graph approach to ordering. The paper shows that leadership is not merely an optimization but an architectural trade-off: EPaxos sacrifices implementation simplicity for leaderlessness, revealing that 'simplicity' itself is a design parameter, not a given.
 {{< /note >}}
-{{< note ref="NOTE // ego-dissolution" >}}
-The phenomenological claim—that maintenance is structurally unlike creation because it demands ego-suspension—parallels Iris Murdoch's account of 'unselfing' in The Sovereignty of Good (1970), where attention to reality requires the defeat of the 'fat relentless ego.' Murdoch and Weil are in explicit dialogue; the essay's silence on Murdoch is a notable gap, since Murdoch's secular framing might be more portable to the technical context.
+{{< note ref="REF // Chandra, Griesemer & Redstone 2007" >}}
+The Paxos Made Live paper (PODC 2007) documents Google's Chubby implementation and catalogues the enormous gap between Lamport's elegant specification and a working system. The paper's litany of engineering difficulties is often cited to justify Raft's existence, but it equally demonstrates that the difficulty was in operationalization, not in the absence of a constitutive leader.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="03" label="§ III.  The Gift Economy as Misdiagnosis" >}}
+{{< section num="03" label="§ III.  What Counts as Understandable" >}}
 
-{{< gutter sigil="mauss" >}}
+{{< gutter sigil="lebensform" >}}
 
 {{< main-col >}}
 
-<p>Mauss's *The Gift* is routinely invoked in open source discourse, but almost always in bowdlerized form. The actual argument of the *Essai sur le don* is darker and more useful than its popularizers suggest. Mauss demonstrated that in archaic societies, gifts are never free. They carry *hau*—the spirit of the gift that demands return. Gift exchange creates obligation, establishes hierarchy, and can become a form of domination. The potlatch is not a celebration of generosity; it is a competition for status through conspicuous giving that can impoverish the giver.</p>
+<p>The Raft paper, by Diego Ongaro and John Ousterhout, is explicit about its design methodology. They conducted a user study in which students were taught Paxos and Raft, then tested on their understanding of each. Raft scored higher. This is the empirical foundation for the claim that Raft is "more understandable," and it has achieved a kind of axiomatic status in the distributed systems community.</p>
 
-<p>This means Mauss is partially an ally to the diagnosis I'm offering, not an opponent. His framework predicts exactly the reciprocity trap that maintainers experience: you give your code freely, and the gift's *hau* generates an obligation that returns as entitlement. Users feel owed support because they received the gift. The maintainer feels compelled to provide it because the gift-relation demands reciprocity, even when no explicit contract exists. So far, so Maussian.</p>
+<p>But consider what this study actually measures. It measures the ease with which students embedded in a particular educational context, trained in particular reasoning styles, socialized into particular models of system organization, can form a correct mental model of a protocol after a brief exposure. It does not — cannot — measure understandability as an intrinsic property of the algorithm. It measures *fit* between the algorithm's structure and the cognitive habits of its audience.</p>
 
-<p>But Mauss's framework also misses something crucial, because it assumes that what the maintainer is doing *is* giving. The gift economy model positions the maintainer as an agent who possesses something (code, expertise, time) and transfers it to others. This preserves the ego-structure of the giver. Even in Mauss's most coercive version of gift exchange—even when the gift enslaves the giver to obligation—the giver remains a subject who *has* and *gives*. The phenomenology of deep maintenance is different. The maintainer who is genuinely attending to an issue is not giving from a position of possession. They are emptying themselves to receive. The direction is reversed. This is why the gift framing, even Mauss's sophisticated version, generates the wrong interventions: it suggests the problem is that the gift cycle is unbalanced (not enough reciprocity, not enough compensation flowing back), when the actual problem is that maintenance at its deepest is not an exchange at all.</p>
+<p>This is where Wittgenstein's remarks on rule-following become genuinely illuminating, not as philosophical decoration but as a diagnostic tool. Wittgenstein's point in the *Philosophical Investigations* (§§185–202) is that no rule determines its own application. What counts as "following the rule" is constituted by a shared practice — a *form of life* — not by the rule's internal logic. The rule "add 2" seems perfectly unambiguous until you consider Wittgenstein's student who, upon reaching 1000, continues 1004, 1008, 1012, fully believing he is following the same rule. The point is not skepticism about arithmetic. The point is that our certainty about what the rule means is grounded in a community of practice, not in the rule itself.</p>
 
-<p>Lewis Hyde's *The Gift*, the other text that haunts open source ideology, makes the misdiagnosis more explicit. Hyde argues that creative work circulates in a gift economy that commerce destroys. Open source advocates adopted this eagerly: code wants to be free, the gift must keep moving, commerce corrupts the commons. But Hyde's artist-as-giver is still an artist—a creator whose ego is implicated in the act of making. The maintainer is not primarily a creator. They are a *sustainer*, and sustaining requires precisely the ego-dissolution that Hyde's framework cannot accommodate because it remains organized around the figure of the inspired maker.</p>
+<p>Applied to protocol design: when engineers say Raft is "easier to understand," they are reporting a genuine phenomenological fact about their experience. But that experience is shaped by a form of life in which authority flows downward, in which organizations have managers, in which the mental model of "one entity decides, others follow" is so deeply naturalized that it feels like common sense rather than one topology among many. Raft is legible because its structure mirrors the organizational structures engineers already inhabit. A leader sends commands. Followers execute them. If the leader fails, you hold an election and get a new one. This is not just a distributed systems protocol — it is a compact model of corporate governance, and it feels intuitive for exactly the same reasons that corporate governance feels natural to people who have spent their careers inside corporations.</p>
 
-<p>The result is a double bind. The maintainer is told—by the culture, the conferences, the blog posts—that they are participating in a gift economy. They should feel the glow of generosity, the satisfaction of contributing to the commons. But what they actually experience in the deep work is closer to what Weil called *affliction*: the crushing of the self under the weight of impersonal necessity. The gap between the narrative and the experience is itself a source of burnout. You cannot sustain a practice of self-emptying while being told you are engaged in self-expression.</p>
+<p>Paxos, by contrast, asks you to reason about multiple concurrent proposers, overlapping rounds, the possibility that no single entity is in charge at any given moment. The "difficulty" of Paxos is isomorphic to the difficulty that people raised in hierarchical institutions have when asked to reason about genuinely decentralized coordination. Anyone who has watched a horizontally-organized collective try to make a decision has experienced the same cognitive dissonance: it feels chaotic, illegible, *hard to understand* — not because horizontal coordination is inherently more complex, but because we lack practice in thinking that way.</p>
+
+<p>The Raft paper's user study, then, does not demonstrate that Raft is objectively simpler. It demonstrates that hierarchy is the default cognitive frame for the population studied. This is a finding about culture, not about algorithms.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="REF // Mauss 1925 / Hyde 1983" >}}
-The bifurcation of 'the two Gifts' is astute. Mauss's Essai sur le don (1925) theorizes obligation and coercion; Hyde's The Gift (1983) romanticizes creative circulation. Open source discourse typically collapses both into a feel-good commons narrative, ignoring that Mauss's hau—the compulsion to reciprocate—predicts the entitlement dynamics maintainers actually report. See also Annette Weiner's Inalienable Possessions (1992), which argues Mauss undertheorized the things that must not be given away.
+{{< note ref="REF // Wittgenstein 1953 §§185–202" >}}
+The essay's deployment of rule-following is precise but could be pushed further via Saul Kripke's reading (Wittgenstein on Rules and Private Language, 1982), where the skeptical paradox is that no fact about a speaker's past usage determines future application. Applied here: no formal property of Raft determines that it will be experienced as 'understandable' — that determination is wholly communal.
 {{< /note >}}
-{{< note ref="NOTE // affliction-mislabel" >}}
-Weil's 'affliction' (malheur) is a technical term denoting the simultaneous destruction of the physical, social, and psychological self—she insists it is categorically different from mere suffering. Applying it to maintainer experience risks inflation, but the essay's point may be narrower: that the gap between the gift-narrative and the lived experience of self-emptying produces a cognitive dissonance structurally analogous to what Weil describes when affliction goes unrecognized by its surrounding social framework.
+{{< note ref="NOTE // cognitive sociology of hierarchy" >}}
+The claim that legibility tracks organizational habituation parallels Bourdieu's concept of habitus (Outline of a Theory of Practice, 1977): engineers do not choose hierarchy after deliberation; they perceive hierarchical protocols as self-evidently clearer because their trained dispositions pre-structure what counts as clarity. The user study measures doxa, not complexity.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="04" label="§ IV.  The Architectural Contradiction" >}}
+{{< section num="04" label="§ IV.  Updating to Remain the Same" >}}
 
-{{< gutter sigil="oscillation" >}}
+{{< gutter sigil="chun" >}}
 
 {{< main-col >}}
 
-<p>The platforms make this worse, and not accidentally. GitHub's contribution graph quantifies output as a visible, identity-linked metric. npm download counts attach the maintainer's name to a measure of impact. Twitter and conference circuits require the maintainer to perform as a public figure—to have opinions, a brand, a persona—as the condition of attracting contributors, funding, and corporate support. GitHub Sponsors literally requires a profile page where the maintainer narrates their own value proposition.</p>
+<p>There is a pattern in the history of consensus protocols that deserves more scrutiny than it typically receives. Viewstamped Replication (1988) introduced a leader-based replicated state machine. Paxos (1989, published 1998) offered a more general, leader-optional framework. Multi-Paxos re-introduced a stable leader for performance. Raft (2014) formalized the leader requirement and stripped away the leader-optional substrate entirely. Each generation presents itself as novel — a simplification, a clarification, a pedagogical improvement — while reproducing the same structural commitment to centralized authority.</p>
 
-<p>This is not a cultural problem that better norms could fix. It is an architectural contradiction between two incompatible modes of being. The work demands decreation; the infrastructure demands ego-assertion. You must empty yourself to attend, then refill yourself to fundraise. You must suppress your preferences to review fairly, then perform your preferences to maintain a public identity. Every day, maintainers oscillate between these two postures, and the oscillation itself is exhausting in a way that neither posture alone would be.</p>
+<p>Wendy Chun describes the logic of new media as "updating to remain the same": the constant novelty of technological change masks the reproduction of existing power structures. What this framework adds here is an explanation of the *affective* dimension of the reproduction. Each new protocol feels like progress because it resolves a genuine frustration (Paxos really is hard to implement correctly). But the resolution consistently moves in only one direction — toward tighter formalization of hierarchy — not because that direction is technically inevitable but because it is *satisfying* in a way that matches existing expectations about how coordination should work. The update feels like an improvement because it makes the system more closely resemble the organizational world the engineer already understands. The sameness — the persistent leader topology — is experienced not as stasis but as maturation.</p>
 
-<p>The obvious counterexample is Linus Torvalds, who has maintained Linux for over thirty years while being flamboyantly, sometimes abusively, ego-driven. Doesn't his longevity refute the thesis? It does not, but it complicates it in a way that's worth taking seriously. Torvalds does not do the kind of maintenance I've been describing. He has, over decades, constructed an architecture—both social and technical—that delegates the attentional labor to lieutenants. The kernel's subsystem maintainer hierarchy exists precisely to distribute the decreative work across many people so that no single person must sustain it indefinitely. Torvalds himself operates primarily as a decision-maker and taste-arbiter, roles that are ego-compatible. His sustainability is not evidence against the thesis; it is evidence that the Linux project accidentally solved the attention problem through structural delegation, while the single maintainer of a popular JavaScript library has no such luxury. The pathology of ego-driven maintenance, meanwhile, is visible in the kernel community's well-documented culture of hostility, which Torvalds himself eventually acknowledged required intervention. Ego-assertion sustains the maintainer but damages the community's capacity for the very receptivity that maintenance requires at every other level.</p>
+<p>This is what distinguishes Chun's account from a simpler story about path dependence or institutional inertia. Path dependence explains why engineers trained on Raft continue to choose Raft. It does not explain why the moment of choosing *feels like progress* — why the Raft paper's rhetorical framing as a breakthrough in understandability was received with such enthusiasm, even though what it "broke through" to was a more rigid version of what Multi-Paxos already did. Chun's point is that the affective experience of innovation is itself the mechanism by which existing structures reproduce. You feel like you're moving forward. You are standing still.</p>
+
+<p>The genuinely egalitarian alternatives exist and keep being developed. EPaxos. Mencius. Aleph, a leaderless BFT protocol. HotStuff, which is leaderless in the optimistic case and has been adopted as the basis for several blockchain consensus layers. CRDTs, which sidestep consensus entirely by ensuring convergence through algebraic properties of the data structures themselves. These are not fringe experiments — CRDTs power the collaborative editing in Figma, and EPaxos has been shown to outperform Multi-Paxos in wide-area network deployments. But they remain marginal in the bread-and-butter infrastructure layer, the etcds and Consuls and ZooKeepers. The cultural selection filter operates not at the level of formal properties but at the level of what feels *right*, what feels *manageable*, what feels *understandable* — which is to say, at the level of the form of life.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="NOTE // torvalds-exception" >}}
-The Torvalds analysis echoes Conway's Law (1968)—that systems mirror their communication structures—but inverts it: the kernel's social architecture was designed to distribute an attentional burden, not merely reflect organizational topology. The 2018 adoption of a Code of Conduct and Torvalds's temporary leave suggest the ego-driven model reached its own crisis point, confirming rather than refuting the thesis.
+{{< note ref="REF // Chun 2016" >}}
+Wendy Chun's Updating to Remain the Same (MIT Press, 2016) theorizes habitual media as the mechanism by which novelty and repetition become indistinguishable. The application to consensus protocol genealogy is original here: the Viewstamped Replication → Paxos → Multi-Paxos → Raft lineage enacts exactly the 'new = same' loop Chun describes, with each generation's rhetoric of improvement concealing structural continuity.
 {{< /note >}}
-{{< note ref="REF // Eghbal 2020" >}}
-Eghbal's Working in Public distinguishes 'stadiums' (many users, few contributors) from other project topologies. The essay's 'single maintainer of a popular JavaScript library' is her stadium archetype. The architectural contradiction described here—decreation for the work, ego-assertion for the platform—maps onto Eghbal's observation that GitHub's design optimizes for contribution visibility rather than maintenance sustainability.
+{{< note ref="NOTE // CRDTs as exit" >}}
+CRDTs (Conflict-Free Replicated Data Types, formalized by Shapiro et al. 2011) represent a more radical departure than EPaxos because they dissolve the consensus problem rather than solving it differently. Their algebraic guarantee of convergence sidesteps leadership entirely, yet their adoption remains confined to specific domains (collaborative editing, shopping carts), suggesting that the cultural selection filter operates even more strongly at the paradigm level than at the protocol level.
 {{< /note >}}
 {{< /margin >}}
 
 {{< section-rule >}}
 
-{{< section num="05" label="§ V.  What Would Attentional Infrastructure Look Like?" >}}
+{{< section num="05" label="§ V.  What Practitioners Owe Themselves" >}}
 
-{{< gutter sigil="falsify" >}}
+{{< gutter sigil="conway" >}}
 
 {{< main-col >}}
 
-<p>Here is a falsifiable prediction, stated as precisely as I can make it: projects that adopt structural features protecting the attentional mode—features I'll specify below—will show lower maintainer attrition than projects matched for scope, user base, and demand intensity that rely instead on improved compensation or governance. The key control is demand intensity, not project size. The simple hypothesis "small projects have less work" doesn't explain cases where high-demand projects with certain structural features retain maintainers, and I am predicting that such cases exist and can be identified.</p>
+<p>I want to be precise about what I am not arguing. I am not arguing that Raft is bad, or that engineers who choose it are making an error, or that you should replace your etcd cluster with an EPaxos implementation to make a political statement. Raft has a clean correctness proof, a well-understood log compaction strategy, and a mature ecosystem of production-hardened implementations. If you need linearizable reads at five replicas with sub-10ms latency and you want to hire engineers who can debug your consensus layer, Raft is a defensible choice, possibly the best choice available today.</p>
 
-<p>The structural features I mean are specific. First: *attentional rotation*. Not just "take a break" policies, which merely interrupt burnout, but formal rotation of the reviewing-and-triaging role among a pool of maintainers on a cadence short enough (weekly, biweekly) that no single person must sustain the decreative posture for long enough to be crushed by it. The Linux subsystem hierarchy achieves something like this at scale; the proposal is to make it explicit and available to smaller projects.</p>
+<p>What I am arguing is narrower and, I think, more durable: that the *reasons* Raft is the best choice today are not purely technical. They are entangled with cultural facts about what engineers are trained to reason about, what mental models feel natural, what organizational templates are pre-loaded into the cognitive habits of the profession. And that this entanglement is invisible precisely to the extent that hierarchy is naturalized as common sense.</p>
 
-<p>Second: *identity separation*. Not anonymity—the xz utils backdoor demonstrated that pseudonymous trust without accountability creates catastrophic security risks. Instead, a separation between the maintainer's *reviewing identity* and their *public identity*. Concretely: code review and issue triage happen under a role-based account (maintainer-on-duty, not jane-doe), while the public-facing work of advocacy and fundraising is handled by a different role or a different person in the rotation. This doesn't require anonymity; it requires that the platform stop collapsing the attentional role and the performative role into a single profile. The xz attack exploited a situation where a lone maintainer under pressure accepted a pseudonymous contributor's escalating access. Identity separation as I'm describing it does the opposite of that: it increases the number of real, accountable people in the reviewing role while preventing any one of them from being individually targeted by social engineering or individually crushed by the attentional demand.</p>
+<p>The practical implication is not "choose differently" but "notice what you're choosing." When the requirement is strong consistency across replicas, and you reach for Raft without considering leaderless alternatives, ask whether the requirement actually demands a stable leader or whether a leaderless protocol with comparable safety properties might serve — and might offer better latency, better fault tolerance during leader transitions, better geographic distribution. When you find a leaderless protocol "hard to reason about," notice that this difficulty might be informative about your own cognitive training rather than about the protocol's inherent complexity.</p>
 
-<p>Third: *intentional de-metrification of the maintenance function*. Not abolishing metrics—funders need them, and pretending otherwise is fantasy—but partitioning them. Measure the project's health (response times, bug closure rates, release cadence) without attributing those metrics to individual maintainers. The funder sees that the project is well-maintained. The maintainer is freed from the quantified-self apparatus that forces ego-assertion into the heart of the attentional practice.</p>
+<p>More broadly: the systems we build encode assumptions about how collective decisions should be made. Those assumptions propagate. Kubernetes, built on etcd, built on Raft, imposes a leader-election model on every cluster it manages. Organizations increasingly model their own coordination on the software patterns available to them — microservice architectures that mirror and then reinforce Conway's Law in both directions. The consensus protocol at the bottom of the stack is not politically inert. It is a small, quiet, constantly-repeated election, and the fact that it always elects a single leader is not a law of nature. It is a choice made legible, made comfortable, and made invisible by the same habitual structures that make hierarchy feel like the only way to get anything done.</p>
 
-<p>None of this is easy. All of it cuts against current trends, which move toward greater individual visibility, personal branding as a funding mechanism, and metrics-driven accountability. The trend is toward making every maintainer a micro-celebrity, which is precisely the architecture designed to make sustained attention impossible.</p>
+<p>The protocol space is richer than the production landscape suggests. The question is whether we can learn to find that richness understandable — which is to say, whether we can learn to inhabit a different form of life, even partially, even briefly, even just long enough to see that the election was never the only option.</p>
 
 {{< /main-col >}}
 
 {{< margin >}}
-{{< note ref="NOTE // attentional rotation" >}}
-The proposal for role-based reviewing identities recalls Stafford Beer's Viable System Model, where functional roles are distinguished from the persons who occupy them to prevent structural overload at any node. The xz utils caveat is crucial: the 2024 backdoor (CVE-2024-3094) demonstrated that lone-maintainer vulnerability is not merely psychological but a concrete security attack surface, lending empirical urgency to the structural argument.
+{{< note ref="REF // Conway 1968" >}}
+Conway's Law ('organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations') is invoked here bidirectionally: Kubernetes clusters mirror corporate hierarchy, and then corporate teams restructure around Kubernetes primitives. The feedback loop means that a constitutive-leader protocol at the infrastructure layer exerts quiet normative pressure upward through the entire sociotechnical stack.
 {{< /note >}}
-{{< note ref="NOTE // de-metrification" >}}
-The tension between funder-facing metrics and maintainer-facing liberation from metrics echoes Goodhart's Law and its formalization by Marilyn Strathern: 'When a measure becomes a target, it ceases to be a good measure.' The proposal to partition metrics—project health visible, individual attribution hidden—is an institutional design problem akin to what James C. Scott (Seeing Like a State, 1998) calls making legible to the state without making legible to the self.
-{{< /note >}}
-{{< /margin >}}
-
-{{< section-rule >}}
-
-{{< section num="06" label="§ VI.  The Uncompensable" >}}
-
-{{< gutter sigil="uncompensable" >}}
-
-{{< main-col >}}
-
-<p>There is a deeper reason why compensation-based fixes will keep failing, and it is not that maintainers don't deserve money. They do. Pay them. But payment operates on the logic of exchange: I give you money, you give me maintenance. This logic requires that what the maintainer does is a *thing that can be given*—a service, a product, a measurable output. Attention in Weil's sense is not a thing that can be given, because it is constituted by the withdrawal of the self that would do the giving. You cannot compensate someone for decreation, because compensation is addressed to the very ego that decreation suspends.</p>
-
-<p>This does not mean money is irrelevant. Money removes material desperation, which Weil herself recognized as a precondition for attention—you cannot attend to others' code when you're worried about rent. But money framed as compensation for the attentional work itself converts that work into a commodity and thereby destroys its structure. The maintainer who is paid to review pull requests now reviews pull requests as a job. The ego is present as employee. The attentional posture changes from receptive self-emptying to professional service delivery, which is sustainable in the way that all jobs are sustainable—adequate, often soul-deadening, and fundamentally different from what open source maintenance was at its best.</p>
-
-<p>The crisis of maintainer burnout is, finally, a crisis of what a technological civilization does with practices that require self-negation. We have no institutions for this. Monasteries once provided it; hospitals in their original sense; certain forms of teaching before assessment metrics colonized them. Open source maintenance emerged as an accidental site of genuine attention—people holding complex systems in mind on behalf of strangers, for no reason that exchange logic can capture—and our inability to sustain it is not a bug in the funding model. It is a revelation about the poverty of every framework we have for understanding why someone would empty themselves for a codebase, and what it costs them, and what we owe to that cost that is not, and cannot be, repayment.</p>
-
-{{< /main-col >}}
-
-{{< margin >}}
-{{< note ref="REF // Weil 1949 / Simone 2001" >}}
-Weil's recognition that material security is a precondition for attention appears in The Need for Roots (L'Enracinement, 1949), where she lists physical needs (food, shelter) as prior to the needs of the soul (order, truth, freedom). The essay's move—pay them, but know that payment cannot touch the core of the crisis—is structurally identical to Weil's argument that a just wage is necessary but categorically insufficient for meaningful work.
-{{< /note >}}
-{{< note ref="NOTE // monasticism-analogy" >}}
-The closing gesture toward monasteries, hospitals, and teaching as lost institutions of self-negation invokes what Alasdair MacIntyre (After Virtue, 1981) calls 'practices'—activities whose internal goods are accessible only to practitioners and are corrupted when subordinated to external goods like money or prestige. Open source maintenance may be the first new practice of this kind to emerge at civilizational scale since modern nursing, and its institutional failure follows the same pattern MacIntyre diagnosed: practices cannot survive without institutions, but institutions invariably tend to corrupt the practices they house.
+{{< note ref="NOTE // epistemic humility as method" >}}
+The essay's careful delimitation — 'not choose differently but notice what you're choosing' — mirrors what Donna Haraway calls situated knowledge (1988): the claim is not that a view from nowhere would reveal the correct protocol, but that acknowledging the situatedness of one's legibility intuitions is itself a technical skill with engineering consequences, measurable in latency percentiles and failover times.
 {{< /note >}}
 {{< /margin >}}
