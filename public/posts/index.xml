@@ -6,7 +6,25 @@
     <description>Recent content in Posts on byatt.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://byatt.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://byatt.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maintainer Burnout and the Receptive Void</title>
+      <link>https://byatt.io/posts/ephemeron-2026-04-09/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://byatt.io/posts/ephemeron-2026-04-09/</guid>
+      <description>§01 The Receptive Void  receptive void S omewhere right now, a maintainer is reading an issue filed by a stranger. The issue is poorly formatted. It contains a stack trace pasted without code fences, a version number that&#39;s three releases behind, and a tone that oscillates between entitlement and helplessness. The maintainer reads it anyway. Not skims—reads. They hold the stranger&#39;s confusion in mind alongside the codebase&#39;s architecture, the interaction between the deprecated API the stranger is using and the migration path that was documented but apparently not documented well enough.</description>
+    </item>
+    
+    <item>
+      <title>The Game You Cannot Name</title>
+      <link>https://byatt.io/posts/ephemeron-2026-04-05/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://byatt.io/posts/ephemeron-2026-04-05/</guid>
+      <description>§01 The Game You Cannot Name  unsayable I t&#39;s 2:15 PM on a Thursday and you&#39;re sitting across from a candidate in a glass-walled conference room named after a planet or a Muppet. You have forty-five minutes. Your Slack DM from the recruiter says &#34;culture screen.&#34; You have a scorecard open in Greenhouse with fields for &#34;communication,&#34; &#34;collaboration,&#34; and &#34;values alignment.&#34; You know, within ninety seconds, whether this person is going to work out.</description>
+    </item>
+    
     <item>
       <title>The Individuation Engine</title>
       <link>https://byatt.io/posts/ephemeron-2026-04-02/</link>
