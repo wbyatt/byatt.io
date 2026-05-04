@@ -4,185 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deconstructing the Instruction-Data Dichotomy — byatt.io</title>
+  <meta name="description" content="william byatt">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/illuminated.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/iki.css">
 </head>
 <body>
 
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-  <div class="theme-toggle-icon"></div>
-</button>
-
-
-<nav class="mobile-nav" aria-label="Document position">
-  <a href="/" class="mobile-nav-sigil">byatt.io</a>
-  <span class="mobile-nav-location">
-    <span class="nav-section" id="navSection"></span>
-    <span id="navLabel"></span>
-  </span>
-  <div class="mobile-nav-pip"></div>
+<div class="page">
+  <nav class="nav" aria-label="Primary">
+  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/posts/" class="active">Writing</a>
+    <a href="/cv/">CV</a>
+  </div>
 </nav>
 
 
-<div class="accent-bar"></div>
-
-<div class="page">
-
   
-  <div class="doc-header">
-    <div class="header-inner">
-      <div class="header-gutter">
-        <a href="/" class="header-gutter-mark">doc/theory</a>
-      </div>
-      <div class="header-body">
-        <div class="doc-title">Deconstructing the Instruction-Data Dichotomy</div>
-        
-        <div class="doc-subtitle">on the false boundary between code and data</div>
-        
-      </div>
-      <div class="header-margin">
-        <div class="status-indicators">
-          
-          
-          <div class="status-pip active"></div>
-          
-          <div class="status-pip active"></div>
-          
-          <div class="status-pip active"></div>
-          
-        </div>
-      </div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta">
+      <span>doc/theory</span>
+      <span>·</span><span>17 September 2024</span>
     </div>
-  </div>
+    <h1 class="article-title">Deconstructing the Instruction-Data Dichotomy</h1>
+    <p class="article-subtitle">on the false boundary between code and data</p>
+  </header>
 
   
-  <div class="ornament-band">
 
-  
-  <svg class="band-dark-svg" viewBox="0 0 1140 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <pattern id="interlace-dark" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
-        <rect width="44" height="44" fill="#0b0f0e"/>
-        <rect x="1" y="1" width="42" height="42" fill="none" stroke="#2d5040" stroke-width="0.8"/>
-        <line x1="1" y1="1" x2="43" y2="43" stroke="#1e3328" stroke-width="0.7"/>
-        <line x1="43" y1="1" x2="1" y2="43" stroke="#1e3328" stroke-width="0.7"/>
-        <polygon points="22,3 41,22 22,41 3,22" fill="none" stroke="#2d5040" stroke-width="0.8"/>
-        <line x1="22" y1="1" x2="22" y2="43" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
-        <line x1="1" y1="22" x2="43" y2="22" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
-        <circle cx="22" cy="22" r="3.5" fill="none" stroke="#3d6e52" stroke-width="0.8"/>
-        <circle cx="22" cy="22" r="1.2" fill="#7ec8a0" opacity="0.6"/>
-        <rect x="1" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="37" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="1" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="37" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <circle cx="4" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="40" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="4" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="40" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
-      </pattern>
-    </defs>
-    <rect width="1140" height="44" fill="url(#interlace-dark)"/>
-    <line x1="0" y1="0.5" x2="1140" y2="0.5" stroke="#7a4e18" stroke-width="1"/>
-    <line x1="0" y1="43.5" x2="1140" y2="43.5" stroke="#7a4e18" stroke-width="1"/>
-    <line x1="0" y1="22" x2="1140" y2="22" stroke="#d4913a" stroke-width="0.5" opacity="0.4"/>
-  </svg>
+  <div class="article-body">
+    <h2 class="section-head">
+  <span class="num">§01</span>
+  The Myth
+</h2>
 
-  
-  <div class="band-light-rules">
-    <div class="rule-thin"></div>
-    <div class="rule-ornament-row">
-      <div class="rule-fleuron">
-        <svg viewBox="0 0 48 14" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="7,1 13,7 7,13 1,7" fill="none" stroke="#b0a898" stroke-width="1"/>
-          <circle cx="7" cy="7" r="1.5" fill="#7a6030" opacity="0.6"/>
-          <circle cx="24" cy="7" r="5.5" fill="none" stroke="#b0a898" stroke-width="0.9"/>
-          <line x1="24" y1="1.5" x2="24" y2="12.5" stroke="#c0b8aa" stroke-width="0.7"/>
-          <line x1="18.5" y1="7" x2="29.5" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-          <circle cx="24" cy="7" r="1.8" fill="#b53422" opacity="0.7"/>
-          <polygon points="41,1 47,7 41,13 35,7" fill="none" stroke="#b0a898" stroke-width="1"/>
-          <circle cx="41" cy="7" r="1.5" fill="#7a6030" opacity="0.6"/>
-          <line x1="13" y1="7" x2="18.5" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-          <line x1="29.5" y1="7" x2="35" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-        </svg>
-      </div>
-    </div>
-    <div class="rule-thick"></div>
-  </div>
-
-</div>
-
-
-  
-  
-
-  
-  <div class="section-head-row" data-section="§01" data-label="The Myth">
-  <div class="section-head-gutter">§01</div>
-  <div class="section-head-body">
-    <span class="section-label">§ I.  The Myth</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
-
-<div class="gutter-cell">
-  <span class="sigil">dichotomy</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">dichotomy</span></div>
 
 <div class="main-cell">
 
-
-<div class="dropcap-wrap">
-
-  
-  <svg class="dc-dark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
-    <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
-    <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
-    <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
-    <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
-    <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
-    <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
-    <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
-    <text x="36" y="57" text-anchor="middle"
-          font-family="Inconsolata, monospace"
-          font-size="52" font-weight="600"
-          fill="#7ec8a0"
-          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">I</text>
-    <text x="36" y="57" text-anchor="middle"
-          font-family="Inconsolata, monospace"
-          font-size="52" font-weight="600"
-          fill="#b8f0d0" opacity="0.15">I</text>
-  </svg>
-
-  
-  <svg class="dc-light" viewBox="0 14 50 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <pattern id="hatch-i" patternUnits="userSpaceOnUse"
-               width="3.5" height="3.5" patternTransform="rotate(40)">
-        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#2a3a4a" stroke-width="1.0"/>
-      </pattern>
-      <pattern id="hatch-x-i" patternUnits="userSpaceOnUse"
-               width="3.5" height="3.5" patternTransform="rotate(-40)">
-        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#4a5a6a" stroke-width="0.5" opacity="0.6"/>
-      </pattern>
-      <clipPath id="dc-clip-i">
-        <text x="1" y="62" font-family="Crimson Pro, Georgia, serif"
-              font-size="66" font-weight="700">I</text>
-      </clipPath>
-    </defs>
-    <rect x="-4" y="0" width="60" height="72"
-          fill="url(#hatch-i)" clip-path="url(#dc-clip-i)"/>
-    <rect x="-4" y="0" width="60" height="72"
-          fill="url(#hatch-x-i)" clip-path="url(#dc-clip-i)"/>
-    <text x="1" y="62"
-          font-family="Crimson Pro, Georgia, serif"
-          font-size="66" font-weight="700"
-          fill="none" stroke="#b53422" stroke-width="0.7" opacity="0.45">I</text>
-  </svg>
-
-</div>
+<span class="dropcap" aria-hidden="true">I</span>
 
 
 <p>n the software engineering discourse, a pervasive myth has long shaped our understanding of code and its relationship to data. This myth posits a clear, binary separation: code consists of instructions that operate on extrinsic data. It's a comforting notion, one that neatly compartmentalizes the complexities of programming into active agents (code) and passive recipients (data). This dichotomy has become so ingrained in our collective consciousness that it often goes unquestioned, forming the bedrock of how we conceptualize, teach, and practice software development.</p>
@@ -193,11 +58,9 @@
 
 <p>This reconceptualization is not merely an academic exercise. Understanding the true nature of the instruction-data relationship has profound implications for how we approach software design, team dynamics, and the very role of computation in solving real-world problems. By shedding light on this often-overlooked aspect of programming, we can open new avenues for creativity, collaboration, and innovation in software engineering.</p>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // Derrida</span>
   
@@ -205,28 +68,19 @@ The deconstructive move here mirrors Derrida's strategy: identify a binary oppos
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §II -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§02" data-label="All Code is Data">
-  <div class="section-head-gutter">§02</div>
-  <div class="section-head-body">
-    <span class="section-label">§ II.  All Code is Data</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§02</span>
+  All Code is Data
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">code→data</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">code→data</span></div>
 
 <div class="main-cell">
-
 
 <p>The most basic issue here is that your code cannot operate, your code has no meaning, without the possibility of interpreting it as data. Your ability to work on your code requires that your hard drive be able to store the code as data. It requires that your IDE be able to open, parse, and syntax highlight the code as data. Even more fundamentally, your interpreter, compiler, or assembler is treating your code as data to produce machine code: to the compiler, even your code is an <span class="rubric">extrinsic data source</span> upon which its instructions operate.</p>
 
@@ -234,34 +88,25 @@ The deconstructive move here mirrors Derrida's strategy: identify a binary oppos
 
 <div class="codex">
   <div class="codex-header">
-    <div class="codex-chrome">
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-    </div>
     <span class="codex-caption">ActiveRecord metaprogramming // class as mutable data</span>
     <span class="codex-lang">Ruby</span>
   </div>
   <div class="codex-body">
-    
 <div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">class</span> <span class="ty">User</span> <span class="op"><</span> <span class="ty">ApplicationRecord</span></span></div>
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code">  <span class="nm">has_many</span> <span class="op">:</span><span class="st">posts</span></span></div>
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">end</span></span></div>
 
-
-  </div>
+</div>
 </div>
 
 
 <p>The <code>has_many</code> method has the technical function of creating an instance method called <code>posts</code> on the <code>User</code> class. That is to say, it <em>modifies the class at runtime to create and attach instructions we did not write</em>. This is only possible because the <code>has_many</code> method is capable of treating our class not merely as a lexical context, but as a parameter it receives. At runtime, our class abstraction is <span class="rubric">treated directly as data</span>.</p>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // compiler</span>
   
@@ -276,43 +121,28 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §III -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§03" data-label="Data Can Be Instruction">
-  <div class="section-head-gutter">§03</div>
-  <div class="section-head-body">
-    <span class="section-label">§ III.  Data Can Be Instruction</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§03</span>
+  Data Can Be Instruction
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">data→code</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">data→code</span></div>
 
 <div class="main-cell">
-
 
 <p>One of the first techniques many of us learn is the table-driven methods, canonically articulated in the masterful <em>Code Complete</em>. In a table-driven method, instead of using switch statements or if/then logic to determine which branch of instruction to take, we use a data structure and a lookup in that data structure to drive our behavior. In JavaScript, we might do this:</p>
 
 <div class="codex">
   <div class="codex-header">
-    <div class="codex-chrome">
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-    </div>
     <span class="codex-caption">table-driven dispatch // data that executes</span>
     <span class="codex-lang">JavaScript</span>
   </div>
   <div class="codex-body">
-    
 <div class="cl"><span class="cl-num"></span><span class="cl-code"><span class="kw">const</span> <span class="nm">operations</span> <span class="op">=</span> {</span></div>
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code">  <span class="nm">add</span><span class="op">:</span>      (<span class="nm">x</span>, <span class="nm">y</span>) <span class="op">=></span> <span class="nm">x</span> <span class="op">+</span> <span class="nm">y</span>,</span></div>
@@ -331,8 +161,7 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code">};</span></div>
 
-
-  </div>
+</div>
 </div>
 
 
@@ -346,16 +175,10 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
 
 <div class="codex">
   <div class="codex-header">
-    <div class="codex-chrome">
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-      <div class="codex-dot"></div>
-    </div>
     <span class="codex-caption">mirror-of-computation // code operating on code-as-data</span>
     <span class="codex-lang">Lisp</span>
   </div>
   <div class="codex-body">
-    
 <div class="cl"><span class="cl-num"></span><span class="cl-code">(<span class="kw">defun</span> <span class="nm">mirror-of-computation</span> (<span class="nm">code</span>)</span></div>
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code">  (<span class="kw">if</span> (<span class="nm">listp</span> <span class="nm">code</span>)</span></div>
@@ -366,8 +189,7 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
 
 <div class="cl"><span class="cl-num"></span><span class="cl-code">  <span class="nm">code</span>))</span></div>
 
-
-  </div>
+</div>
 </div>
 
 
@@ -378,7 +200,6 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
 <div class="construction-wrap">
   <div class="construction-caption">x86_64 opcodes // bytes that are simultaneously data and instruction</div>
   <table class="construction">
-    
 <thead>
   <tr>
     <th>Opcode</th>
@@ -433,18 +254,15 @@ ActiveRecord's metaprogramming is not exotic — it is the standard idiom of the
     <td>Compare 64-bit register with register/memory</td>
   </tr>
 </tbody>
-
-  </table>
+</table>
 </div>
 
 
 <p>The opcodes in the left column represent the sequence of bytes that are used to instruct the CPU to perform a command. We cannot help but note that these are simply that: sequences of bytes, identical in every way to any other sequence of bytes. Thus, a <span class="rubric">total collapse of the boundaries</span> between instruction and data sits at the very bottom of our stack, and we cannot meaningfully conceive of code as an active agent operating on inert, extrinsic data.</p>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">REF // McConnell 2004</span>
   
@@ -466,28 +284,19 @@ The Von Neumann architecture's stored-program concept — instructions and data 
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §IV -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§04" data-label="Why It Matters">
-  <div class="section-head-gutter">§04</div>
-  <div class="section-head-body">
-    <span class="section-label">§ IV.  Why It Matters</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§04</span>
+  Why It Matters
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">praxis</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">praxis</span></div>
 
 <div class="main-cell">
-
 
 <p>Our basic cognitive primitives about what software is and how it's constructed inform our positions on what problems software solves, how it solves them, and who it solves them for. As one example, the tendency to view software as primarily an automation tool is rooted in this mistaken belief that software is active instruction that operates on inert data: in the most immediate reading of this automation-oriented perspective, it relies on the idea that there is some information which can be ingested and business processes can be applied to that data. While automation is a considerable power of computing, it is by no means the only or even the most common form of desirable behavior from a computer.</p>
 
@@ -495,11 +304,9 @@ The Von Neumann architecture's stored-program concept — instructions and data 
 
 <p>Unwinding this limited and narrow view of software is, I believe, critical to creating more effective software and more effective software teams. And it begins with this analysis of the <span class="rubric">real meaning of code</span>.</p>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // hierarchy</span>
   
@@ -514,20 +321,31 @@ The parallel to Marx's alienation of labor is intentional: when developers are r
 
 </div>
 
-
-</div>
-
+</aside>
 
 
-  
-  <div class="doc-footer">
-    <div class="footer-gutter"></div>
-    <div class="footer-body">
-      <a href="/" class="footer-nav">← index</a>
-      <span>doc: instruction-data.essay // rev 1</span>
-    </div>
-    <div class="footer-margin">§I–IV complete</div>
   </div>
+
+  <footer class="article-footer">
+    <a href="/" class="back-link">← Home</a>
+  </footer>
+</article>
+
+
+  <footer class="site-footer">
+  <div>
+    <div class="footer-id">will@byatt.io</div>
+    <div>Savannah, GA</div>
+  </div>
+  <div class="site-footer-links">
+    
+    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
+    
+    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
+    
+    <a href="/index.xml" title="RSS">RSS</a>
+  </div>
+</footer>
 
 </div>
 
@@ -542,17 +360,16 @@ The parallel to Marx's alienation of labor is intentional: when developers are r
        data-category="Comments"
        data-category-id="DIC_kwDOMvtUZM4C56QU"
        data-term="instruction-data.essay">
-    
   </div>
 </div>
 <script>
 (function() {
   var container = document.getElementById('responsa-body');
   if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'dark';
+  var theme = localStorage.getItem('byatt-theme') || 'light';
   var themeUrl = theme === 'light'
-    ? '/css/giscus-illuminated-light.css'
-    : '/css/giscus-illuminated.css';
+    ? 'https://byatt.io/css/giscus-iki-light.css'
+    : 'https://byatt.io/css/giscus-iki.css';
   var s = document.createElement('script');
   s.src = 'https://giscus.app/client.js';
   s.setAttribute('data-repo', container.getAttribute('data-repo'));
@@ -576,23 +393,20 @@ The parallel to Marx's alienation of labor is intentional: when developers are r
 
 
 
-
 <script>
-
 (function() {
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
   function giscusThemeUrl(theme) {
     return theme === 'light'
-      ? '/css/giscus-illuminated-light.css'
-      : '/css/giscus-illuminated.css';
+      ? 'https://byatt.io/css/giscus-iki-light.css'
+      : 'https://byatt.io/css/giscus-iki.css';
   }
 
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
-    
     var giscusFrame = document.querySelector('iframe.giscus-frame');
     if (giscusFrame) {
       giscusFrame.contentWindow.postMessage(
@@ -602,61 +416,15 @@ The parallel to Marx's alienation of labor is intentional: when developers are r
     }
   }
 
-  var saved = localStorage.getItem('byatt-theme') || 'dark';
+  var saved = localStorage.getItem('byatt-theme') || 'light';
   applyTheme(saved);
 
   if (toggle) {
     toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'dark';
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      var current = root.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'light' ? 'dark' : 'light');
     });
   }
-})();
-
-
-(function() {
-  var sections = document.querySelectorAll('.section-head-row[data-section]');
-  var navSection = document.getElementById('navSection');
-  var navLabel = document.getElementById('navLabel');
-  var navPip = document.querySelector('.mobile-nav-pip');
-  if (!navSection || !navLabel || sections.length === 0) return;
-
-  var current = -1;
-  var ticking = false;
-
-  function update() {
-    var scrollY = window.scrollY + 60;
-    var active = 0;
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
-        active = i;
-      }
-    }
-    if (active !== current) {
-      current = active;
-      var s = sections[active];
-      navSection.textContent = s.getAttribute('data-section');
-      navLabel.textContent = s.getAttribute('data-label');
-      if (navPip) {
-        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        navPip.style.background = 'var(--amber)';
-        navPip.style.boxShadow = isLight ? 'none' : '0 0 8px rgba(212,145,58,0.8)';
-        setTimeout(function() {
-          navPip.style.background = isLight ? 'var(--rule-hi)' : 'var(--phosphor-dim)';
-          navPip.style.boxShadow = isLight ? 'none' : '0 0 4px rgba(126,200,160,0.3)';
-        }, 400);
-      }
-    }
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-  update();
 })();
 </script>
 </body>

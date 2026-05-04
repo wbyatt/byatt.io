@@ -1,0 +1,58 @@
+{{ define "main" }}
+<header style="padding: 16px 0 48px;">
+  <h1>{{ .Title | default "Writing" }}</h1>
+  {{ if .Params.subtitle }}<p class="lede">{{ .Params.subtitle }}</p>
+  {{ else if eq .Section "posts" }}<p class="lede">Notes on distributed systems, leading engineers, and the things in between.</p>
+  {{ end }}
+</header>
+
+{{ if eq .Section "posts" }}
+{{ $posts := .Pages.ByDate.Reverse }}
+{{ $byYear := dict }}
+{{ range $posts }}
+  {{ $year := .Date.Format "2006" }}
+  {{ $existing := index $byYear $year | default slice }}
+  {{ $byYear = merge $byYear (dict $year (append . $existing)) }}
+{{ end }}
+
+{{ $years := slice }}
+{{ range $year, $_ := $byYear }}{{ $years = $years | append $year }}{{ end }}
+{{ $years = sort $years "value" "desc" }}
+
+{{ range $i, $year := $years }}
+<div class="year-head{{ if eq $i 0 }} first{{ end }}">{{ $year }}</div>
+{{ range index $byYear $year }}
+<a href="{{ .RelPermalink }}" class="writing-row">
+  <div class="date">{{ .Date.Format "01 · 02" }}</div>
+  <div>
+    <h2 class="title">{{ .Title }}</h2>
+    {{ if .Params.subtitle }}<p class="dek">{{ .Params.subtitle }}</p>
+    {{ else if .Description }}<p class="dek">{{ .Description }}</p>
+    {{ end }}
+    {{ with .Params.doc_class }}
+    {{ $tone := "" }}
+    {{ if in . "ephemeron" }}{{ $tone = "tag-cordovan" }}
+    {{ else if in . "leadership" }}{{ $tone = "tag-moss" }}
+    {{ end }}
+    <span class="tag {{ $tone }}">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ with .ReadingTime }}<div class="read-time">{{ . }} min</div>{{ end }}
+</a>
+{{ end }}
+{{ end }}
+
+{{ else }}
+<ul class="page-list">
+  {{ range .Pages }}
+  <li class="page-list-item">
+    <span class="doc-class">{{ .Params.doc_class | default "doc" }}</span>
+    <div>
+      <a href="{{ .RelPermalink }}" class="title">{{ .Title }}</a>
+      {{ with .Params.subtitle }}<span class="subtitle">{{ . }}</span>{{ end }}
+    </div>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

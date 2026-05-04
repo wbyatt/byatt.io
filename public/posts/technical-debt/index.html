@@ -4,185 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Art of Technical Debt — byatt.io</title>
+  <meta name="description" content="william byatt">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/illuminated.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/iki.css">
 </head>
 <body>
 
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-  <div class="theme-toggle-icon"></div>
-</button>
-
-
-<nav class="mobile-nav" aria-label="Document position">
-  <a href="/" class="mobile-nav-sigil">byatt.io</a>
-  <span class="mobile-nav-location">
-    <span class="nav-section" id="navSection"></span>
-    <span id="navLabel"></span>
-  </span>
-  <div class="mobile-nav-pip"></div>
+<div class="page">
+  <nav class="nav" aria-label="Primary">
+  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/posts/" class="active">Writing</a>
+    <a href="/cv/">CV</a>
+  </div>
 </nav>
 
 
-<div class="accent-bar"></div>
-
-<div class="page">
-
   
-  <div class="doc-header">
-    <div class="header-inner">
-      <div class="header-gutter">
-        <a href="/" class="header-gutter-mark">doc/praxis</a>
-      </div>
-      <div class="header-body">
-        <div class="doc-title">The Art of Technical Debt</div>
-        
-        <div class="doc-subtitle">when to embrace it, when to refactor</div>
-        
-      </div>
-      <div class="header-margin">
-        <div class="status-indicators">
-          
-          
-          <div class="status-pip active"></div>
-          
-          <div class="status-pip amber"></div>
-          
-          <div class="status-pip active"></div>
-          
-        </div>
-      </div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta">
+      <span>doc/praxis</span>
+      <span>·</span><span>16 September 2024</span>
     </div>
-  </div>
+    <h1 class="article-title">The Art of Technical Debt</h1>
+    <p class="article-subtitle">when to embrace it, when to refactor</p>
+  </header>
 
   
-  <div class="ornament-band">
 
-  
-  <svg class="band-dark-svg" viewBox="0 0 1140 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <pattern id="interlace-dark" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
-        <rect width="44" height="44" fill="#0b0f0e"/>
-        <rect x="1" y="1" width="42" height="42" fill="none" stroke="#2d5040" stroke-width="0.8"/>
-        <line x1="1" y1="1" x2="43" y2="43" stroke="#1e3328" stroke-width="0.7"/>
-        <line x1="43" y1="1" x2="1" y2="43" stroke="#1e3328" stroke-width="0.7"/>
-        <polygon points="22,3 41,22 22,41 3,22" fill="none" stroke="#2d5040" stroke-width="0.8"/>
-        <line x1="22" y1="1" x2="22" y2="43" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
-        <line x1="1" y1="22" x2="43" y2="22" stroke="#3d6e52" stroke-width="0.5" opacity="0.5"/>
-        <circle cx="22" cy="22" r="3.5" fill="none" stroke="#3d6e52" stroke-width="0.8"/>
-        <circle cx="22" cy="22" r="1.2" fill="#7ec8a0" opacity="0.6"/>
-        <rect x="1" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="37" y="1" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="1" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <rect x="37" y="37" width="6" height="6" fill="#1e3328" stroke="#2d5040" stroke-width="0.5"/>
-        <circle cx="4" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="40" cy="4" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="4" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
-        <circle cx="40" cy="40" r="1.5" fill="#8a7040" opacity="0.7"/>
-      </pattern>
-    </defs>
-    <rect width="1140" height="44" fill="url(#interlace-dark)"/>
-    <line x1="0" y1="0.5" x2="1140" y2="0.5" stroke="#7a4e18" stroke-width="1"/>
-    <line x1="0" y1="43.5" x2="1140" y2="43.5" stroke="#7a4e18" stroke-width="1"/>
-    <line x1="0" y1="22" x2="1140" y2="22" stroke="#d4913a" stroke-width="0.5" opacity="0.4"/>
-  </svg>
+  <div class="article-body">
+    <h2 class="section-head">
+  <span class="num">§01</span>
+  Understanding Technical Debt
+</h2>
 
-  
-  <div class="band-light-rules">
-    <div class="rule-thin"></div>
-    <div class="rule-ornament-row">
-      <div class="rule-fleuron">
-        <svg viewBox="0 0 48 14" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="7,1 13,7 7,13 1,7" fill="none" stroke="#b0a898" stroke-width="1"/>
-          <circle cx="7" cy="7" r="1.5" fill="#7a6030" opacity="0.6"/>
-          <circle cx="24" cy="7" r="5.5" fill="none" stroke="#b0a898" stroke-width="0.9"/>
-          <line x1="24" y1="1.5" x2="24" y2="12.5" stroke="#c0b8aa" stroke-width="0.7"/>
-          <line x1="18.5" y1="7" x2="29.5" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-          <circle cx="24" cy="7" r="1.8" fill="#b53422" opacity="0.7"/>
-          <polygon points="41,1 47,7 41,13 35,7" fill="none" stroke="#b0a898" stroke-width="1"/>
-          <circle cx="41" cy="7" r="1.5" fill="#7a6030" opacity="0.6"/>
-          <line x1="13" y1="7" x2="18.5" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-          <line x1="29.5" y1="7" x2="35" y2="7" stroke="#c0b8aa" stroke-width="0.7"/>
-        </svg>
-      </div>
-    </div>
-    <div class="rule-thick"></div>
-  </div>
-
-</div>
-
-
-  
-  
-
-  
-  <div class="section-head-row" data-section="§01" data-label="Understanding Technical Debt">
-  <div class="section-head-gutter">§01</div>
-  <div class="section-head-body">
-    <span class="section-label">§ I.  Understanding Technical Debt</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
-
-<div class="gutter-cell">
-  <span class="sigil">debt</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">debt</span></div>
 
 <div class="main-cell">
 
-
-<div class="dropcap-wrap">
-
-  
-  <svg class="dc-dark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0.5" y="0.5" width="71" height="71" fill="#0b0f0e" stroke="#2d5040" stroke-width="1"/>
-    <rect x="4" y="4" width="64" height="64" fill="none" stroke="#1e3328" stroke-width="0.8"/>
-    <polygon points="4,4 14,4 4,14" fill="#1e3328"/>
-    <polygon points="68,4 58,4 68,14" fill="#1e3328"/>
-    <polygon points="4,68 14,68 4,58" fill="#1e3328"/>
-    <polygon points="68,68 58,68 68,58" fill="#1e3328"/>
-    <line x1="4" y1="4" x2="68" y2="68" stroke="#1e3328" stroke-width="0.5"/>
-    <line x1="68" y1="4" x2="4" y2="68" stroke="#1e3328" stroke-width="0.5"/>
-    <text x="36" y="57" text-anchor="middle"
-          font-family="Inconsolata, monospace"
-          font-size="52" font-weight="600"
-          fill="#7ec8a0"
-          style="text-shadow: 0 0 12px rgba(126,200,160,0.5)">A</text>
-    <text x="36" y="57" text-anchor="middle"
-          font-family="Inconsolata, monospace"
-          font-size="52" font-weight="600"
-          fill="#b8f0d0" opacity="0.15">A</text>
-  </svg>
-
-  
-  <svg class="dc-light" viewBox="0 14 50 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <pattern id="hatch-a" patternUnits="userSpaceOnUse"
-               width="3.5" height="3.5" patternTransform="rotate(40)">
-        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#2a3a4a" stroke-width="1.0"/>
-      </pattern>
-      <pattern id="hatch-x-a" patternUnits="userSpaceOnUse"
-               width="3.5" height="3.5" patternTransform="rotate(-40)">
-        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#4a5a6a" stroke-width="0.5" opacity="0.6"/>
-      </pattern>
-      <clipPath id="dc-clip-a">
-        <text x="1" y="62" font-family="Crimson Pro, Georgia, serif"
-              font-size="66" font-weight="700">A</text>
-      </clipPath>
-    </defs>
-    <rect x="-4" y="0" width="60" height="72"
-          fill="url(#hatch-a)" clip-path="url(#dc-clip-a)"/>
-    <rect x="-4" y="0" width="60" height="72"
-          fill="url(#hatch-x-a)" clip-path="url(#dc-clip-a)"/>
-    <text x="1" y="62"
-          font-family="Crimson Pro, Georgia, serif"
-          font-size="66" font-weight="700"
-          fill="none" stroke="#b53422" stroke-width="0.7" opacity="0.45">A</text>
-  </svg>
-
-</div>
+<span class="dropcap" aria-hidden="true">A</span>
 
 
 <p> specter is haunting software, the specter of technical debt. Read any discussion space where software engineers are present — Stack Overflow, the-website-formerly-known-as-Twitter, Mastodon — and you'll see "technical debt" discussed in terms ranging from frustration to contempt. The more level-headed commentators will acknowledge that technical debt is an inevitability, but generally with a sense that it's a manifestation of living in an imperfect world. But far from being uniformly negative, technical debt can be a <span class="rubric">powerful tool</span> when wielded strategically — and not just for product-oriented spreadsheet jockeys, but for the day-to-day developer experience as well. This post aims to provide a framework for understanding technical debt and offer guidance on when to embrace it and when to prioritize refactoring.</p>
@@ -192,26 +57,20 @@
 <p>It's important that we distinguish this from other engineering choices that may appear, at first glance, to be similar. Releasing a limited feature set, using the minimum viable product (MVP) model, does not incur debt because we are not expecting costs related to reworking, but rather we are expecting <em>new</em> costs associated with continued feature development. Nor is it technical debt when we simply made bad design or implementation decisions that we are now paying for: technical debt is a <span class="rubric">strategic, intentional choice</span>, not an engineering mistake.</p>
 
 <div class="axiom-block">
-  <div class="axiom-header">
-    <span class="axiom-header-label">Definition</span>
-  </div>
+  <div class="axiom-header"><span class="axiom-header-label">Definition</span></div>
   <div class="axiom-list">
-    
 <div class="axiom">
   <span class="axiom-num">DEF</span>
   <span><strong>Technical debt</strong> refers to the implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a more robust approach that would take longer to implement in the near term.</span>
 </div>
 
-
-  </div>
+</div>
 </div>
 
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">REF // Cunningham 1992</span>
   
@@ -226,36 +85,25 @@ The MVP is a scope decision; technical debt is an implementation decision. An MV
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §II -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§02" data-label="The Financial Metaphor">
-  <div class="section-head-gutter">§02</div>
-  <div class="section-head-body">
-    <span class="section-label">§ II.  The Financial Metaphor</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§02</span>
+  The Financial Metaphor
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">finance</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">finance</span></div>
 
 <div class="main-cell">
 
-
 <p>Just as financial debt can be a tool for growth when managed wisely, technical debt can accelerate product development. The original loan <span class="rubric">principal</span> is the additional cost it would have taken to develop the more robust solution, while the <span class="rubric">interest</span> is the increased difficulty of changing the system over time. The "payoff amount" is the time and cost that would be required to eliminate the debt at some point after it is originally assumed. Like financial debt, technical debt isn't inherently bad — it's all about how you manage it.</p>
-
 
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // limits</span>
   
@@ -263,39 +111,27 @@ One failure of the financial metaphor: real debt has a known amortization schedu
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §III -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§03" data-label="Strategic Framework">
-  <div class="section-head-gutter">§03</div>
-  <div class="section-head-body">
-    <span class="section-label">§ III.  Strategic Framework</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§03</span>
+  Strategic Framework
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">framework</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">framework</span></div>
 
 <div class="main-cell">
-
 
 <p>Much like assuming financial debt, the basic framework for evaluating ROI of technical debt is actually relatively straightforward. There are unknowns that can never be predicted with certainty, but planners can make their best informed estimates and make tactical choices accordingly.</p>
 
 <p>There are three primary criteria I use to evaluate whether or not a particular problem is a good candidate for debt. This framework helps me to determine what the real benefits and cost structure of assuming some particular technical debt would be.</p>
 
 <div class="axiom-block">
-  <div class="axiom-header">
-    <span class="axiom-header-label">Evaluation Criteria</span>
-  </div>
+  <div class="axiom-header"><span class="axiom-header-label">Evaluation Criteria</span></div>
   <div class="axiom-list">
-    
 <div class="axiom">
   <span class="axiom-num">I</span>
   <span><strong>Product Upside Evaluation</strong>: Consider the potential market advantage of releasing sooner. If being first-to-market or quickly iterating on customer feedback could significantly boost your product's success, taking on some technical debt might be worthwhile. It's worthwhile to note that a lot of the choices we have the opportunity to make in software have real cost and timeline impacts on the order of developer-hours. I would generally evaluate these as insufficient upside. We should primarily be looking for debt scenarios with upsides on the order of days or longer.</span>
@@ -311,16 +147,13 @@ One failure of the financial metaphor: real debt has a known amortization schedu
   <span><strong>Organizational Support Assessment</strong>: This is often underestimated or outright ignored in this process. We must gauge the understanding and buy-in from leadership. Ensure there's a commitment to allocate resources for eventual debt repayment, either with long-term servicing or an eventual lump-sum payoff. Without this support, even small debts can snowball into major issues, and this is also where developer experience takes the most significant hit: developers who are constantly working against debt, instead of building new things, live in a state of soul-crushing hamster-wheeling. It's also important to consider expectations management here: if your stakeholders begin to expect delivery time miracles, your overall debt position can spiral. It's important that stakeholders understand that a liability exists on the technical books with this choice, and that it must be paid down.</span>
 </div>
 
-
-  </div>
+</div>
 </div>
 
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // threshold</span>
   
@@ -335,28 +168,19 @@ Isolability is the single best predictor of manageable debt. Debt behind a stabl
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §IV -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§04" data-label="Portfolio Management">
-  <div class="section-head-gutter">§04</div>
-  <div class="section-head-body">
-    <span class="section-label">§ IV.  Portfolio Management</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§04</span>
+  Portfolio Management
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">portfolio</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">portfolio</span></div>
 
 <div class="main-cell">
-
 
 <p>Once we have assumed some technical debt in our project, we need to begin to manage it with a <span class="rubric">unified technical debt portfolio strategy</span>. This needs to be holistically developed and managed, and not an ad hoc addendum to the rest of our development programme.</p>
 
@@ -366,11 +190,9 @@ Isolability is the single best predictor of manageable debt. Debt behind a stabl
 <li><strong>Balancing Act</strong>: Strive for a balance between taking on new debt and repaying existing debt. This equilibrium is crucial for maintaining development velocity while keeping the codebase manageable. Accepting significant new technical debts without a concomitant increase in overall technical organization size or paying down some existing debt is a recipe for unhappy developers and grinding productivity to a halt.</li>
 </ol>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // depreciation</span>
   
@@ -378,28 +200,19 @@ Some debt depreciates naturally: a module scheduled for replacement loses its de
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §V -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§05" data-label="Mitigating Risks">
-  <div class="section-head-gutter">§05</div>
-  <div class="section-head-body">
-    <span class="section-label">§ V.  Mitigating Risks</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§05</span>
+  Mitigating Risks
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">risk</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">risk</span></div>
 
 <div class="main-cell">
-
 
 <p>Once debt is on the books and being appropriately strategically managed, there are assets we can introduce that help us tactically manage those debts and prevent unexpected downside realizations. One of the failures of the "debt" metaphor is that financial debt usually has a known liability structure: we know exactly how and when we will incur servicing costs related to the financial debt. The same is not true for technical debt. It's very much possible for some new piece of code to contribute to technical debt's long-term costs without that being intentional or planned. As such, it's important we be aware of this risk and plan against it.</p>
 
@@ -409,11 +222,9 @@ Some debt depreciates naturally: a module scheduled for replacement loses its de
 <li><strong>Documentation and Knowledge Sharing</strong>: Maintain clear documentation of known technical debt and share insights across teams. This transparency helps in making informed decisions about when to address specific debts.</li>
 </ol>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // testing</span>
   
@@ -421,28 +232,19 @@ Tests around technical debt serve a dual purpose: they catch regressions now, an
 
 </div>
 
-
-</div>
+</aside>
 
 <!-- §VI -->
-<div class="section-rule">
-  <div></div><div></div><div></div>
-</div>
+<hr class="section-rule">
 
-<div class="section-head-row" data-section="§06" data-label="Developer Joy">
-  <div class="section-head-gutter">§06</div>
-  <div class="section-head-body">
-    <span class="section-label">§ VI.  Developer Joy</span>
-  </div>
-  <div class="section-head-margin"></div>
-</div>
+<h2 class="section-head">
+  <span class="num">§06</span>
+  Developer Joy
+</h2>
 
-<div class="gutter-cell">
-  <span class="sigil">joy</span>
-</div>
+<div class="gutter-cell" aria-hidden="true"><span class="sigil">joy</span></div>
 
 <div class="main-cell">
-
 
 <p>Thus far, I've written at length about how to evaluate and manage technical debt, and what some of the possibilities are that can contribute to destructive developer experiences. But I have not yet made the argument that well-managed debt can lead to <em>improved</em> developer experience, which is arguably the most controversial assertion I made in the introduction.</p>
 
@@ -456,11 +258,9 @@ Tests around technical debt serve a dual purpose: they catch regressions now, an
 
 <p>Remember, the goal isn't to eliminate technical debt entirely, but to manage it effectively. By doing so, you can harness its power to accelerate development while mitigating its risks, ultimately leading to more successful and sustainable software projects.</p>
 
-
 </div>
 
-<div class="margin-cell">
-
+<aside class="margin-cell">
 <div class="margin-note">
   <span class="ref">NOTE // flow</span>
   
@@ -475,20 +275,31 @@ The goal is not zero debt but optimal debt — the level that maximizes the team
 
 </div>
 
-
-</div>
-
+</aside>
 
 
-  
-  <div class="doc-footer">
-    <div class="footer-gutter"></div>
-    <div class="footer-body">
-      <a href="/" class="footer-nav">← index</a>
-      <span>doc: technical-debt.essay // rev 1</span>
-    </div>
-    <div class="footer-margin">§I–VI complete</div>
   </div>
+
+  <footer class="article-footer">
+    <a href="/" class="back-link">← Home</a>
+  </footer>
+</article>
+
+
+  <footer class="site-footer">
+  <div>
+    <div class="footer-id">will@byatt.io</div>
+    <div>Savannah, GA</div>
+  </div>
+  <div class="site-footer-links">
+    
+    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
+    
+    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
+    
+    <a href="/index.xml" title="RSS">RSS</a>
+  </div>
+</footer>
 
 </div>
 
@@ -503,17 +314,16 @@ The goal is not zero debt but optimal debt — the level that maximizes the team
        data-category="Comments"
        data-category-id="DIC_kwDOMvtUZM4C56QU"
        data-term="technical-debt.essay">
-    
   </div>
 </div>
 <script>
 (function() {
   var container = document.getElementById('responsa-body');
   if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'dark';
+  var theme = localStorage.getItem('byatt-theme') || 'light';
   var themeUrl = theme === 'light'
-    ? '/css/giscus-illuminated-light.css'
-    : '/css/giscus-illuminated.css';
+    ? 'https://byatt.io/css/giscus-iki-light.css'
+    : 'https://byatt.io/css/giscus-iki.css';
   var s = document.createElement('script');
   s.src = 'https://giscus.app/client.js';
   s.setAttribute('data-repo', container.getAttribute('data-repo'));
@@ -537,23 +347,20 @@ The goal is not zero debt but optimal debt — the level that maximizes the team
 
 
 
-
 <script>
-
 (function() {
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');
 
   function giscusThemeUrl(theme) {
     return theme === 'light'
-      ? '/css/giscus-illuminated-light.css'
-      : '/css/giscus-illuminated.css';
+      ? 'https://byatt.io/css/giscus-iki-light.css'
+      : 'https://byatt.io/css/giscus-iki.css';
   }
 
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem('byatt-theme', theme);
-    
     var giscusFrame = document.querySelector('iframe.giscus-frame');
     if (giscusFrame) {
       giscusFrame.contentWindow.postMessage(
@@ -563,61 +370,15 @@ The goal is not zero debt but optimal debt — the level that maximizes the team
     }
   }
 
-  var saved = localStorage.getItem('byatt-theme') || 'dark';
+  var saved = localStorage.getItem('byatt-theme') || 'light';
   applyTheme(saved);
 
   if (toggle) {
     toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'dark';
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      var current = root.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'light' ? 'dark' : 'light');
     });
   }
-})();
-
-
-(function() {
-  var sections = document.querySelectorAll('.section-head-row[data-section]');
-  var navSection = document.getElementById('navSection');
-  var navLabel = document.getElementById('navLabel');
-  var navPip = document.querySelector('.mobile-nav-pip');
-  if (!navSection || !navLabel || sections.length === 0) return;
-
-  var current = -1;
-  var ticking = false;
-
-  function update() {
-    var scrollY = window.scrollY + 60;
-    var active = 0;
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
-        active = i;
-      }
-    }
-    if (active !== current) {
-      current = active;
-      var s = sections[active];
-      navSection.textContent = s.getAttribute('data-section');
-      navLabel.textContent = s.getAttribute('data-label');
-      if (navPip) {
-        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        navPip.style.background = 'var(--amber)';
-        navPip.style.boxShadow = isLight ? 'none' : '0 0 8px rgba(212,145,58,0.8)';
-        setTimeout(function() {
-          navPip.style.background = isLight ? 'var(--rule-hi)' : 'var(--phosphor-dim)';
-          navPip.style.boxShadow = isLight ? 'none' : '0 0 4px rgba(126,200,160,0.3)';
-        }, 400);
-      }
-    }
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-  update();
 })();
 </script>
 </body>

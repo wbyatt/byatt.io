@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect x="0" y="0" width="80" height="80" fill="#1C1B18"></rect>
+  <text x="40" y="59" text-anchor="middle" font-family="Source Serif 4, Iowan Old Style, Charter, Georgia, serif" font-size="64" font-weight="400" letter-spacing="-2" fill="#E8E1D1">b</text>
+  <circle cx="58" cy="56" r="4" fill="#A88A3A"></circle>
+</svg>

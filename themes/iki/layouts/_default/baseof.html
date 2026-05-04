@@ -1,60 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Language.Lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories — byatt.io</title>
-  <meta name="description" content="william byatt">
+  <title>{{ .Title }}{{ if not .IsHome }} — {{ .Site.Title }}{{ end }}</title>
+  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+  <link rel="stylesheet" href="{{ "css/iki.css" | relURL }}">
 </head>
 <body>
 
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
 
 <div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
-</nav>
+  {{ partial "nav.html" . }}
 
+  {{ block "main" . }}{{ end }}
 
-  
-<header style="padding: 16px 0 48px;">
-  <h1>Categories</h1>
-  
-</header>
-
-
-<ul class="page-list">
-  
-</ul>
-
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">will@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    <a href="/index.xml" title="RSS">RSS</a>
-  </div>
-</footer>
-
+  {{ partial "footer.html" . }}
 </div>
 
-
+{{ block "after" . }}{{ end }}
 
 <script>
 (function() {

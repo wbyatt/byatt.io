@@ -1,7 +1,7 @@
 baseURL: "https://byatt.io/"
 languageCode: "en-us"
 title: "byatt.io"
-theme: ['illuminated']
+theme: ['iki']
 
 markup:
   goldmark:

@@ -1,0 +1,9 @@
+name = "iki"
+license = "MIT"
+description = "byatt.io — Iki design system. Refined, unobtrusive, principled."
+homepage = "https://byatt.io"
+min_version = "0.100.0"
+
+[author]
+  name = "William Byatt"
+  homepage = "https://byatt.io"

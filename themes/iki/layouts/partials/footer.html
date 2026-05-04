@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div>
+    <div class="footer-id">william@byatt.io</div>
+    <div>Savannah, GA</div>
+  </div>
+  <div class="site-footer-links">
+    {{ range .Site.Params.socialIcons }}
+    <a href="{{ .url }}" rel="me" title="{{ .title }}">{{ .title }}</a>
+    {{ end }}
+    <!-- <a href="{{ " /index.xml" | relURL }}" title="RSS">RSS</a> -->
+  </div>
+</footer>

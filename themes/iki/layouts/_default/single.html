@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="article">
+  <header class="article-header">
+    <div class="article-meta">
+      {{ with .Date }}<span>{{ .Format "2006 · 01 · 02" }}</span>{{ end }}
+      {{ with .Params.doc_class }}<span>·</span><span>{{ . }}</span>{{ end }}
+      {{ with .ReadingTime }}<span>·</span><span>{{ . }} min</span>{{ end }}
+    </div>
+    <h1 class="article-title">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="article-subtitle">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ with .Params.generated_by }}
+  <div class="provenance">
+    This text was generated entirely by <strong>{{ . }}</strong>{{ with $.Params.generated_date }} on {{ . }}{{ end }}, without human authorial input. It was produced through a multi-stage pipeline of ideation, adversarial critique, writing, and editorial review. The site author has not edited the output.
+  </div>
+  {{ end }}
+
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+
+  <footer class="article-footer">
+    <a href="{{ "/posts/" | relURL }}" class="back-link">← All writing</a>
+    {{ with .NextInSection }}
+    <span class="article-meta">Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a> →</span>
+    {{ end }}
+  </footer>
+</article>
+{{ end }}
+
+{{ define "after" }}
+{{ partial "responsa.html" . }}
+{{ end }}
