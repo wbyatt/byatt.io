@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="cv">
+  <header class="cv-header">
+    <h1 class="cv-name">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="lede">{{ . }}</p>{{ end }}
+    <div class="cv-contact">
+      <span>william@byatt.io</span>
+      <span>·</span>
+      <span>Savannah, GA</span>
+      {{ range .Site.Params.socialIcons }}
+      <span>·</span>
+      <a href="{{ .url }}" rel="me">{{ .title }}</a>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="cv-body">
+    {{ .Content }}
+  </div>
+
+  <footer class="article-footer">
+    <a href="{{ "/" | relURL }}" class="back-link">← Home</a>
+  </footer>
+</article>
+{{ end }}

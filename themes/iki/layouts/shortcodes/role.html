@@ -1,0 +1,7 @@
+<div class="cv-role">
+  <div class="cv-role-head">
+    <h3 class="cv-role-title">{{ .Get "title" }}{{ with .Get "org" }} <span class="cv-role-org">— {{ . }}</span>{{ end }}</h3>
+    {{ with .Get "dates" }}<div class="cv-role-dates">{{ . }}</div>{{ end }}
+  </div>
+  <div class="cv-role-body">{{ .Inner | markdownify }}</div>
+</div>
