@@ -1,0 +1,16 @@
+/* -------------------------------------------------------------------------
+   Project-level overrides on top of the iki theme.
+   Loaded after iki.css; uses higher-specificity or same-specificity-later
+   rules to win the cascade.
+   ------------------------------------------------------------------------- */
+
+/* Body prose size: theme defaults to --fs-18, which projects "literary
+   register" too aggressively for working-document writing. Drop to --fs-16,
+   which is at the accessibility floor and reads as the modern docs idiom
+   (Stripe, Linear, Tailwind, etc). Studies stay at --fs-14 via study.css. */
+p,
+.article-body,
+.article-body p,
+.article-body li {
+  font-size: var(--fs-16);
+}

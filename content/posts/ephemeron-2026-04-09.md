@@ -2,7 +2,7 @@
 title: "Maintainer Burnout and the Receptive Void"
 subtitle: "Why open source maintenance demands self-emptying that no payment can fix"
 date: 2026-04-09
-draft: false
+draft: true
 layout: treatise
 doc_class: "ephemeron/preserved"
 doc_id: "ephemeron.2026-04-09"

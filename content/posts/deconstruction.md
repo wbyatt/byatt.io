@@ -2,7 +2,7 @@
 title: "Deconstructing the Instruction-Data Dichotomy"
 subtitle: "on the false boundary between code and data"
 date: 2024-09-17T12:45:18-04:00
-draft: false
+draft: true
 layout: treatise
 doc_class: "doc/theory"
 doc_id: "instruction-data.essay"

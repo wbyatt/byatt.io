@@ -2,7 +2,7 @@
 title: "The Individuation Engine"
 subtitle: "Simondon, Wittgenstein, and the LLM understanding debate"
 date: 2026-04-02
-draft: false
+draft: true
 layout: treatise
 doc_class: "ephemeron/preserved"
 doc_id: "ephemeron.2026-04-02"

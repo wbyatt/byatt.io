@@ -1,0 +1,136 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Reading list, Q2 2026: distributed scheduling — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
+<link rel=stylesheet href=/css/iki-overrides.css>
+</head>
+<body>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/ class=active>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
+</nav>
+<article class=article>
+<header class=article-header>
+<div class=article-meta>
+<span>2026 · 05 · 07</span>
+<span>·</span><span>6 min</span>
+</div>
+<h1 class=article-title>Reading list, Q2 2026: distributed scheduling</h1>
+<p class=article-subtitle>twenty-one papers, sorted by structural family</p>
+</header>
+<div class=article-body>
+<p>Twenty-one papers on distributed scheduling for Q2 2026 — about half I&rsquo;ve already worked through, the other half I&rsquo;m catching up on this quarter. The list is sorted by <em>structural family</em>: how each paper decomposes the scheduling problem, not when it appeared. The space is large enough that chronological listing is misleading — papers from the same year live in entirely different design regions, and papers from a decade apart often answer the same question with different vocabularies.</p>
+<hr>
+<h2 id=foundational-allocation-theory>Foundational allocation theory</h2>
+<h3 id=dominant-resource-fairness-fair-allocation-of-multiple-resource-typeshttpswww2eecsberkeleyedupubstechrpts2011eecs-2011-18pdf><a href=https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-18.pdf>Dominant resource fairness: Fair allocation of multiple resource types</a></h3>
+<h4 id=ghodsi-zaharia-hindman-konwinski-shenker-stoica-nsdi-2011>Ghodsi, Zaharia, Hindman, Konwinski, Shenker, Stoica. <em>NSDI 2011.</em></h4>
+<p>The canonical answer to &ldquo;how do you do fair share when jobs need different mixes of CPU/RAM/GPU/etc.?&rdquo; Generalizes max-min fairness to vector-valued resources by allocating proportionally to each user&rsquo;s <em>dominant</em> resource share. Used by Mesos, YARN&rsquo;s Capacity Scheduler, and Kubernetes via descendants. Re-read it for the strategy-proofness proof — that&rsquo;s the part that turns a heuristic into a defensible policy.</p>
+<h3 id=choosy-max-min-fair-sharing-for-datacenter-jobs-with-constraintshttpspeopleeecsberkeleyedumateipapers2013eurosys_choosypdf><a href=https://people.eecs.berkeley.edu/~matei/papers/2013/eurosys_choosy.pdf>Choosy: Max-Min Fair Sharing for Datacenter Jobs with Constraints</a></h3>
+<h4 id=ghodsi-zaharia-shenker-stoica-eurosys-2013>Ghodsi, Zaharia, Shenker, Stoica. <em>EuroSys 2013.</em></h4>
+<p>DRF extended to constrained queues. Less famous, but if you&rsquo;ve internalized DRF this is the natural follow-up.</p>
+<h3 id=altruistic-scheduling-in-multi-resource-clustershttpswwwusenixorgsystemfilesconferenceosdi16osdi16-grandl-altruisticpdf><a href=https://www.usenix.org/system/files/conference/osdi16/osdi16-grandl-altruistic.pdf>Altruistic Scheduling in Multi-Resource Clusters</a></h3>
+<h4 id=grandl-chowdhury-akella-ananthanarayanan-osdi-2016>Grandl, Chowdhury, Akella, Ananthanarayanan. <em>OSDI 2016.</em></h4>
+<p>Altruistic scheduling — jobs voluntarily give up resources they don&rsquo;t currently need. Improves average completion time <em>and</em> fairness simultaneously, which DRF cannot do alone.</p>
+<h3 id=2dfq-two-dimensional-fair-queuing-for-multi-tenant-cloud-serviceshttpswwwmicrosoftcomen-usresearchwp-contentuploads201608mace162dfqpdfmsockid169f6418a33165ee0bc670ffa2356421><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/mace162dfq.pdf?msockid=169f6418a33165ee0bc670ffa2356421">2DFQ: Two-Dimensional Fair Queuing for Multi-Tenant Cloud Services</a></h3>
+<h4 id=blagojević-lloyd-anderson-usenix-atc-2018>Blagojević, Lloyd, Anderson. <em>USENIX ATC 2018.</em></h4>
+<p>Two-dimensional fair queueing for scheduling latency-sensitive vs. background work on the same machine. The right thing to read if you care about co-location at the queue level.</p>
+<hr>
+<h2 id=two-level-separate-allocation-from-placement>Two-level: separate allocation from placement</h2>
+<h3 id=mesos-a-platform-for-fine-grained-resource-sharing-in-the-data-centerhttpspeopleeecsberkeleyedualigpapersmesospdf><a href=https://people.eecs.berkeley.edu/~alig/papers/mesos.pdf>Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center</a></h3>
+<h4 id=hindman-konwinski-zaharia-ghodsi-joseph-katz-shenker-stoica-nsdi-2011>Hindman, Konwinski, Zaharia, Ghodsi, Joseph, Katz, Shenker, Stoica. <em>NSDI 2011.</em></h4>
+<p>&ldquo;Resource offers&rdquo; — the master proposes packs of resources to frameworks (Spark, Hadoop, Marathon, etc.), which accept or reject. Decouples <em>what to run where</em> from <em>how to find a slot</em>. Reads as a clean architectural separation; influenced everything that followed.</p>
+<h3 id=large-scale-cluster-management-at-google-with-borghttpsstaticgoogleusercontentcommediaresearchgooglecomenpubsarchive43438pdf><a href=https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43438.pdf>Large-scale cluster management at Google with Borg</a></h3>
+<h4 id=verma-pedrosa-korupolu-oppenheimer-tune-wilkes-eurosys-2015>Verma, Pedrosa, Korupolu, Oppenheimer, Tune, Wilkes. <em>EuroSys 2015.</em></h4>
+<p>Google&rsquo;s monolithic cluster manager. The lessons-learned section is the real value: priority bands, admission, preemption, the cgroup-based isolation regime, the failure modes nobody tells you about until you&rsquo;ve operated one. A surprisingly readable industrial paper.</p>
+<h3 id=omega-flexible-scalable-schedulers-for-large-compute-clustershttpscsbrownedupeoplemaltepubpapers2013-eurosys-omegapdf><a href=https://cs.brown.edu/people/malte/pub/papers/2013-eurosys-omega.pdf>Omega: flexible, scalable schedulers for large compute clusters</a></h3>
+<h4 id=schwarzkopf-konwinski-abd-el-malek-wilkes-eurosys-2013>Schwarzkopf, Konwinski, Abd-El-Malek, Wilkes. <em>EuroSys 2013.</em></h4>
+<p>Borg&rsquo;s successor architecture. Shared-state scheduling: schedulers operate concurrently on a copy of cluster state and resolve conflicts optimistically. Departure from Borg&rsquo;s monolithic decision loop. The lineage paper for Kubernetes&rsquo;s design.</p>
+<h3 id=apache-hadoop-yarn-yet-another-resource-negotiatohttpswww1eceneueduningfangsimpaperyarn-socc2013pdf><a href=https://www1.ece.neu.edu/~ningfang/SimPaper/YARN-SOCC2013.pdf>Apache Hadoop YARN: Yet Another Resource Negotiato</a></h3>
+<h4 id=vavilapalli-et-al-socc-2013>Vavilapalli et al. <em>SoCC 2013.</em></h4>
+<p>Hadoop 2&rsquo;s resource manager — two-level, multi-tenant. Practical, not theoretically novel, but operationally significant because of Hadoop&rsquo;s reach and the number of papers that build on its mechanisms.</p>
+<h3 id=tetrisched-global-rescheduling-with-adaptive-plan-ahead-in-dynamic-heterogeneous-clustershttpswwwpdlcmuedupdl-ftpcloudcomputingtetrisched-tumanov-eurosys16pdf><a href=https://www.pdl.cmu.edu/PDL-FTP/CloudComputing/tetrisched-tumanov-eurosys16.pdf>TetriSched: global rescheduling with adaptive plan-ahead in dynamic heterogeneous clusters</a></h3>
+<h4 id=tumanov-zhu-park-kozuch-harchol-balter-ganger-eurosys-2016>Tumanov, Zhu, Park, Kozuch, Harchol-Balter, Ganger. <em>EuroSys 2016.</em></h4>
+<p>Reservation-aware: jobs declare deadlines, scheduler plans ahead. Argues that pure online algorithms leave a lot of efficiency on the table when workloads have predictable structure.</p>
+<hr>
+<h2 id=decentralized--sampling-based>Decentralized / sampling-based</h2>
+<h3 id=sparrow-distributed-low-latency-schedulinghttpspeopleeecsberkeleyedumateipapers2013sosp_sparrowpdf><a href=https://people.eecs.berkeley.edu/~matei/papers/2013/sosp_sparrow.pdf>Sparrow: Distributed, Low Latency Scheduling</a></h3>
+<h4 id=ousterhout-wendell-zaharia-stoica-sosp-2013>Ousterhout, Wendell, Zaharia, Stoica. <em>SOSP 2013.</em></h4>
+<p>Per-task-decision-in-milliseconds scheduling for short jobs. Workers handle their own queues; schedulers do batch-sampling of <em>d</em> = 2 random workers and place tasks at the lighter-loaded one. Exploits power-of-<em>d</em>-choices theory directly. Genuinely sub-millisecond decision time at high concurrency. Architecturally: stateless schedulers, all coordination implicit.</p>
+<h3 id=apollo-scalable-and-coordinated-scheduling-for-cloud-scale-computinghttpswwwusenixorgsystemfilesconferenceosdi14osdi14-paper-boutin_0pdf><a href=https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-boutin_0.pdf>Apollo: Scalable and Coordinated Scheduling for Cloud-Scale Computing</a></h3>
+<h4 id=boutin-ekanayake-lin-shi-zhou-qian-wu-zhou-osdi-2014>Boutin, Ekanayake, Lin, Shi, Zhou, Qian, Wu, Zhou. <em>OSDI 2014.</em></h4>
+<p>Microsoft&rsquo;s answer to Sparrow at Cosmos scale. Each scheduler maintains an estimated wait-time matrix per machine, updated via aggressive UDP status messages from workers. Decisions are local but well-informed; conflicts resolved via re-evaluation rather than locking. Has the most pragmatic discussion of &ldquo;why TCP is too expensive for status updates at this rate&rdquo; you&rsquo;ll find in scheduling literature.</p>
+<h3 id=mercury-hybrid-centralized-and-distributed-scheduling-in-large-shared-clustershttpswebarchiveorgweb20170814054522httpswwwusenixorgsystemfilesconferenceatc15atc15-paper-karanasospdf><a href=https://web.archive.org/web/20170814054522/https://www.usenix.org/system/files/conference/atc15/atc15-paper-karanasos.pdf>Mercury: Hybrid Centralized and Distributed Scheduling in Large Shared Clusters</a></h3>
+<h4 id=karanasos-rao-curino-douglas-chaliparambil-fumarola-heddaya-ramakrishnan-sakalanaga-usenix-atc-2015>Karanasos, Rao, Curino, Douglas, Chaliparambil, Fumarola, Heddaya, Ramakrishnan, Sakalanaga. <em>USENIX ATC 2015.</em></h4>
+<p>Hybrid: best-effort containers run wherever, guaranteed-resource containers go through the central path. The architectural argument is that you can let opportunistic work scavenge under a centralized policy without changing the policy itself.</p>
+<h3 id=hawk-hybrid-datacenter-schedulinghttpswwwusenixorgsystemfilesconferenceatc15atc15-paper-delgadopdf><a href=https://www.usenix.org/system/files/conference/atc15/atc15-paper-delgado.pdf>Hawk: Hybrid Datacenter Scheduling</a></h3>
+<h4 id=delgado-didona-dinu-zwaenepoel-usenix-atc-2015>Delgado, Didona, Dinu, Zwaenepoel. <em>USENIX ATC 2015.</em></h4>
+<p>Hybrid centralized/distributed. Long jobs go through the central scheduler, short jobs through a Sparrow-style distributed path. Same intuition as Mercury, different decomposition.</p>
+<h3 id=yaq-efficient-queue-management-for-cluster-schedulinghttpswwwmicrosoftcomen-usresearchwp-contentuploads201604yaq-eurosys2016pdfmsockid169f6418a33165ee0bc670ffa2356421><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/yaq-eurosys2016.pdf?msockid=169f6418a33165ee0bc670ffa2356421">Yaq: Efficient Queue Management for Cluster Scheduling</a></h3>
+<h4 id=rasley-karanasos-kandula-fonseca-vojnović-rao-eurosys-2016>Rasley, Karanasos, Kandula, Fonseca, Vojnović, Rao. <em>EuroSys 2016.</em></h4>
+<p>Queue management at the worker. Solves a real problem distributed schedulers all hit: head-of-line blocking when a heavy task lands ahead of light tasks at a worker. Per-worker prioritization with limited reordering.</p>
+<hr>
+<h2 id=theoretical-load-balancing--the-math-underneath-the-schedulers>Theoretical load balancing — the math underneath the schedulers</h2>
+<h3 id=the-power-of-two-choices-in-randomized-load-balancinghttpswwweecsharvardedumichaelmpostscriptstpds2001pdf><a href=https://www.eecs.harvard.edu/~michaelm/postscripts/tpds2001.pdf>The Power of Two Choices in Randomized Load Balancing</a></h3>
+<h4 id=mitzenmacher-phd-thesis-1996-later-jacm>Mitzenmacher. <em>Ph.D. thesis 1996; later JACM.</em></h4>
+<p>The result that motivates Sparrow: instead of choosing a server uniformly at random, pick <em>d</em> = 2 and route to the less loaded; the maximum load drops from log <em>n</em> / log log <em>n</em> to log log <em>n</em> / log <em>d</em>. Foundational. Cite this when defending <em>d</em> = 2 as a design choice.</p>
+<h3 id=join-idle-queue-a-novel-load-balancing-algorithm-for-dynamically-scalable-web-serviceshttpswwwmicrosoftcomen-usresearchwp-contentuploads201110idleqpdfmsockid169f6418a33165ee0bc670ffa2356421><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/idleq.pdf?msockid=169f6418a33165ee0bc670ffa2356421">Join-Idle-Queue: A Novel Load Balancing Algorithm for Dynamically Scalable Web Services</a></h3>
+<h4 id=lu-xie-kliot-geller-larus-greenberg-ifip-performance-2011-microsoft>Lu, Xie, Kliot, Geller, Larus, Greenberg. <em>IFIP Performance 2011.</em> Microsoft.</h4>
+<p>Inverts the heartbeat direction: workers notify a small dispatcher pool when they go idle. Dispatchers route incoming work to known-idle workers with no probing. Achieves <em>d</em> = 2 performance with <em>O</em>(1) dispatcher-to-worker messages per arrival. Beautiful paper, frequently missed.</p>
+<hr>
+<h2 id=microsecond--kernel-bypass-scheduling>Microsecond / kernel-bypass scheduling</h2>
+<h3 id=zygos-achieving-low-tail-latency-for-microsecond-scale-networked-taskshttpsabelaygithubio6828seminarpapersprekaszygospdf><a href=https://abelay.github.io/6828seminar/papers/prekas:zygos.pdf>ZygOS: Achieving Low Tail Latency for Microsecond-scale Networked Tasks</a></h3>
+<h4 id=prekas-kogias-bugnion-sosp-2017>Prekas, Kogias, Bugnion. <em>SOSP 2017.</em></h4>
+<p>Per-core run queues with work-stealing for tail latency on µs-scale RPCs. Argues that single-queue-per-system is the wrong default at this timescale.</p>
+<h3 id=shinjuku-preemptive-scheduling-for-μsecond-scale-tail-latencyhttpswwwusenixorgsystemfilesnsdi19-kaffespdf><a href=https://www.usenix.org/system/files/nsdi19-kaffes.pdf>Shinjuku: Preemptive Scheduling for μsecond-scale Tail Latency</a></h3>
+<h4 id=kaffes-chong-humphries-belay-mazières-kozyrakis-nsdi-2019>Kaffes, Chong, Humphries, Belay, Mazières, Kozyrakis. <em>NSDI 2019.</em></h4>
+<p>Centralized scheduling at microsecond granularity using preemption (centralized dispatcher + hardware preemption support). Makes the case for centralized again, at the right timescale.</p>
+<h3 id=shenango-achieving-high-cpu-efficiency-for-latency-sensitive-datacenter-workloadshttpswwwusenixorgsystemfilesnsdi19-ousterhoutpdf><a href=https://www.usenix.org/system/files/nsdi19-ousterhout.pdf>Shenango: Achieving High CPU Efficiency for Latency-sensitive Datacenter Workloads</a></h3>
+<h4 id=ousterhout-fried-behrens-belay-balakrishnan-nsdi-2019>Ousterhout, Fried, Behrens, Belay, Balakrishnan. <em>NSDI 2019.</em></h4>
+<p>Microsecond-scale core allocation between latency-critical and batch workloads, with kernel-bypass networking. Reallocation latency in the single µs.</p>
+<h3 id=caladan-mitigating-interference-at-microsecond-timescaleshttpswwwusenixorgsystemfilesosdi20-friedpdf><a href=https://www.usenix.org/system/files/osdi20-fried.pdf>Caladan: Mitigating Interference at Microsecond Timescales</a></h3>
+<h4 id=fried-belay-marty-osdi-2020>Fried, Belay, Marty. <em>OSDI 2020.</em></h4>
+<p>Successor to Shenango — interference-aware, handles tail-latency under aggressive co-location. The most sophisticated work in this lineage.</p>
+<h3 id=when-idling-is-ideal-optimizing-tail-latency-for-heavy-tailed-datacenter-workloads-with-perséphonehttpswwwirenezhangnetpaperspersephone-sosp21pdf><a href=https://www.irenezhang.net/papers/persephone-sosp21.pdf>When Idling is Ideal: Optimizing Tail-Latency for Heavy-Tailed Datacenter Workloads with Perséphone</a></h3>
+<p>Didona, Costa, Pilman, Reidys, Lee, Zwaenepoel. <em>SOSP 2021.</em>
+Application-level scheduling for tail latency under skewed workloads. Argues that even with a perfect kernel scheduler, application-level work distribution still matters when service times are heavy-tailed.</p>
+<hr>
+<p><em>Working notes. Adjustments, additions, and corrections welcome — particularly anything from the post-2021 literature on ML-workload schedulers, which this list under-covers.</em></p>
+</div>
+<footer class=article-footer>
+<a href=/posts/ class=back-link>← All writing</a>
+</footer>
+</article>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
+</footer>
+</div>
+<div class=responsa>
+<div class=responsa-header>
+<span class=responsa-label>Responsa</span>
+</div>
+<div class=responsa-body id=responsa-body data-repo=wbyatt/byatt.io data-repo-id=R_kgDOMvtUZA data-category=Comments data-category-id=DIC_kwDOMvtUZM4C56QU data-term=/posts/distributed-scheduling-reading-list/>
+</div>
+</div>
+<script>(function(){var b=document.getElementById('responsa-body'),c,d,a;if(!b)return;c=localStorage.getItem('byatt-theme')||'light',d=c==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css',a=document.createElement('script'),a.src='https://giscus.app/client.js',a.setAttribute('data-repo',b.getAttribute('data-repo')),a.setAttribute('data-repo-id',b.getAttribute('data-repo-id')),a.setAttribute('data-category',b.getAttribute('data-category')),a.setAttribute('data-category-id',b.getAttribute('data-category-id')),a.setAttribute('data-mapping','specific'),a.setAttribute('data-term',b.getAttribute('data-term')),a.setAttribute('data-strict','0'),a.setAttribute('data-reactions-enabled','1'),a.setAttribute('data-emit-metadata','0'),a.setAttribute('data-input-position','top'),a.setAttribute('data-theme',d),a.setAttribute('data-lang','en'),a.setAttribute('data-loading','lazy'),a.setAttribute('crossorigin','anonymous'),a.async=!0,b.appendChild(a)})()</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
+</body>
+</html>

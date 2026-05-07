@@ -2,7 +2,7 @@
 title: "The Art of Technical Debt"
 subtitle: "when to embrace it, when to refactor"
 date: 2024-09-16T12:27:00-04:00
-draft: false
+draft: true
 layout: treatise
 doc_class: "doc/praxis"
 doc_id: "technical-debt.essay"

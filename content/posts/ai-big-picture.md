@@ -2,7 +2,7 @@
 title: "The Big Picture of AI"
 subtitle: "why you don't need to know every detail"
 date: 2024-06-15T12:45:18-04:00
-draft: false
+draft: true
 layout: treatise
 doc_class: "doc/strategy"
 doc_id: "ai-big-picture.essay"

@@ -2,7 +2,7 @@
 title: "The Game You Cannot Name"
 subtitle: "Why culture fit interviews resist every reform attempt"
 date: 2026-04-05
-draft: false
+draft: true
 layout: treatise
 doc_class: "ephemeron/preserved"
 doc_id: "ephemeron.2026-04-05"

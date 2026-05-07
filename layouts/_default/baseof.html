@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }}{{ if not .IsHome }} — {{ .Site.Title }}{{ end }}</title>
+  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ "css/iki.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/iki-overrides.css" | relURL }}">
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+
+<div class="page">
+  {{ partial "nav.html" . }}
+
+  {{ block "main" . }}{{ end }}
+
+  {{ partial "footer.html" . }}
+</div>
+
+{{ block "after" . }}{{ end }}
+
+<script>
+(function() {
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+
+  function giscusThemeUrl(theme) {
+    return theme === 'light'
+      ? 'https://byatt.io/css/giscus-iki-light.css'
+      : 'https://byatt.io/css/giscus-iki.css';
+  }
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('byatt-theme', theme);
+    var giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (giscusFrame) {
+      giscusFrame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
+        'https://giscus.app'
+      );
+    }
+  }
+
+  var saved = localStorage.getItem('byatt-theme') || 'light';
+  applyTheme(saved);
+
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      var current = root.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+  }
+})();
+</script>
+</body>
+</html>
