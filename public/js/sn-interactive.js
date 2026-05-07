@@ -166,14 +166,22 @@
     ((performance.now() - state.simStart) / 1000) * SIM_SPEED;
 
   // -- Drawing helpers -----------------------------------------------------
-  const PAD = { top: 24, right: 28, bottom: 28, left: 80 };
+  // Padding adapts to canvas width — narrow viewports get a compact layout
+  // and y-axis tick labels are dropped (left-pad shrinks to fit).
+  const NARROW_THRESHOLD = 600;
+  const padFor = (w) => w < NARROW_THRESHOLD
+    ? { top: 16, right: 14, bottom: 24, left: 14 }
+    : { top: 24, right: 28, bottom: 28, left: 80 };
 
-  const plotRect = (w, h) => ({
-    x: PAD.left,
-    y: PAD.top,
-    w: w - PAD.left - PAD.right,
-    h: h - PAD.top - PAD.bottom,
-  });
+  const plotRect = (w, h) => {
+    const p = padFor(w);
+    return {
+      x: p.left,
+      y: p.top,
+      w: w - p.left - p.right,
+      h: h - p.top - p.bottom,
+    };
+  };
 
   const drawFrame = (ctx, w, h, label) => {
     ctx.clearRect(0, 0, w, h);
@@ -181,8 +189,9 @@
     ctx.fillRect(0, 0, w, h);
 
     const r = plotRect(w, h);
+    const narrow = w < NARROW_THRESHOLD;
 
-    // Y gridlines: 0, 0.25, 0.5, 0.75, 1.0 GiB
+    // Y gridlines: 0, 0.25, 0.5, 0.75, 1.0 GiB. Tick labels suppressed on narrow.
     ctx.font = `11px ${FONT_MONO}`;
     ctx.textBaseline = "middle";
     ctx.textAlign = "right";
@@ -195,7 +204,7 @@
       ctx.moveTo(r.x, py);
       ctx.lineTo(r.x + r.w, py);
       ctx.stroke();
-      ctx.fillText(`${v.toFixed(2)} GiB`, r.x - 8, py);
+      if (!narrow) ctx.fillText(`${v.toFixed(2)} GiB`, r.x - 8, py);
     }
 
     // X gridlines: every 60s back from "now"
@@ -319,15 +328,16 @@
 
   // -- Spectrum panel ------------------------------------------------------
   const FREQ_MAX = 0.10;  // Hz, x-axis range
-  const FREQ_PAD = { top: 24, right: 28, bottom: 28, left: 80 };
 
   const drawSpectrum = () => {
     const { ctx, w, h } = fitCanvas(spectrumCanvas);
+    const p = padFor(w);
+    const narrow = w < NARROW_THRESHOLD;
     const r = {
-      x: FREQ_PAD.left,
-      y: FREQ_PAD.top,
-      w: w - FREQ_PAD.left - FREQ_PAD.right,
-      h: h - FREQ_PAD.top - FREQ_PAD.bottom,
+      x: p.left,
+      y: p.top,
+      w: w - p.left - p.right,
+      h: h - p.top - p.bottom,
     };
 
     ctx.clearRect(0, 0, w, h);
@@ -349,7 +359,7 @@
     const ampTick = Math.pow(10, Math.floor(Math.log10(ampMax)));
     const ampScale = Math.ceil(ampMax / ampTick) * ampTick;
 
-    // Y gridlines / labels (5 levels).
+    // Y gridlines / labels (5 levels). Tick labels suppressed on narrow.
     ctx.font = `11px ${FONT_MONO}`;
     ctx.textBaseline = "middle";
     ctx.textAlign = "right";
@@ -362,10 +372,12 @@
       ctx.moveTo(r.x, py);
       ctx.lineTo(r.x + r.w, py);
       ctx.stroke();
-      ctx.fillText(v.toExponential(1), r.x - 8, py);
+      if (!narrow) ctx.fillText(v.toExponential(1), r.x - 8, py);
     }
 
-    // X gridlines / labels every 0.02 Hz.
+    // X gridlines every 0.02 Hz; labels are the *period* at that frequency
+    // (period = 1/f, so labels shrink left-to-right). The 0 Hz tick has
+    // no finite period, so it gets a "∞" label.
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     for (let f = 0; f <= FREQ_MAX + 1e-9; f += 0.02) {
@@ -376,7 +388,8 @@
       ctx.lineTo(px, r.y + r.h);
       ctx.stroke();
       ctx.fillStyle = COLOR.fg3;
-      ctx.fillText(f.toFixed(2) + " Hz", px, r.y + r.h + 8);
+      const label = f === 0 ? "∞" : `${(1 / f).toFixed(1)} s`;
+      ctx.fillText(label, px, r.y + r.h + 8);
     }
 
     // Frame.
@@ -451,7 +464,7 @@
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
       ctx.font = `10px ${FONT_MONO}`;
-      ctx.fillText("fs/2", nx + 4, r.y + 4);
+      ctx.fillText(`${(1 / fsHalf).toFixed(0)} s · sampler nyquist`, nx + 4, r.y + 4);
     }
   };
 

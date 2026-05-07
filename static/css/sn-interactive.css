@@ -150,4 +150,5 @@
   .sn-controls { grid-template-columns: 1fr; }
   .sn-control { grid-template-columns: 1fr; gap: var(--s-1); }
   .sn-control-value { text-align: left; }
+  .sn-panel-legend { display: none; }
 }
