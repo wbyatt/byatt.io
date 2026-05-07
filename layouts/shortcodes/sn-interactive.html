@@ -1,0 +1,42 @@
+{{- /*
+  Shannon-Nyquist interactive demo. Renders two stacked Grafana-evocative
+  charts (ground truth + reconstructed sampler view) with controls for
+  scrape interval and integration window.
+
+  Markup is intentionally minimal — all rendering and animation is in
+  /js/sn-interactive.js, all styling in /css/sn-interactive.css.
+*/ -}}
+<link rel="stylesheet" href="{{ "/css/sn-interactive.css" | relURL }}">
+<figure class="sn-rig" aria-label="Interactive Shannon-Nyquist sampling demo">
+  <div class="sn-panel">
+    <div class="sn-panel-header">
+      <span class="sn-panel-title">ground truth · workload memory</span>
+      <span class="sn-panel-legend"><span class="sn-swatch sn-swatch--truth"></span>1 GiB · 44 s · 3 s pulse</span>
+    </div>
+    <canvas class="sn-canvas" data-sn-canvas="truth" width="1080" height="220"></canvas>
+  </div>
+
+  <div class="sn-panel">
+    <div class="sn-panel-header">
+      <span class="sn-panel-title">as monitored · sampled view</span>
+      <span class="sn-panel-legend"><span class="sn-swatch sn-swatch--sampler"></span>sampler output</span>
+    </div>
+    <canvas class="sn-canvas" data-sn-canvas="sampler" width="1080" height="260"></canvas>
+  </div>
+
+  <div class="sn-controls" role="group" aria-label="Sampler parameters">
+    <label class="sn-control">
+      <span class="sn-control-label">scrape interval</span>
+      <input type="range" min="1" max="60" step="1" value="30" data-sn-input="interval">
+      <output class="sn-control-value" data-sn-output="interval">30 s</output>
+    </label>
+    <label class="sn-control">
+      <span class="sn-control-label">integration window</span>
+      <input type="range" min="0" max="60" step="1" value="0" data-sn-input="window">
+      <output class="sn-control-value" data-sn-output="window">0 s · point sample</output>
+    </label>
+  </div>
+
+  <div class="sn-readout" data-sn-readout aria-live="polite"></div>
+</figure>
+<script src="{{ "/js/sn-interactive.js" | relURL }}" defer></script>

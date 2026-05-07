@@ -1,0 +1,19 @@
+{{- $current := "" -}}
+{{- if .IsHome -}}
+  {{- $current = "home" -}}
+{{- else if eq .Section "posts" -}}
+  {{- $current = "writing" -}}
+{{- else if eq .Section "studies" -}}
+  {{- $current = "studies" -}}
+{{- else if eq .File.LogicalName "cv.md" -}}
+  {{- $current = "cv" -}}
+{{- end -}}
+<nav class="nav" aria-label="Primary">
+  <a href="{{ "/" | relURL }}" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
+  <div class="nav-links">
+    <a href="{{ "/" | relURL }}"{{ if eq $current "home" }} class="active"{{ end }}>Home</a>
+    <a href="{{ "/posts/" | relURL }}"{{ if eq $current "writing" }} class="active"{{ end }}>Writing</a>
+    <a href="{{ "/studies/" | relURL }}"{{ if eq $current "studies" }} class="active"{{ end }}>Studies</a>
+    <a href="{{ "/cv/" | relURL }}"{{ if eq $current "cv" }} class="active"{{ end }}>CV</a>
+  </div>
+</nav>

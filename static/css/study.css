@@ -1,0 +1,241 @@
+/* -------------------------------------------------------------------------
+   Study aesthetic: technical-artifact feel.
+   Sans body, mono accents, "engineering paper" container, framed figures,
+   custom list bullets. Theme-aware: works in both light and dark.
+   ------------------------------------------------------------------------- */
+
+.article--study {
+  max-width: var(--measure-page);
+}
+
+/* Sans body, applied to children that have their own font-family rules
+   in the theme (p, li). Targeting the container alone isn't enough because
+   the bare `p { font-family: var(--font-serif) }` rule wins on the <p>. */
+.article--study .article-body,
+.article--study .article-body p,
+.article--study .article-body li {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+}
+
+.article--study .article-body h2 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-20);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tr-snug);
+  text-transform: uppercase;
+  color: var(--link);
+  margin: var(--s-7) 0 var(--s-3);
+}
+
+.article--study .article-meta .study-tag {
+  color: var(--link);
+  font-weight: var(--fw-medium);
+}
+
+.article--study .article-body h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-semibold);
+  margin: var(--s-5) 0 var(--s-2);
+}
+
+.article--study .article-body strong {
+  font-weight: var(--fw-semibold);
+  color: var(--fg);
+}
+
+.article--study .article-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-3);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--fg);
+}
+
+/* List bullets: monospace ›, replacing the default disc */
+.article--study .article-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article--study .article-body ul > li {
+  position: relative;
+  padding-left: 1.5em;
+  margin: var(--s-2) 0;
+}
+
+.article--study .article-body ul > li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--fg-3);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-medium);
+}
+
+/* Generic figure framing — anything wrapped in <figure> in study body
+   inherits the instrument-panel frame. The interactive shortcode already
+   uses .sn-rig directly and isn't double-framed. */
+.article--study .article-body figure:not(.sn-rig) {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-1);
+  padding: var(--s-3);
+  margin: var(--s-5) 0;
+}
+
+.article--study .article-body figure figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  color: var(--fg-3);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  margin-top: var(--s-2);
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   Rig metadata block: an arXiv-style parameter table at the top of the page.
+   ------------------------------------------------------------------------- */
+
+.rig-block {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-1);
+  padding: var(--s-3) var(--s-4);
+  margin: var(--s-5) 0 var(--s-6);
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--s-1) var(--s-5);
+  line-height: var(--lh-relaxed);
+}
+
+.rig-block .rig-row {
+  display: contents;
+}
+
+.rig-block dt {
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.rig-block dd {
+  color: var(--fg);
+  margin: 0;
+}
+
+/* The article meta line gets a "study" tag — render it slightly emphasized */
+.article--study .article-meta {
+  font-family: var(--font-mono);
+}
+
+/* -------------------------------------------------------------------------
+   Studies index — card grid.
+   ------------------------------------------------------------------------- */
+
+.studies-index {
+  max-width: var(--measure-page);
+  margin: 0 auto;
+}
+
+.studies-index-header {
+  padding: var(--s-4) 0 var(--s-7);
+}
+
+.studies-index-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-48);
+  font-weight: var(--fw-regular);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--s-4);
+  color: var(--fg);
+}
+
+.studies-index-lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-20);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  margin: 0 0 var(--s-5);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+.studies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+}
+
+@media (max-width: 720px) {
+  .studies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.study-card {
+  display: block;
+  padding: var(--s-5);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-1);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform   var(--dur-base) var(--ease-out);
+}
+
+.study-card:hover {
+  border-color: var(--link);
+  text-decoration: none;
+}
+
+.study-card-meta {
+  display: flex;
+  gap: var(--s-3);
+  align-items: center;
+  margin-bottom: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  color: var(--fg-3);
+  letter-spacing: 0.04em;
+}
+
+.study-card-num {
+  font-family: var(--font-serif);
+  font-size: var(--fs-14);
+  letter-spacing: 0;
+  color: var(--link);
+}
+
+.study-card-tag {
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+}
+
+.study-card-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-20);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  margin: 0 0 var(--s-2);
+  text-wrap: balance;
+}
+
+.study-card-dek {
+  font-family: var(--font-serif);
+  font-size: var(--fs-14);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  margin: 0;
+}

@@ -1,0 +1,93 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Signals-Theoretic Observability — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
+</head>
+<body>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/>Writing</a>
+<a href=/studies/ class=active>Studies</a>
+<a href=/cv/>CV</a>
+</div>
+</nav>
+<link rel=stylesheet href=/css/study.css>
+<article class="article article--study">
+<header class=article-header>
+<div class=article-meta>
+<span>2026 · 05 · 07</span>
+<span>·</span><span class=study-tag>study</span>
+<span>·</span><span>2 min</span>
+</div>
+<h1 class=article-title>Signals-Theoretic Observability</h1>
+<p class=article-subtitle>aliasing in production telemetry, demonstrated</p>
+</header>
+<div class=article-body>
+<p>A 1 GiB memory pulse, observed two ways: as the continuous signal it physically is, and through a sampler whose interval and integration window can vary. The same workload renders correctly under one set of sampler parameters and misleadingly under others.</p>
+<link rel=stylesheet href=/css/sn-interactive.css>
+<figure class=sn-rig aria-label="Interactive Shannon-Nyquist sampling demo">
+<div class=sn-panel>
+<div class=sn-panel-header>
+<span class=sn-panel-title>ground truth · workload memory</span>
+<span class=sn-panel-legend><span class="sn-swatch sn-swatch--truth"></span>1 GiB · 44 s · 3 s pulse</span>
+</div>
+<canvas class=sn-canvas data-sn-canvas=truth width=1080 height=220></canvas>
+</div>
+<div class=sn-panel>
+<div class=sn-panel-header>
+<span class=sn-panel-title>as monitored · sampled view</span>
+<span class=sn-panel-legend><span class="sn-swatch sn-swatch--sampler"></span>sampler output</span>
+</div>
+<canvas class=sn-canvas data-sn-canvas=sampler width=1080 height=260></canvas>
+</div>
+<div class=sn-controls role=group aria-label="Sampler parameters">
+<label class=sn-control>
+<span class=sn-control-label>scrape interval</span>
+<input type=range min=1 max=60 step=1 value=30 data-sn-input=interval>
+<output class=sn-control-value data-sn-output=interval>30 s</output>
+</label>
+<label class=sn-control>
+<span class=sn-control-label>integration window</span>
+<input type=range min=0 max=60 step=1 value=0 data-sn-input=window>
+<output class=sn-control-value data-sn-output=window>0 s · point sample</output>
+</label>
+</div>
+<div class=sn-readout data-sn-readout aria-live=polite></div>
+</figure>
+<script src=/js/sn-interactive.js defer></script>
+<h2 id=the-generator-signal>The generator signal</h2>
+<p>A 1 GiB anonymous allocation held for 3 s, released, re-allocated 44 s later. Strictly periodic; instantaneous rise and fall; duty cycle 3/44 ≈ 6.8 %. The top panel renders this exactly.</p>
+<h2 id=reconstruction-mathematics>Reconstruction mathematics</h2>
+<p>The pulse train decomposes into a Fourier series with components at <em>f</em>₀, 2<em>f</em>₀, 3<em>f</em>₀, …, where <em>f</em>₀ = 1/44 Hz. The sampler&rsquo;s Nyquist frequency is <em>f</em>ₛ / 2 = 1 / (2 · interval); any harmonic above it folds into the baseband at |<em>f</em> mod <em>f</em>ₛ|. The integration window contributes a sinc-shaped low-pass envelope: at window = 0 every harmonic folds without attenuation, and as the window grows, higher-frequency content is suppressed <em>before</em> it can alias. LCM(interval, 44 s) sets the recurrence period of the visible pattern.</p>
+<h2 id=pathologies>Pathologies</h2>
+<p><strong>Bimodal LCM clustering</strong> — point sample, interval 30 s. Over each 660-second LCM cycle the sampler catches the pulse exactly twice, 90 s apart, then runs silent for 9.5 minutes. The dashboard reads as a rare outlier rather than a 6.8 % duty-cycle steady state.</p>
+<p><strong>Amplitude smearing</strong> — integrating window between zero and the pulse period (try interval 30 s, window 10 s). Each scrape returns the mean over a partial pulse: values land between ~100 MiB and ~300 MiB but never reach 1 GiB. Hits look frequent; the dashboard reads as noise when the underlying signal is strictly binary.</p>
+<p><strong>DC convergence</strong> — integrating window much greater than the pulse period (try interval 30 s, window 60 s). The signal converges to its duty-cycle-weighted mean, ≈ 70 MiB. The pulse structure is gone entirely; the dashboard reads as a quiet steady-state load.</p>
+</div>
+<footer class=article-footer>
+<a href=/studies/ class=back-link>← All studies</a>
+</footer>
+</article>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
+</footer>
+</div>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
+</body>
+</html>

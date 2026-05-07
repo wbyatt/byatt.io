@@ -1,272 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html><html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Raft Consensus — byatt.io</title>
-  <meta name="description" content="william byatt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>The Raft Consensus — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
 </head>
 <body>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
-
-<div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/" class="active">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/ class=active>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
 </nav>
-
-
-  
-<article class="article">
-  <header class="article-header">
-    <div class="article-meta">
-      <span>doc/systems</span>
-      <span>·</span><span>17 June 2024</span>
-    </div>
-    <h1 class="article-title">The Raft Consensus</h1>
-    <p class="article-subtitle">on the power of simplicity in distributed systems</p>
-  </header>
-
-  
-
-  <div class="article-body">
-    <h2 class="section-head">
-  <span class="num">§01</span>
-  The Rise of Raft
+<article class=article>
+<header class=article-header>
+<div class=article-meta>
+<span>doc/systems</span>
+<span>·</span><span>17 June 2024</span>
+</div>
+<h1 class=article-title>The Raft Consensus</h1>
+<p class=article-subtitle>on the power of simplicity in distributed systems</p>
+</header>
+<div class=article-body>
+<h2 class=section-head>
+<span class=num>§01</span>
+The Rise of Raft
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">consensus</span></div>
-
-<div class="main-cell">
-
-<span class="dropcap" aria-hidden="true">T</span>
-
-
-<p>he distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the <span class="rubric">de facto standard</span> for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.</p>
-
-<p>But what makes Raft so special? Here's the surprising truth: Raft wasn't designed to be the fastest or most computationally efficient algorithm. It wasn't built to outperform existing solutions in some theoretical domain. It was designed with a far more human-centric goal: <span class="rubric">understandability</span>.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>consensus</span></div>
+<div class=main-cell>
+<span class=dropcap aria-hidden=true>T</span>
+<p>he distributed systems world has witnessed a fascinating phenomenon: the rise of the Raft consensus algorithm. More than just gaining a foothold, Raft has become the <span class=rubric>de facto standard</span> for new distributed applications that require consensus across stateful actions. From etcd, the backbone of Kubernetes, to Redpanda Data taking on the established Kafka, this simple algorithm is powering segment-defining systems.</p>
+<p>But what makes Raft so special? Here's the surprising truth: Raft wasn't designed to be the fastest or most computationally efficient algorithm. It wasn't built to outperform existing solutions in some theoretical domain. It was designed with a far more human-centric goal: <span class=rubric>understandability</span>.</p>
 <p>This might seem counterintuitive. In a world obsessed with performance benchmarks and cutting-edge algorithms, wouldn't a more complex and optimized solution reign supreme? The success of Raft tells a different story. By prioritizing human understanding, Raft has democratized the development of distributed systems, leading to a surge in innovation.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">REF // Ongaro &amp;amp; Ousterhout 2014</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>REF // Ongaro &amp;amp; Ousterhout 2014</span>
 "In Search of an Understandable Consensus Algorithm" — the Raft paper explicitly states understandability as its primary design goal. This is itself a radical methodological claim.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // Paxos</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // Paxos</span>
 Lamport's Paxos (1998) is provably correct and theoretically elegant, but notoriously difficult to implement. Most production Paxos implementations diverge significantly from the paper — the gap between theory and practice is the problem Raft was designed to close.
-
 </div>
-
 </aside>
-
-<!-- §II -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§02</span>
-  Simplicity Breeds Innovation
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§02</span>
+Simplicity Breeds Innovation
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">simplicity</span></div>
-
-<div class="main-cell">
-
-<p>Raft's core strength lies in its clear, concise design. The algorithm is easy to grasp, making it accessible to a broader range of developers. This ease of understanding empowers more people to build, debug, and contribute to distributed systems. Imagine a system where implementing consensus requires deciphering complex mathematical formulas. Only a select few with specialized knowledge could participate. Raft breaks down these barriers, allowing <span class="rubric">more minds to enter the distributed computing arena</span>.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>simplicity</span></div>
+<div class=main-cell>
+<p>Raft's core strength lies in its clear, concise design. The algorithm is easy to grasp, making it accessible to a broader range of developers. This ease of understanding empowers more people to build, debug, and contribute to distributed systems. Imagine a system where implementing consensus requires deciphering complex mathematical formulas. Only a select few with specialized knowledge could participate. Raft breaks down these barriers, allowing <span class=rubric>more minds to enter the distributed computing arena</span>.</p>
 <p>This wider participation fosters a crucial element in any domain: the exchange of ideas. With more people involved, the potential for innovation explodes. New perspectives fuel discussions, leading to creative solutions and novel approaches to distributed system problems. This collective intelligence is the driving force behind the impressive applications built on Raft.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // etcd</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // etcd</span>
 etcd — the distributed key-value store at the heart of Kubernetes — is a Raft implementation. By extension, every Kubernetes cluster in production is a testament to Raft's practical viability.
-
 </div>
-
 </aside>
-
-<!-- §III -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§03</span>
-  Democratizing Computation
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§03</span>
+Democratizing Computation
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">democracy</span></div>
-
-<div class="main-cell">
-
-<p>Raft's success points towards a larger truth: <span class="rubric">democratizing computation</span> and the fundamental concepts that underpin it lies in the critical path of high-speed innovation. If we want to unlock new capabilities and possibilities in the distributed computing landscape, we need to focus on people as the originators of these ideas.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>democracy</span></div>
+<div class=main-cell>
+<p>Raft's success points towards a larger truth: <span class=rubric>democratizing computation</span> and the fundamental concepts that underpin it lies in the critical path of high-speed innovation. If we want to unlock new capabilities and possibilities in the distributed computing landscape, we need to focus on people as the originators of these ideas.</p>
 <p>By making core concepts accessible, we empower a wider range of minds to contribute. This not only expands the talent pool but also fosters a culture of collaboration. When developers can readily understand and build upon existing solutions, progress accelerates.</p>
-
 <p>This approach extends beyond consensus algorithms. Consider programming languages. Languages like Python and Go, with their focus on readability and simplicity, have seen widespread adoption and fueled a wave of innovation in various domains.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // Go</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // Go</span>
 Go's design philosophy mirrors Raft's: simplicity over cleverness, readability over expressiveness. Both prioritize the collective productivity of a team over the virtuosity of an individual.
-
 </div>
-
 </aside>
-
-<!-- §IV -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§04</span>
-  The Human Factor
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§04</span>
+The Human Factor
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">human</span></div>
-
-<div class="main-cell">
-
-<p>The rise of Raft highlights a critical shift in mindset. While raw computational power and theoretical efficiency remain important, prioritizing human understanding can be equally, if not more, valuable. By designing systems that are clear, concise, and approachable, we unlock the <span class="rubric">true potential for innovation</span>.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>human</span></div>
+<div class=main-cell>
+<p>The rise of Raft highlights a critical shift in mindset. While raw computational power and theoretical efficiency remain important, prioritizing human understanding can be equally, if not more, valuable. By designing systems that are clear, concise, and approachable, we unlock the <span class=rubric>true potential for innovation</span>.</p>
 <p>This doesn't mean sacrificing performance entirely. Efficient algorithms still have a place. However, the focus should be on creating a balance between complexity and comprehension. Algorithms that are both powerful and understandable can truly unleash the creative potential of the human mind.</p>
-
 <p>So next time you're tackling a distributed system challenge, remember the Raft story. Consider the human factor and prioritize clarity alongside performance. By making your solution understandable, you might just open the door to a new wave of innovation.</p>
-
-<p>Want to dive deeper into Raft? Check out the original paper (much like the algorithm itself, it's known for its readability): <a href="https://raft.github.io/raft.pdf">raft.github.io/raft.pdf</a></p>
-
+<p>Want to dive deeper into Raft? Check out the original paper (much like the algorithm itself, it's known for its readability): <a href=https://raft.github.io/raft.pdf>raft.github.io/raft.pdf</a></p>
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // balance</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // balance</span>
 The tension between theoretical optimality and practical understandability recurs across computing: RISC vs CISC, SQL vs NoSQL, REST vs RPC. In each case, the "simpler" option often wins in adoption, even when the "better" option wins on benchmarks.
-
 </div>
-
 </aside>
-
-
-  </div>
-
-  <footer class="article-footer">
-    <a href="/" class="back-link">← Home</a>
-  </footer>
+</div>
+<footer class=article-footer>
+<a href=/ class=back-link>← Home</a>
+</footer>
 </article>
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">william@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    
-  </div>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
 </footer>
 </div>
-
-
-<div class="responsa">
-  <div class="responsa-header">
-    <span class="responsa-label">Responsa</span>
-  </div>
-  <div class="responsa-body" id="responsa-body"
-       data-repo="wbyatt/byatt.io"
-       data-repo-id="R_kgDOMvtUZA"
-       data-category="Comments"
-       data-category-id="DIC_kwDOMvtUZM4C56QU"
-       data-term="raft-consensus.essay">
-  </div>
+<div class=responsa>
+<div class=responsa-header>
+<span class=responsa-label>Responsa</span>
 </div>
-<script>
-(function() {
-  var container = document.getElementById('responsa-body');
-  if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'light';
-  var themeUrl = theme === 'light'
-    ? 'https://byatt.io/css/giscus-iki-light.css'
-    : 'https://byatt.io/css/giscus-iki.css';
-  var s = document.createElement('script');
-  s.src = 'https://giscus.app/client.js';
-  s.setAttribute('data-repo', container.getAttribute('data-repo'));
-  s.setAttribute('data-repo-id', container.getAttribute('data-repo-id'));
-  s.setAttribute('data-category', container.getAttribute('data-category'));
-  s.setAttribute('data-category-id', container.getAttribute('data-category-id'));
-  s.setAttribute('data-mapping', 'specific');
-  s.setAttribute('data-term', container.getAttribute('data-term'));
-  s.setAttribute('data-strict', '0');
-  s.setAttribute('data-reactions-enabled', '1');
-  s.setAttribute('data-emit-metadata', '0');
-  s.setAttribute('data-input-position', 'top');
-  s.setAttribute('data-theme', themeUrl);
-  s.setAttribute('data-lang', 'en');
-  s.setAttribute('data-loading', 'lazy');
-  s.setAttribute('crossorigin', 'anonymous');
-  s.async = true;
-  container.appendChild(s);
-})();
-</script>
-
-
-
-<script>
-(function() {
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-
-  function giscusThemeUrl(theme) {
-    return theme === 'light'
-      ? 'https://byatt.io/css/giscus-iki-light.css'
-      : 'https://byatt.io/css/giscus-iki.css';
-  }
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('byatt-theme', theme);
-    var giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame) {
-      giscusFrame.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  var saved = localStorage.getItem('byatt-theme') || 'light';
-  applyTheme(saved);
-
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  }
-})();
-</script>
+<div class=responsa-body id=responsa-body data-repo=wbyatt/byatt.io data-repo-id=R_kgDOMvtUZA data-category=Comments data-category-id=DIC_kwDOMvtUZM4C56QU data-term=raft-consensus.essay>
+</div>
+</div>
+<script>(function(){var b=document.getElementById('responsa-body'),c,d,a;if(!b)return;c=localStorage.getItem('byatt-theme')||'light',d=c==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css',a=document.createElement('script'),a.src='https://giscus.app/client.js',a.setAttribute('data-repo',b.getAttribute('data-repo')),a.setAttribute('data-repo-id',b.getAttribute('data-repo-id')),a.setAttribute('data-category',b.getAttribute('data-category')),a.setAttribute('data-category-id',b.getAttribute('data-category-id')),a.setAttribute('data-mapping','specific'),a.setAttribute('data-term',b.getAttribute('data-term')),a.setAttribute('data-strict','0'),a.setAttribute('data-reactions-enabled','1'),a.setAttribute('data-emit-metadata','0'),a.setAttribute('data-input-position','top'),a.setAttribute('data-theme',d),a.setAttribute('data-lang','en'),a.setAttribute('data-loading','lazy'),a.setAttribute('crossorigin','anonymous'),a.async=!0,b.appendChild(a)})()</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
 </body>
 </html>

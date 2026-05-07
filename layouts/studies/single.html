@@ -1,0 +1,36 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "/css/study.css" | relURL }}">
+<article class="article article--study">
+  <header class="article-header">
+    <div class="article-meta">
+      {{ with .Date }}<span>{{ .Format "2006 · 01 · 02" }}</span>{{ end }}
+      <span>·</span><span class="study-tag">study</span>
+      {{ with .ReadingTime }}<span>·</span><span>{{ . }} min</span>{{ end }}
+    </div>
+    <h1 class="article-title">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="article-subtitle">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ with .Params.rig }}
+  <dl class="rig-block" aria-label="Rig parameters">
+    {{ range . }}
+    <div class="rig-row">
+      <dt>{{ .key }}</dt>
+      <dd>{{ .value }}</dd>
+    </div>
+    {{ end }}
+  </dl>
+  {{ end }}
+
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+
+  <footer class="article-footer">
+    <a href="{{ "/studies/" | relURL }}" class="back-link">← All studies</a>
+    {{ with .NextInSection }}
+    <span class="article-meta">Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a> →</span>
+    {{ end }}
+  </footer>
+</article>
+{{ end }}

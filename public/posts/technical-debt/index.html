@@ -1,384 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html><html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Art of Technical Debt — byatt.io</title>
-  <meta name="description" content="william byatt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>The Art of Technical Debt — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
 </head>
 <body>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
-
-<div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/" class="active">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/ class=active>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
 </nav>
-
-
-  
-<article class="article">
-  <header class="article-header">
-    <div class="article-meta">
-      <span>doc/praxis</span>
-      <span>·</span><span>16 September 2024</span>
-    </div>
-    <h1 class="article-title">The Art of Technical Debt</h1>
-    <p class="article-subtitle">when to embrace it, when to refactor</p>
-  </header>
-
-  
-
-  <div class="article-body">
-    <h2 class="section-head">
-  <span class="num">§01</span>
-  Understanding Technical Debt
+<article class=article>
+<header class=article-header>
+<div class=article-meta>
+<span>doc/praxis</span>
+<span>·</span><span>16 September 2024</span>
+</div>
+<h1 class=article-title>The Art of Technical Debt</h1>
+<p class=article-subtitle>when to embrace it, when to refactor</p>
+</header>
+<div class=article-body>
+<h2 class=section-head>
+<span class=num>§01</span>
+Understanding Technical Debt
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">debt</span></div>
-
-<div class="main-cell">
-
-<span class="dropcap" aria-hidden="true">A</span>
-
-
-<p> specter is haunting software, the specter of technical debt. Read any discussion space where software engineers are present — Stack Overflow, the-website-formerly-known-as-Twitter, Mastodon — and you'll see "technical debt" discussed in terms ranging from frustration to contempt. The more level-headed commentators will acknowledge that technical debt is an inevitability, but generally with a sense that it's a manifestation of living in an imperfect world. But far from being uniformly negative, technical debt can be a <span class="rubric">powerful tool</span> when wielded strategically — and not just for product-oriented spreadsheet jockeys, but for the day-to-day developer experience as well. This post aims to provide a framework for understanding technical debt and offer guidance on when to embrace it and when to prioritize refactoring.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>debt</span></div>
+<div class=main-cell>
+<span class=dropcap aria-hidden=true>A</span>
+<p> specter is haunting software, the specter of technical debt. Read any discussion space where software engineers are present — Stack Overflow, the-website-formerly-known-as-Twitter, Mastodon — and you'll see "technical debt" discussed in terms ranging from frustration to contempt. The more level-headed commentators will acknowledge that technical debt is an inevitability, but generally with a sense that it's a manifestation of living in an imperfect world. But far from being uniformly negative, technical debt can be a <span class=rubric>powerful tool</span> when wielded strategically — and not just for product-oriented spreadsheet jockeys, but for the day-to-day developer experience as well. This post aims to provide a framework for understanding technical debt and offer guidance on when to embrace it and when to prioritize refactoring.</p>
 <p>Let's begin with understanding technical debt and what differentiates it from, for example, iterative development or just plain bad software design. Technical debt refers to the implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a more robust approach that would take longer to implement in the near term.</p>
-
-<p>It's important that we distinguish this from other engineering choices that may appear, at first glance, to be similar. Releasing a limited feature set, using the minimum viable product (MVP) model, does not incur debt because we are not expecting costs related to reworking, but rather we are expecting <em>new</em> costs associated with continued feature development. Nor is it technical debt when we simply made bad design or implementation decisions that we are now paying for: technical debt is a <span class="rubric">strategic, intentional choice</span>, not an engineering mistake.</p>
-
-<div class="axiom-block">
-  <div class="axiom-header"><span class="axiom-header-label">Definition</span></div>
-  <div class="axiom-list">
-<div class="axiom">
-  <span class="axiom-num">DEF</span>
-  <span><strong>Technical debt</strong> refers to the implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a more robust approach that would take longer to implement in the near term.</span>
-</div>
-
+<p>It's important that we distinguish this from other engineering choices that may appear, at first glance, to be similar. Releasing a limited feature set, using the minimum viable product (MVP) model, does not incur debt because we are not expecting costs related to reworking, but rather we are expecting <em>new</em> costs associated with continued feature development. Nor is it technical debt when we simply made bad design or implementation decisions that we are now paying for: technical debt is a <span class=rubric>strategic, intentional choice</span>, not an engineering mistake.</p>
+<div class=axiom-block>
+<div class=axiom-header><span class=axiom-header-label>Definition</span></div>
+<div class=axiom-list>
+<div class=axiom>
+<span class=axiom-num>DEF</span>
+<span><strong>Technical debt</strong> refers to the implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a more robust approach that would take longer to implement in the near term.</span>
 </div>
 </div>
-
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">REF // Cunningham 1992</span>
-  
+</div>
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>REF // Cunningham 1992</span>
 Ward Cunningham coined "technical debt" at OOPSLA '92 as a deliberate metaphor to help business stakeholders understand the trade-off. The metaphor was always meant to imply strategic use, not negligence.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // distinction</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // distinction</span>
 The MVP is a scope decision; technical debt is an implementation decision. An MVP says "we won't build feature X yet." Technical debt says "we'll build feature X, but cut corners on how."
-
 </div>
-
 </aside>
-
-<!-- §II -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§02</span>
-  The Financial Metaphor
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§02</span>
+The Financial Metaphor
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">finance</span></div>
-
-<div class="main-cell">
-
-<p>Just as financial debt can be a tool for growth when managed wisely, technical debt can accelerate product development. The original loan <span class="rubric">principal</span> is the additional cost it would have taken to develop the more robust solution, while the <span class="rubric">interest</span> is the increased difficulty of changing the system over time. The "payoff amount" is the time and cost that would be required to eliminate the debt at some point after it is originally assumed. Like financial debt, technical debt isn't inherently bad — it's all about how you manage it.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>finance</span></div>
+<div class=main-cell>
+<p>Just as financial debt can be a tool for growth when managed wisely, technical debt can accelerate product development. The original loan <span class=rubric>principal</span> is the additional cost it would have taken to develop the more robust solution, while the <span class=rubric>interest</span> is the increased difficulty of changing the system over time. The "payoff amount" is the time and cost that would be required to eliminate the debt at some point after it is originally assumed. Like financial debt, technical debt isn't inherently bad — it's all about how you manage it.</p>
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // limits</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // limits</span>
 One failure of the financial metaphor: real debt has a known amortization schedule. Technical debt accrues interest at unpredictable rates — a single upstream change can suddenly make a dormant debt catastrophically expensive.
-
 </div>
-
 </aside>
-
-<!-- §III -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§03</span>
-  Strategic Framework
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§03</span>
+Strategic Framework
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">framework</span></div>
-
-<div class="main-cell">
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>framework</span></div>
+<div class=main-cell>
 <p>Much like assuming financial debt, the basic framework for evaluating ROI of technical debt is actually relatively straightforward. There are unknowns that can never be predicted with certainty, but planners can make their best informed estimates and make tactical choices accordingly.</p>
-
 <p>There are three primary criteria I use to evaluate whether or not a particular problem is a good candidate for debt. This framework helps me to determine what the real benefits and cost structure of assuming some particular technical debt would be.</p>
-
-<div class="axiom-block">
-  <div class="axiom-header"><span class="axiom-header-label">Evaluation Criteria</span></div>
-  <div class="axiom-list">
-<div class="axiom">
-  <span class="axiom-num">I</span>
-  <span><strong>Product Upside Evaluation</strong>: Consider the potential market advantage of releasing sooner. If being first-to-market or quickly iterating on customer feedback could significantly boost your product's success, taking on some technical debt might be worthwhile. It's worthwhile to note that a lot of the choices we have the opportunity to make in software have real cost and timeline impacts on the order of developer-hours. I would generally evaluate these as insufficient upside. We should primarily be looking for debt scenarios with upsides on the order of days or longer.</span>
+<div class=axiom-block>
+<div class=axiom-header><span class=axiom-header-label>Evaluation Criteria</span></div>
+<div class=axiom-list>
+<div class=axiom>
+<span class=axiom-num>I</span>
+<span><strong>Product Upside Evaluation</strong>: Consider the potential market advantage of releasing sooner. If being first-to-market or quickly iterating on customer feedback could significantly boost your product's success, taking on some technical debt might be worthwhile. It's worthwhile to note that a lot of the choices we have the opportunity to make in software have real cost and timeline impacts on the order of developer-hours. I would generally evaluate these as insufficient upside. We should primarily be looking for debt scenarios with upsides on the order of days or longer.</span>
 </div>
-
-<div class="axiom">
-  <span class="axiom-num">II</span>
-  <span><strong>Debt Servicing Cost Estimation</strong>: Evaluate both the short-term productivity impact and the long-term maintenance burden. If the debt can be easily isolated and doesn't significantly impede ongoing development, it might be acceptable. This is one that can often be harder to estimate. Developers are notoriously bad at cost estimates in the first place, asking for hypothetical long-term cost estimates only compounds this problem. This is why the technical assessment becomes critical: does this debt occur somewhere that can be isolated? Can we incur this debt while still applying principles of good software design? If so, we can reasonably expect lower long-term servicing costs.</span>
+<div class=axiom>
+<span class=axiom-num>II</span>
+<span><strong>Debt Servicing Cost Estimation</strong>: Evaluate both the short-term productivity impact and the long-term maintenance burden. If the debt can be easily isolated and doesn't significantly impede ongoing development, it might be acceptable. This is one that can often be harder to estimate. Developers are notoriously bad at cost estimates in the first place, asking for hypothetical long-term cost estimates only compounds this problem. This is why the technical assessment becomes critical: does this debt occur somewhere that can be isolated? Can we incur this debt while still applying principles of good software design? If so, we can reasonably expect lower long-term servicing costs.</span>
 </div>
-
-<div class="axiom">
-  <span class="axiom-num">III</span>
-  <span><strong>Organizational Support Assessment</strong>: This is often underestimated or outright ignored in this process. We must gauge the understanding and buy-in from leadership. Ensure there's a commitment to allocate resources for eventual debt repayment, either with long-term servicing or an eventual lump-sum payoff. Without this support, even small debts can snowball into major issues, and this is also where developer experience takes the most significant hit: developers who are constantly working against debt, instead of building new things, live in a state of soul-crushing hamster-wheeling. It's also important to consider expectations management here: if your stakeholders begin to expect delivery time miracles, your overall debt position can spiral. It's important that stakeholders understand that a liability exists on the technical books with this choice, and that it must be paid down.</span>
-</div>
-
+<div class=axiom>
+<span class=axiom-num>III</span>
+<span><strong>Organizational Support Assessment</strong>: This is often underestimated or outright ignored in this process. We must gauge the understanding and buy-in from leadership. Ensure there's a commitment to allocate resources for eventual debt repayment, either with long-term servicing or an eventual lump-sum payoff. Without this support, even small debts can snowball into major issues, and this is also where developer experience takes the most significant hit: developers who are constantly working against debt, instead of building new things, live in a state of soul-crushing hamster-wheeling. It's also important to consider expectations management here: if your stakeholders begin to expect delivery time miracles, your overall debt position can spiral. It's important that stakeholders understand that a liability exists on the technical books with this choice, and that it must be paid down.</span>
 </div>
 </div>
-
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // threshold</span>
-  
+</div>
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // threshold</span>
 The "days or longer" threshold for upside is a useful heuristic: if the shortcut saves hours, the overhead of tracking the debt likely exceeds the savings.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // isolation</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // isolation</span>
 Isolability is the single best predictor of manageable debt. Debt behind a stable API is a contained liability. Debt woven through shared abstractions is a contagion.
-
 </div>
-
 </aside>
-
-<!-- §IV -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§04</span>
-  Portfolio Management
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§04</span>
+Portfolio Management
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">portfolio</span></div>
-
-<div class="main-cell">
-
-<p>Once we have assumed some technical debt in our project, we need to begin to manage it with a <span class="rubric">unified technical debt portfolio strategy</span>. This needs to be holistically developed and managed, and not an ad hoc addendum to the rest of our development programme.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>portfolio</span></div>
+<div class=main-cell>
+<p>Once we have assumed some technical debt in our project, we need to begin to manage it with a <span class=rubric>unified technical debt portfolio strategy</span>. This needs to be holistically developed and managed, and not an ad hoc addendum to the rest of our development programme.</p>
 <ol>
 <li><strong>Regular Debt Audits</strong>: Periodically review and prioritize your technical debt. Not all debt is created equal, and some may even become irrelevant as your system evolves. It's important to understand which debts are becoming burdens on your books and which are not.</li>
 <li><strong>Incremental Repayment</strong>: Instead of attempting to clear all debt at once, integrate debt repayment into your development cycle. How exactly this is done is dependent on the particular debt. Is it possible to incrementally refactor the section as you work on components that interact with it? Can you incrementally develop a replacement system? These questions and structuring your SDLC around their answers helps maintain a balance between new feature development and system improvement.</li>
 <li><strong>Balancing Act</strong>: Strive for a balance between taking on new debt and repaying existing debt. This equilibrium is crucial for maintaining development velocity while keeping the codebase manageable. Accepting significant new technical debts without a concomitant increase in overall technical organization size or paying down some existing debt is a recipe for unhappy developers and grinding productivity to a halt.</li>
 </ol>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // depreciation</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // depreciation</span>
 Some debt depreciates naturally: a module scheduled for replacement loses its debt when it's retired. Regular audits catch these — don't pay off debt on code you're about to delete.
-
 </div>
-
 </aside>
-
-<!-- §V -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§05</span>
-  Mitigating Risks
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§05</span>
+Mitigating Risks
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">risk</span></div>
-
-<div class="main-cell">
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>risk</span></div>
+<div class=main-cell>
 <p>Once debt is on the books and being appropriately strategically managed, there are assets we can introduce that help us tactically manage those debts and prevent unexpected downside realizations. One of the failures of the "debt" metaphor is that financial debt usually has a known liability structure: we know exactly how and when we will incur servicing costs related to the financial debt. The same is not true for technical debt. It's very much possible for some new piece of code to contribute to technical debt's long-term costs without that being intentional or planned. As such, it's important we be aware of this risk and plan against it.</p>
-
 <ol>
 <li><strong>Robust Testing Strategies</strong>: Implement comprehensive unit and integration testing, especially around areas prone to technical debt. This practice helps catch debt-related issues early and prevents them from spreading.</li>
 <li><strong>Enhanced Monitoring and Observability</strong>: Use performance monitoring to identify debt-related bottlenecks and error tracking to prioritize debt repayment. This data-driven approach ensures you're addressing the most impactful debt first.</li>
 <li><strong>Documentation and Knowledge Sharing</strong>: Maintain clear documentation of known technical debt and share insights across teams. This transparency helps in making informed decisions about when to address specific debts.</li>
 </ol>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // testing</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // testing</span>
 Tests around technical debt serve a dual purpose: they catch regressions now, and they become the specification for the eventual refactor. Good tests make debt safer to hold and easier to pay off.
-
 </div>
-
 </aside>
-
-<!-- §VI -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§06</span>
-  Developer Joy
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§06</span>
+Developer Joy
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">joy</span></div>
-
-<div class="main-cell">
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>joy</span></div>
+<div class=main-cell>
 <p>Thus far, I've written at length about how to evaluate and manage technical debt, and what some of the possibilities are that can contribute to destructive developer experiences. But I have not yet made the argument that well-managed debt can lead to <em>improved</em> developer experience, which is arguably the most controversial assertion I made in the introduction.</p>
-
-<p>It is, however, an assertion I stand by. The basic architecture of <span class="rubric">developer joy</span> lies in allowing developers to work on interesting projects, at high pace, and to succeed and ship frequently. Developers want to avoid working on tedious, grindy projects, they want to avoid spinning wheels on code that doesn't meaningfully push the project forward, and very, very few developers honestly enjoy solving bugs in legacy code (they exist, and you want them on your team, but they are not the bread and butter of your shop).</p>
-
+<p>It is, however, an assertion I stand by. The basic architecture of <span class=rubric>developer joy</span> lies in allowing developers to work on interesting projects, at high pace, and to succeed and ship frequently. Developers want to avoid working on tedious, grindy projects, they want to avoid spinning wheels on code that doesn't meaningfully push the project forward, and very, very few developers honestly enjoy solving bugs in legacy code (they exist, and you want them on your team, but they are not the bread and butter of your shop).</p>
 <p>As such, what we can achieve with well-managed debt is a situation where developers can spend more time working on projects or features which move the overall product forward. As I stated earlier, a good candidate for debt is one where it can be well-encapsulated and isolated from other areas of code, and where there's a significant gap between the costs of the faster solution and the more robust solution. In this case, allowing developers to rapidly deploy, and then to isolate the debt section, will allow them to focus on more interesting projects.</p>
-
-<p>Well-structured debt also gives your more ambitious engineers a <span class="rubric">knockdown target</span> to aspire towards. By structuring the debt section with, for example, a clear and stable API, they can at some point work to clear the debt in a way that's both well-defined and challenging. For your best engineers, there is often no more enjoyable experience and no better use of their time.</p>
-
+<p>Well-structured debt also gives your more ambitious engineers a <span class=rubric>knockdown target</span> to aspire towards. By structuring the debt section with, for example, a clear and stable API, they can at some point work to clear the debt in a way that's both well-defined and challenging. For your best engineers, there is often no more enjoyable experience and no better use of their time.</p>
 <p>Technical debt, when approached strategically, can be a valuable tool in a software engineering team's arsenal. The key lies in making informed decisions about when to take on debt, how to manage it, and when to prioritize its repayment. By maintaining a balanced approach and leveraging best practices, engineering leaders can use technical debt to drive innovation and speed without sacrificing long-term system health.</p>
-
 <p>Remember, the goal isn't to eliminate technical debt entirely, but to manage it effectively. By doing so, you can harness its power to accelerate development while mitigating its risks, ultimately leading to more successful and sustainable software projects.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // flow</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // flow</span>
 Csikszentmihalyi's "flow state" requires a balance between challenge and skill. Well-structured debt refactoring — clear boundaries, stable interfaces, measurable success — is one of the purest flow-state tasks in software engineering.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // conclusion</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // conclusion</span>
 The goal is not zero debt but optimal debt — the level that maximizes the team's ability to ship valuable software while maintaining the health of the codebase over time.
-
 </div>
-
 </aside>
-
-
-  </div>
-
-  <footer class="article-footer">
-    <a href="/" class="back-link">← Home</a>
-  </footer>
+</div>
+<footer class=article-footer>
+<a href=/ class=back-link>← Home</a>
+</footer>
 </article>
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">william@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    
-  </div>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
 </footer>
 </div>
-
-
-<div class="responsa">
-  <div class="responsa-header">
-    <span class="responsa-label">Responsa</span>
-  </div>
-  <div class="responsa-body" id="responsa-body"
-       data-repo="wbyatt/byatt.io"
-       data-repo-id="R_kgDOMvtUZA"
-       data-category="Comments"
-       data-category-id="DIC_kwDOMvtUZM4C56QU"
-       data-term="technical-debt.essay">
-  </div>
+<div class=responsa>
+<div class=responsa-header>
+<span class=responsa-label>Responsa</span>
 </div>
-<script>
-(function() {
-  var container = document.getElementById('responsa-body');
-  if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'light';
-  var themeUrl = theme === 'light'
-    ? 'https://byatt.io/css/giscus-iki-light.css'
-    : 'https://byatt.io/css/giscus-iki.css';
-  var s = document.createElement('script');
-  s.src = 'https://giscus.app/client.js';
-  s.setAttribute('data-repo', container.getAttribute('data-repo'));
-  s.setAttribute('data-repo-id', container.getAttribute('data-repo-id'));
-  s.setAttribute('data-category', container.getAttribute('data-category'));
-  s.setAttribute('data-category-id', container.getAttribute('data-category-id'));
-  s.setAttribute('data-mapping', 'specific');
-  s.setAttribute('data-term', container.getAttribute('data-term'));
-  s.setAttribute('data-strict', '0');
-  s.setAttribute('data-reactions-enabled', '1');
-  s.setAttribute('data-emit-metadata', '0');
-  s.setAttribute('data-input-position', 'top');
-  s.setAttribute('data-theme', themeUrl);
-  s.setAttribute('data-lang', 'en');
-  s.setAttribute('data-loading', 'lazy');
-  s.setAttribute('crossorigin', 'anonymous');
-  s.async = true;
-  container.appendChild(s);
-})();
-</script>
-
-
-
-<script>
-(function() {
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-
-  function giscusThemeUrl(theme) {
-    return theme === 'light'
-      ? 'https://byatt.io/css/giscus-iki-light.css'
-      : 'https://byatt.io/css/giscus-iki.css';
-  }
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('byatt-theme', theme);
-    var giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame) {
-      giscusFrame.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  var saved = localStorage.getItem('byatt-theme') || 'light';
-  applyTheme(saved);
-
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  }
-})();
-</script>
+<div class=responsa-body id=responsa-body data-repo=wbyatt/byatt.io data-repo-id=R_kgDOMvtUZA data-category=Comments data-category-id=DIC_kwDOMvtUZM4C56QU data-term=technical-debt.essay>
+</div>
+</div>
+<script>(function(){var b=document.getElementById('responsa-body'),c,d,a;if(!b)return;c=localStorage.getItem('byatt-theme')||'light',d=c==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css',a=document.createElement('script'),a.src='https://giscus.app/client.js',a.setAttribute('data-repo',b.getAttribute('data-repo')),a.setAttribute('data-repo-id',b.getAttribute('data-repo-id')),a.setAttribute('data-category',b.getAttribute('data-category')),a.setAttribute('data-category-id',b.getAttribute('data-category-id')),a.setAttribute('data-mapping','specific'),a.setAttribute('data-term',b.getAttribute('data-term')),a.setAttribute('data-strict','0'),a.setAttribute('data-reactions-enabled','1'),a.setAttribute('data-emit-metadata','0'),a.setAttribute('data-input-position','top'),a.setAttribute('data-theme',d),a.setAttribute('data-lang','en'),a.setAttribute('data-loading','lazy'),a.setAttribute('crossorigin','anonymous'),a.async=!0,b.appendChild(a)})()</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
 </body>
 </html>

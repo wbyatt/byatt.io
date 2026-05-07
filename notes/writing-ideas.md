@@ -46,6 +46,8 @@ Signals depth, currency, this-is-actually-what-I-do.
 - Idempotency keys are a contract, not an implementation detail.
 - Why we stopped using `etcd` for X (and kept it for Y) — pick a real fork in the road.
 - What "eventually consistent" actually buys at p99.9.
+- Modeling the fleet as a continuous system — sync-free scheduling at sub-millisecond latency. If you sample collaborators above their Nyquist rate and characterize their bandwidth, you can predict their state without asking — coordination becomes signal reconstruction, not RPC. The argument: synchronization is a fallback for cases where you couldn't characterize the signal; in regimes where you *can* (HFT, control planes with predictable workloads, anything with bounded rates of change), Nyquist-correct sampling beats locks/queues/consensus on latency by orders of magnitude. Lands the leadership read: "lock-free is the wrong goal — bandwidth-characterized is."
+- Signals-theoretic observability — your monitoring pipeline is a cascaded sampler chain (kernel → cAdvisor → Prometheus → Grafana → your eyes), each stage with its own bandwidth, each stage capable of aliasing. "Correct" is sampler-relative; the same physical workload renders four different ways depending on integration window. Pairs with the existing study at /studies/shannon-nyquist/ as the empirical artifact.
 
 ### Latency & HFT-adjacent
 Signals HFT-fluent without LARPing as a quant.
@@ -64,6 +66,7 @@ Signals judgment, not credentialing.
 - The four kinds of "we should rewrite this."
 - How to read a system you didn't build, in a week.
 - Failure-domain analysis on a napkin.
+- The complexity class you didn't measure — most architects know the Big-O of code they wrote; senior architects know the Big-O of the primitives they depend on under contention (lock manager wait queues, scheduler runqueues, NIC rings, GC pause vs. live-set). Mature-system failures are rarely algorithmic; they're a primitive whose cost function nobody modeled, hit by a workload shape nobody predicted.
 
 ### Leadership & operating model
 Signals actually ran orgs, isn't bluffing.

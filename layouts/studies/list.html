@@ -1,0 +1,24 @@
+{{ define "main" }}
+<link rel="stylesheet" href="{{ "/css/study.css" | relURL }}">
+<div class="studies-index">
+  <header class="studies-index-header">
+    <h1 class="studies-index-title">Studies</h1>
+    <p class="studies-index-lede">Smaller technical artifacts: rigs, prototypes, worked demonstrations. Less polished than the writing, more useful for the work.</p>
+  </header>
+
+  {{ $pages := where .Pages "Section" "studies" }}
+  {{ $total := len $pages }}
+  <div class="studies-grid">
+    {{ range $i, $p := $pages.ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="study-card">
+      <div class="study-card-meta">
+        <span class="study-card-num">{{ printf "%02d" (sub $total $i) }}</span>
+        {{ with .Params.tag }}<span>·</span><span class="study-card-tag">{{ . }}</span>{{ end }}
+      </div>
+      <h3 class="study-card-title">{{ .Title }}</h3>
+      {{ with .Params.subtitle }}<p class="study-card-dek">{{ . }}</p>{{ end }}
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,314 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html><html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Observability from the Beginning — byatt.io</title>
-  <meta name="description" content="william byatt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Observability from the Beginning — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
 </head>
 <body>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
-
-<div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/" class="active">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/ class=active>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
 </nav>
-
-
-  
-<article class="article">
-  <header class="article-header">
-    <div class="article-meta">
-      <span>doc/ops</span>
-      <span>·</span><span>13 September 2024</span>
-    </div>
-    <h1 class="article-title">Observability from the Beginning</h1>
-    <p class="article-subtitle">an argument for the entire development team</p>
-  </header>
-
-  
-
-  <div class="article-body">
-    <h2 class="section-head">
-  <span class="num">§01</span>
-  The Problem
+<article class=article>
+<header class=article-header>
+<div class=article-meta>
+<span>doc/ops</span>
+<span>·</span><span>13 September 2024</span>
+</div>
+<h1 class=article-title>Observability from the Beginning</h1>
+<p class=article-subtitle>an argument for the entire development team</p>
+</header>
+<div class=article-body>
+<h2 class=section-head>
+<span class=num>§01</span>
+The Problem
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">o11y</span></div>
-
-<div class="main-cell">
-
-<span class="dropcap" aria-hidden="true">E</span>
-
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>o11y</span></div>
+<div class=main-cell>
+<span class=dropcap aria-hidden=true>E</span>
 <p>ventually, every piece of software we build and deploy in production generates some user experience that requires us to examine the state of our application <em>as it's running in production</em>. Maybe when we first launch some system, we can wrap it up in a VM or a container and fling it into the world, but eventually we find that we need more detailed information about our application's actual running conditions. This is the point at which we know observability is required, where we know we need to monitor and observe our system and take actions based on that.</p>
-
 <p>All too often, we treat observability as a secondary system, as something that we tack on to our systems after the fact, on an ad hoc basis. We try to instrument our systems as part of the devops or operations processes, at the orchestration and deployment level. Where we look for integration at the application level, we try to drop in one-liner DataDog APM integrations, instead of thinking carefully about how we can build our applications in the first place to support production metrics and logging.</p>
-
-<p>This is a <span class="rubric">mistake</span>. It's a mistake that's often introduced very early in the product lifecycle, before developers even start their work. And like all mistakes that early, its downstream consequences are expensive and often nearly impossible to ever fully mitigate. Developers have no particular immediate stake in observability: we run these systems locally, with zero concurrency, under no load, and with access to development environment logging and debuggers. When product owners focus entirely on features, without considering infrastructure, developers can meet those needs without ever introducing mature observability. This, then, is an argument aimed at the entire development team, including our colleagues in product and project management.</p>
-
+<p>This is a <span class=rubric>mistake</span>. It's a mistake that's often introduced very early in the product lifecycle, before developers even start their work. And like all mistakes that early, its downstream consequences are expensive and often nearly impossible to ever fully mitigate. Developers have no particular immediate stake in observability: we run these systems locally, with zero concurrency, under no load, and with access to development environment logging and debuggers. When product owners focus entirely on features, without considering infrastructure, developers can meet those needs without ever introducing mature observability. This, then, is an argument aimed at the entire development team, including our colleagues in product and project management.</p>
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // incentives</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // incentives</span>
 The observability gap is a classic principal-agent problem: the people who build the system (developers) are not the people who operate it (SREs, ops). Without shared ownership, the gap persists.
-
 </div>
-
 </aside>
-
-<!-- §II -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§02</span>
-  The Three Signals
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§02</span>
+The Three Signals
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">signals</span></div>
-
-<div class="main-cell">
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>signals</span></div>
+<div class=main-cell>
 <p>Observability is a bedrock principle in software development, granting developers and operators the power to gain profound insights into their systems. It's about measuring the internal state of a system by examining its outputs. This, in turn, allows us to monitor the health and performance of the applications, pinpoint and resolve issues, and make data-driven choices on how to enhance them.</p>
-
-<p>There are three key signals we seek to observe: <span class="rubric">logs, metrics, and traces</span>. Logs are records of specific events within a system. A query is made to a database, a user clicks a link, an error occurs. Metrics are quantitative measurements of system state, including metrics around both use and performance. Traces follow the flow of a request through a system, from an ingress through to various services and datastores — which is particularly useful for debugging and performance optimization in service-oriented architectures.</p>
-
+<p>There are three key signals we seek to observe: <span class=rubric>logs, metrics, and traces</span>. Logs are records of specific events within a system. A query is made to a database, a user clicks a link, an error occurs. Metrics are quantitative measurements of system state, including metrics around both use and performance. Traces follow the flow of a request through a system, from an ingress through to various services and datastores — which is particularly useful for debugging and performance optimization in service-oriented architectures.</p>
 <p>By adequately observing and analyzing these signals, teams can gain valuable insights into the behavior of their systems, how users are experiencing and using the system, and enabling them to make data-driven decisions across the SDLC, from prioritizing future features to identifying technical performance bottlenecks or error conditions.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // three pillars</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // three pillars</span>
 Logs, metrics, and traces are often called the "three pillars of observability." Each provides a different lens: logs give discrete events, metrics give aggregate trends, traces give causal chains.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // OpenTelemetry</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // OpenTelemetry</span>
 The OpenTelemetry project aims to unify these three signals under a single instrumentation framework — a recognition that they are perspectives on the same underlying system state.
-
 </div>
-
 </aside>
-
-<!-- §III -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§03</span>
-  Observability for Operations
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§03</span>
+Observability for Operations
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">ops</span></div>
-
-<div class="main-cell">
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>ops</span></div>
+<div class=main-cell>
 <p>Observability is the key practice in making data-driven decisions about operating a software system. Whether we're looking to optimize for cost, reliability, or user interactivity, we need accurate information to make good decisions about how we're running our production deployments.</p>
-
 <p>Perhaps most obviously, observability allows us to monitor performance and resource consumption. We can identify where a system is experiencing bottlenecks, and determine whether those are CPU or IO bound bottlenecks, scaling as needed. We can identify if we're overprovisioning on some axis, needlessly spending money. We can make predictions about load under certain conditions and prepare our operations for those predictions, allowing us to meet SLO's and expense targets proactively.</p>
-
-<p>But beyond that, observability is our <span class="rubric">primary analytical tool for problem analysis</span>. When things do go wrong — SLO failures, error spikes, data disasters, any of the things that can go wrong in a software system — signal data and observability tooling's analysis functions are both the clues and the tools we use to understand precisely what happened, and how we can determine the most effective interventions to prevent future errors of that class. This not only speeds up resolution times but also makes us to make our software more reliable, leading to happier customers and better products.</p>
-
+<p>But beyond that, observability is our <span class=rubric>primary analytical tool for problem analysis</span>. When things do go wrong — SLO failures, error spikes, data disasters, any of the things that can go wrong in a software system — signal data and observability tooling's analysis functions are both the clues and the tools we use to understand precisely what happened, and how we can determine the most effective interventions to prevent future errors of that class. This not only speeds up resolution times but also makes us to make our software more reliable, leading to happier customers and better products.</p>
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // SLO</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // SLO</span>
 Service Level Objectives define the reliability targets a system must meet. Without observability, SLOs are aspirational; with observability, they become measurable contracts.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // MTTR</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // MTTR</span>
 Mean Time to Recovery is the metric most directly improved by mature observability. The faster you can identify and understand a failure, the faster you can fix it.
-
 </div>
-
 </aside>
-
-<!-- §IV -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§04</span>
-  The Product Pipeline
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§04</span>
+The Product Pipeline
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">product</span></div>
-
-<div class="main-cell">
-
-<p>Much of the literature on observability focuses on the preceding section, on the value of healthy observability to developers and operators. However, I believe this misses the <span class="rubric">real point</span>, and where both ultimate responsibility for and long-term value from observability lie. Whether your business requirements necessitate agile or traditional project management approaches, you must have observability in your initial product plans.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>product</span></div>
+<div class=main-cell>
+<p>Much of the literature on observability focuses on the preceding section, on the value of healthy observability to developers and operators. However, I believe this misses the <span class=rubric>real point</span>, and where both ultimate responsibility for and long-term value from observability lie. Whether your business requirements necessitate agile or traditional project management approaches, you must have observability in your initial product plans.</p>
 <p>Agile project management solves the problem of shifting product requirements. We build an MVP, and then we deploy to production and enter into a dialogue with our stakeholders to rapidly iterate on the product and allow us to pivot with market conditions and stakeholder priorities. Every single sprint we run without observability is a sprint in which we're missing core data that we could be using to identify and refine those requirements. With observability, engineering and operations stakeholders can better articulate costs associated with development; product and sales stakeholders have better ideas of which features are being used and the experience using them; financial stakeholders can better understand ROI on individual features or subsystems. Without observability as early as the MVP, stakeholders are shooting in the dark, and there are entire classes of concerns that could impact product requirements that are simply unknown.</p>
-
 <p>If you're blessed with a problem domain with static requirements — either a slow-moving market or sufficient control of the operating parameters to be able to say with certainty that the landscape won't change on you — your team may reasonably opt for more traditional project management techniques, the so-called "waterfall" approach. Under this project management philosophy, as well, it's critical to incorporate observability as early as possible. The key benefit to observability under waterfall is in long-term operations and maintenance: good observability makes operators' lives easier and bugfixes more efficient. But articulating observability as a requirement from the outset allows for more efficient and accurate management of the project. It informs PM's that they need to bring in ops as stakeholders for determining observability needs, it allows developers to better estimate development time and plan systems architecture, and it avoids last-minute scrambles to tack systems on ad-hoc when ops inevitably tells you it's a requirement.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // agile</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // agile</span>
 The agile manifesto's emphasis on "responding to change" presupposes that you can detect when change is needed. Without observability, the feedback loop that agile depends on is incomplete.
-
 </div>
-
-<div class="margin-note">
-  <span class="ref">NOTE // waterfall</span>
-  
+<div class=margin-note>
+<span class=ref>NOTE // waterfall</span>
 Even in waterfall, the operations phase is the longest and most expensive. Front-loading observability amortizes its cost across the entire operational lifetime of the system.
-
 </div>
-
 </aside>
-
-<!-- §V -->
-<hr class="section-rule">
-
-<h2 class="section-head">
-  <span class="num">§05</span>
-  The Launch Requirement
+<hr class=section-rule>
+<h2 class=section-head>
+<span class=num>§05</span>
+The Launch Requirement
 </h2>
-
-<div class="gutter-cell" aria-hidden="true"><span class="sigil">launch</span></div>
-
-<div class="main-cell">
-
-<p>What all of this speaks to is that observability should be understood as <span class="rubric">requirement from any project's outset</span>. Our initial signals don't have to include everything and anything a system could possibly produce, but we should have an instrumentation framework in place that generates the most immediately actionable signals and allows developers and operators to easily extend it if new signals become germane.</p>
-
+<div class=gutter-cell aria-hidden=true><span class=sigil>launch</span></div>
+<div class=main-cell>
+<p>What all of this speaks to is that observability should be understood as <span class=rubric>requirement from any project's outset</span>. Our initial signals don't have to include everything and anything a system could possibly produce, but we should have an instrumentation framework in place that generates the most immediately actionable signals and allows developers and operators to easily extend it if new signals become germane.</p>
 <p>By introducing observability as soon as possible in the process, we can make our engineering and operations teams more efficient and effective, and we can more tightly couple our product operations to our organization's business goals.</p>
-
 </div>
-
-<aside class="margin-cell">
-<div class="margin-note">
-  <span class="ref">NOTE // minimum</span>
-  
+<aside class=margin-cell>
+<div class=margin-note>
+<span class=ref>NOTE // minimum</span>
 The minimum viable observability: structured logging, request latency histograms, and error rate counters. These three alone unlock the majority of operational insight.
-
 </div>
-
 </aside>
-
-
-  </div>
-
-  <footer class="article-footer">
-    <a href="/" class="back-link">← Home</a>
-  </footer>
+</div>
+<footer class=article-footer>
+<a href=/ class=back-link>← Home</a>
+</footer>
 </article>
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">william@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    
-  </div>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
 </footer>
 </div>
-
-
-<div class="responsa">
-  <div class="responsa-header">
-    <span class="responsa-label">Responsa</span>
-  </div>
-  <div class="responsa-body" id="responsa-body"
-       data-repo="wbyatt/byatt.io"
-       data-repo-id="R_kgDOMvtUZA"
-       data-category="Comments"
-       data-category-id="DIC_kwDOMvtUZM4C56QU"
-       data-term="observability.essay">
-  </div>
+<div class=responsa>
+<div class=responsa-header>
+<span class=responsa-label>Responsa</span>
 </div>
-<script>
-(function() {
-  var container = document.getElementById('responsa-body');
-  if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'light';
-  var themeUrl = theme === 'light'
-    ? 'https://byatt.io/css/giscus-iki-light.css'
-    : 'https://byatt.io/css/giscus-iki.css';
-  var s = document.createElement('script');
-  s.src = 'https://giscus.app/client.js';
-  s.setAttribute('data-repo', container.getAttribute('data-repo'));
-  s.setAttribute('data-repo-id', container.getAttribute('data-repo-id'));
-  s.setAttribute('data-category', container.getAttribute('data-category'));
-  s.setAttribute('data-category-id', container.getAttribute('data-category-id'));
-  s.setAttribute('data-mapping', 'specific');
-  s.setAttribute('data-term', container.getAttribute('data-term'));
-  s.setAttribute('data-strict', '0');
-  s.setAttribute('data-reactions-enabled', '1');
-  s.setAttribute('data-emit-metadata', '0');
-  s.setAttribute('data-input-position', 'top');
-  s.setAttribute('data-theme', themeUrl);
-  s.setAttribute('data-lang', 'en');
-  s.setAttribute('data-loading', 'lazy');
-  s.setAttribute('crossorigin', 'anonymous');
-  s.async = true;
-  container.appendChild(s);
-})();
-</script>
-
-
-
-<script>
-(function() {
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-
-  function giscusThemeUrl(theme) {
-    return theme === 'light'
-      ? 'https://byatt.io/css/giscus-iki-light.css'
-      : 'https://byatt.io/css/giscus-iki.css';
-  }
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('byatt-theme', theme);
-    var giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame) {
-      giscusFrame.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  var saved = localStorage.getItem('byatt-theme') || 'light';
-  applyTheme(saved);
-
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  }
-})();
-</script>
+<div class=responsa-body id=responsa-body data-repo=wbyatt/byatt.io data-repo-id=R_kgDOMvtUZA data-category=Comments data-category-id=DIC_kwDOMvtUZM4C56QU data-term=observability.essay>
+</div>
+</div>
+<script>(function(){var b=document.getElementById('responsa-body'),c,d,a;if(!b)return;c=localStorage.getItem('byatt-theme')||'light',d=c==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css',a=document.createElement('script'),a.src='https://giscus.app/client.js',a.setAttribute('data-repo',b.getAttribute('data-repo')),a.setAttribute('data-repo-id',b.getAttribute('data-repo-id')),a.setAttribute('data-category',b.getAttribute('data-category')),a.setAttribute('data-category-id',b.getAttribute('data-category-id')),a.setAttribute('data-mapping','specific'),a.setAttribute('data-term',b.getAttribute('data-term')),a.setAttribute('data-strict','0'),a.setAttribute('data-reactions-enabled','1'),a.setAttribute('data-emit-metadata','0'),a.setAttribute('data-input-position','top'),a.setAttribute('data-theme',d),a.setAttribute('data-lang','en'),a.setAttribute('data-loading','lazy'),a.setAttribute('crossorigin','anonymous'),a.async=!0,b.appendChild(a)})()</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
 </body>
 </html>

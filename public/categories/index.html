@@ -1,93 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html><html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categories — byatt.io</title>
-  <meta name="description" content="william byatt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Categories — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
 </head>
 <body>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
-
-<div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
 </nav>
-
-
-  
-<header style="padding: 16px 0 48px;">
-  <h1>Categories</h1>
-  
+<header style="padding:16px 0 48px">
+<h1>Categories</h1>
 </header>
-
-
-<ul class="page-list">
-  
+<ul class=page-list>
 </ul>
-
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">william@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    
-  </div>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
 </footer>
 </div>
-
-
-
-<script>
-(function() {
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-
-  function giscusThemeUrl(theme) {
-    return theme === 'light'
-      ? 'https://byatt.io/css/giscus-iki-light.css'
-      : 'https://byatt.io/css/giscus-iki.css';
-  }
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('byatt-theme', theme);
-    var giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame) {
-      giscusFrame.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  var saved = localStorage.getItem('byatt-theme') || 'light';
-  applyTheme(saved);
-
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  }
-})();
-</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
 </body>
 </html>

@@ -1,149 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html><html lang=en>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archive — byatt.io</title>
-  <meta name="description" content="william byatt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/css/iki.css">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Archive — byatt.io</title>
+<meta name=description content="william byatt">
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=stylesheet href=/css/iki.css>
 </head>
 <body>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme"></button>
-
-<div class="page">
-  <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav-wordmark">byatt<span class="dot">.</span>io</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/posts/">Writing</a>
-    <a href="/cv/">CV</a>
-  </div>
+<button class=theme-toggle id=themeToggle aria-label="Toggle light/dark mode" title="Toggle theme"></button>
+<div class=page>
+<nav class=nav aria-label=Primary>
+<a href=/ class=nav-wordmark>byatt<span class=dot>.</span>io</a>
+<div class=nav-links>
+<a href=/>Home</a>
+<a href=/posts/>Writing</a>
+<a href=/studies/>Studies</a>
+<a href=/cv/>CV</a>
+</div>
 </nav>
-
-
-  
-<article class="article">
-  <header class="article-header">
-    <div class="article-meta">
-      
-      
-      
-    </div>
-    <h1 class="article-title">Archive</h1>
-    
-  </header>
-
-  
-
-  <div class="article-body">
-    
-  </div>
-
-  <footer class="article-footer">
-    <a href="/posts/" class="back-link">← All writing</a>
-    
-    <span class="article-meta">Next: <a href="/cv/">William Byatt</a> →</span>
-    
-  </footer>
+<article class=article>
+<header class=article-header>
+<div class=article-meta>
+</div>
+<h1 class=article-title>Archive</h1>
+</header>
+<div class=article-body>
+</div>
+<footer class=article-footer>
+<a href=/posts/ class=back-link>← All writing</a>
+<span class=article-meta>Next: <a href=/cv/>William Byatt</a> →</span>
+</footer>
 </article>
-
-
-  <footer class="site-footer">
-  <div>
-    <div class="footer-id">william@byatt.io</div>
-    <div>Savannah, GA</div>
-  </div>
-  <div class="site-footer-links">
-    
-    <a href="https://linkedin.com/in/wm-byatt" rel="me" title="LinkedIn">LinkedIn</a>
-    
-    <a href="https://github.com/wbyatt" rel="me" title="GitHub">GitHub</a>
-    
-    
-  </div>
+<footer class=site-footer>
+<div>
+<div class=footer-id>william@byatt.io</div>
+<div>Savannah, GA</div>
+</div>
+<div class=site-footer-links>
+<a href=https://linkedin.com/in/wm-byatt rel=me title=LinkedIn>LinkedIn</a>
+<a href=https://github.com/wbyatt rel=me title=GitHub>GitHub</a>
+</div>
 </footer>
 </div>
-
-
-<div class="responsa">
-  <div class="responsa-header">
-    <span class="responsa-label">Responsa</span>
-  </div>
-  <div class="responsa-body" id="responsa-body"
-       data-repo="wbyatt/byatt.io"
-       data-repo-id="R_kgDOMvtUZA"
-       data-category="Comments"
-       data-category-id="DIC_kwDOMvtUZM4C56QU"
-       data-term="/archives/">
-  </div>
+<div class=responsa>
+<div class=responsa-header>
+<span class=responsa-label>Responsa</span>
 </div>
-<script>
-(function() {
-  var container = document.getElementById('responsa-body');
-  if (!container) return;
-  var theme = localStorage.getItem('byatt-theme') || 'light';
-  var themeUrl = theme === 'light'
-    ? 'https://byatt.io/css/giscus-iki-light.css'
-    : 'https://byatt.io/css/giscus-iki.css';
-  var s = document.createElement('script');
-  s.src = 'https://giscus.app/client.js';
-  s.setAttribute('data-repo', container.getAttribute('data-repo'));
-  s.setAttribute('data-repo-id', container.getAttribute('data-repo-id'));
-  s.setAttribute('data-category', container.getAttribute('data-category'));
-  s.setAttribute('data-category-id', container.getAttribute('data-category-id'));
-  s.setAttribute('data-mapping', 'specific');
-  s.setAttribute('data-term', container.getAttribute('data-term'));
-  s.setAttribute('data-strict', '0');
-  s.setAttribute('data-reactions-enabled', '1');
-  s.setAttribute('data-emit-metadata', '0');
-  s.setAttribute('data-input-position', 'top');
-  s.setAttribute('data-theme', themeUrl);
-  s.setAttribute('data-lang', 'en');
-  s.setAttribute('data-loading', 'lazy');
-  s.setAttribute('crossorigin', 'anonymous');
-  s.async = true;
-  container.appendChild(s);
-})();
-</script>
-
-
-
-<script>
-(function() {
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-
-  function giscusThemeUrl(theme) {
-    return theme === 'light'
-      ? 'https://byatt.io/css/giscus-iki-light.css'
-      : 'https://byatt.io/css/giscus-iki.css';
-  }
-
-  function applyTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('byatt-theme', theme);
-    var giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (giscusFrame) {
-      giscusFrame.contentWindow.postMessage(
-        { giscus: { setConfig: { theme: giscusThemeUrl(theme) } } },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  var saved = localStorage.getItem('byatt-theme') || 'light';
-  applyTheme(saved);
-
-  if (toggle) {
-    toggle.addEventListener('click', function() {
-      var current = root.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  }
-})();
-</script>
+<div class=responsa-body id=responsa-body data-repo=wbyatt/byatt.io data-repo-id=R_kgDOMvtUZA data-category=Comments data-category-id=DIC_kwDOMvtUZM4C56QU data-term=/archives/>
+</div>
+</div>
+<script>(function(){var b=document.getElementById('responsa-body'),c,d,a;if(!b)return;c=localStorage.getItem('byatt-theme')||'light',d=c==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css',a=document.createElement('script'),a.src='https://giscus.app/client.js',a.setAttribute('data-repo',b.getAttribute('data-repo')),a.setAttribute('data-repo-id',b.getAttribute('data-repo-id')),a.setAttribute('data-category',b.getAttribute('data-category')),a.setAttribute('data-category-id',b.getAttribute('data-category-id')),a.setAttribute('data-mapping','specific'),a.setAttribute('data-term',b.getAttribute('data-term')),a.setAttribute('data-strict','0'),a.setAttribute('data-reactions-enabled','1'),a.setAttribute('data-emit-metadata','0'),a.setAttribute('data-input-position','top'),a.setAttribute('data-theme',d),a.setAttribute('data-lang','en'),a.setAttribute('data-loading','lazy'),a.setAttribute('crossorigin','anonymous'),a.async=!0,b.appendChild(a)})()</script>
+<script>(function(){var a=document.documentElement,b=document.getElementById('themeToggle'),e;function d(a){return a==='light'?'https://byatt.io/css/giscus-iki-light.css':'https://byatt.io/css/giscus-iki.css'}function c(b){a.setAttribute('data-theme',b),localStorage.setItem('byatt-theme',b);var c=document.querySelector('iframe.giscus-frame');c&&c.contentWindow.postMessage({giscus:{setConfig:{theme:d(b)}}},'https://giscus.app')}e=localStorage.getItem('byatt-theme')||'light',c(e),b&&b.addEventListener('click',function(){var b=a.getAttribute('data-theme')||'light';c(b==='light'?'dark':'light')})})()</script>
 </body>
 </html>
