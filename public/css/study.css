@@ -6,22 +6,6 @@
 
 .article--study {
   max-width: var(--measure-page);
-  background: #FAFAFA;
-  border: 1px solid var(--rule);
-  border-radius: var(--r-1);
-  padding: var(--s-7) var(--s-6) var(--s-6);
-  box-shadow: var(--shadow-1);
-}
-
-[data-theme="dark"] .article--study {
-  background: #1B1C1F;
-  border-color: var(--ink-rule);
-}
-
-@media (max-width: 720px) {
-  .article--study {
-    padding: var(--s-5) var(--s-4);
-  }
 }
 
 /* Sans body, applied to children that have their own font-family rules

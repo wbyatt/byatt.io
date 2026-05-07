@@ -29,8 +29,9 @@
   const root = document.querySelector(".sn-rig");
   if (!root) return;
 
-  const truthCanvas   = root.querySelector('[data-sn-canvas="truth"]');
-  const samplerCanvas = root.querySelector('[data-sn-canvas="sampler"]');
+  const truthCanvas    = root.querySelector('[data-sn-canvas="truth"]');
+  const samplerCanvas  = root.querySelector('[data-sn-canvas="sampler"]');
+  const spectrumCanvas = root.querySelector('[data-sn-canvas="spectrum"]');
   const intervalInput = root.querySelector('[data-sn-input="interval"]');
   const windowInput   = root.querySelector('[data-sn-input="window"]');
   const intervalOut   = root.querySelector('[data-sn-output="interval"]');
@@ -71,6 +72,88 @@
     }
     return sum / n;
   };
+
+  // -- FFT (Cooley-Tukey radix-2, in-place) --------------------------------
+  // re/im are equal-length Float64Arrays whose length is a power of 2.
+  const fft = (re, im) => {
+    const N = re.length;
+    // bit-reverse permutation
+    for (let i = 0, j = 0; i < N; i++) {
+      if (i < j) {
+        let t = re[i]; re[i] = re[j]; re[j] = t;
+        t     = im[i]; im[i] = im[j]; im[j] = t;
+      }
+      let m = N >> 1;
+      while (m >= 1 && j >= m) { j -= m; m >>= 1; }
+      j += m;
+    }
+    for (let size = 2; size <= N; size <<= 1) {
+      const half = size >> 1;
+      const baseAngle = -2 * Math.PI / size;
+      for (let start = 0; start < N; start += size) {
+        for (let k = 0; k < half; k++) {
+          const a = baseAngle * k;
+          const c = Math.cos(a), s = Math.sin(a);
+          const i1 = start + k, i2 = start + k + half;
+          const tre = c * re[i2] - s * im[i2];
+          const tim = s * re[i2] + c * im[i2];
+          re[i2] = re[i1] - tre;
+          im[i2] = im[i1] - tim;
+          re[i1] += tre;
+          im[i1] += tim;
+        }
+      }
+    }
+  };
+
+  const nextPow2 = (n) => {
+    let p = 1;
+    while (p < n) p <<= 1;
+    return p;
+  };
+
+  // Compute one-sided amplitude spectrum of a real-valued sample array.
+  // Returns { freqs: Float64Array, amps: Float64Array } covering [0, fs/2].
+  const spectrum = (samples, sampleSpacing) => {
+    const N = samples.length;
+    const re = new Float64Array(N);
+    const im = new Float64Array(N);
+    for (let i = 0; i < N; i++) re[i] = samples[i];
+    fft(re, im);
+    const half = N >> 1;
+    const freqs = new Float64Array(half);
+    const amps  = new Float64Array(half);
+    const fs = 1 / sampleSpacing;
+    for (let k = 0; k < half; k++) {
+      freqs[k] = k * fs / N;
+      amps[k]  = (2 / N) * Math.hypot(re[k], im[k]);
+    }
+    return { freqs, amps };
+  };
+
+  // -- Cached spectra: deterministic functions of (interval, window) -------
+  const ANALYSIS_WINDOW_S = 2048;       // total simulated seconds per FFT
+  const TRUTH_DT          = 0.5;        // truth sample spacing (s)
+  const TRUTH_N           = nextPow2(ANALYSIS_WINDOW_S / TRUTH_DT);
+
+  const computeTruthSpectrum = () => {
+    const samples = new Float64Array(TRUTH_N);
+    for (let i = 0; i < TRUTH_N; i++) samples[i] = signal(i * TRUTH_DT);
+    return spectrum(samples, TRUTH_DT);
+  };
+
+  const computeSamplerSpectrum = (interval, win) => {
+    // Use the largest power of 2 that fits in ANALYSIS_WINDOW_S at this rate.
+    let N = 1;
+    while ((N << 1) * interval <= ANALYSIS_WINDOW_S) N <<= 1;
+    if (N < 8) N = 8;
+    const samples = new Float64Array(N);
+    for (let i = 0; i < N; i++) samples[i] = windowSample(i * interval, win);
+    return spectrum(samples, interval);
+  };
+
+  const truthSpectrum = computeTruthSpectrum();   // constant
+  let   samplerSpectrum;                          // recomputed on slider change
 
   // -- State ---------------------------------------------------------------
   const state = {
@@ -234,6 +317,144 @@
     ctx.restore();
   };
 
+  // -- Spectrum panel ------------------------------------------------------
+  const FREQ_MAX = 0.10;  // Hz, x-axis range
+  const FREQ_PAD = { top: 24, right: 28, bottom: 28, left: 80 };
+
+  const drawSpectrum = () => {
+    const { ctx, w, h } = fitCanvas(spectrumCanvas);
+    const r = {
+      x: FREQ_PAD.left,
+      y: FREQ_PAD.top,
+      w: w - FREQ_PAD.left - FREQ_PAD.right,
+      h: h - FREQ_PAD.top - FREQ_PAD.bottom,
+    };
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = COLOR.bg;
+    ctx.fillRect(0, 0, w, h);
+
+    // Find amplitude scale across both spectra in the visible band.
+    let ampMax = 0;
+    const collect = (sp) => {
+      for (let i = 0; i < sp.freqs.length; i++) {
+        if (sp.freqs[i] > FREQ_MAX) break;
+        if (sp.amps[i] > ampMax) ampMax = sp.amps[i];
+      }
+    };
+    collect(truthSpectrum);
+    collect(samplerSpectrum);
+    if (ampMax === 0) ampMax = 1;
+    // Round up to a clean tick value.
+    const ampTick = Math.pow(10, Math.floor(Math.log10(ampMax)));
+    const ampScale = Math.ceil(ampMax / ampTick) * ampTick;
+
+    // Y gridlines / labels (5 levels).
+    ctx.font = `11px ${FONT_MONO}`;
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "right";
+    ctx.fillStyle = COLOR.fg3;
+    for (let i = 0; i <= 4; i++) {
+      const v = (i / 4) * ampScale;
+      const py = r.y + r.h * (1 - i / 4);
+      ctx.strokeStyle = COLOR.rule;
+      ctx.beginPath();
+      ctx.moveTo(r.x, py);
+      ctx.lineTo(r.x + r.w, py);
+      ctx.stroke();
+      ctx.fillText(v.toExponential(1), r.x - 8, py);
+    }
+
+    // X gridlines / labels every 0.02 Hz.
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    for (let f = 0; f <= FREQ_MAX + 1e-9; f += 0.02) {
+      const px = r.x + (f / FREQ_MAX) * r.w;
+      ctx.strokeStyle = COLOR.rule;
+      ctx.beginPath();
+      ctx.moveTo(px, r.y);
+      ctx.lineTo(px, r.y + r.h);
+      ctx.stroke();
+      ctx.fillStyle = COLOR.fg3;
+      ctx.fillText(f.toFixed(2) + " Hz", px, r.y + r.h + 8);
+    }
+
+    // Frame.
+    ctx.strokeStyle = COLOR.rule;
+    ctx.strokeRect(r.x, r.y, r.w, r.h);
+
+    // Clip plot area for traces.
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(r.x, r.y, r.w, r.h);
+    ctx.clip();
+
+    const drawTrace = (sp, color, fillAlpha, fmax) => {
+      if (!sp || sp.freqs.length === 0) return;
+      const fillStr = color === COLOR.truth
+        ? `rgba(168, 138, 58, ${fillAlpha})`
+        : `rgba(110, 42, 30, ${fillAlpha})`;
+
+      // Build path of the spectrum curve.
+      ctx.beginPath();
+      let started = false;
+      for (let i = 0; i < sp.freqs.length; i++) {
+        const f = sp.freqs[i];
+        if (f > fmax) break;
+        const px = r.x + (f / FREQ_MAX) * r.w;
+        const py = r.y + r.h * (1 - sp.amps[i] / ampScale);
+        if (!started) { ctx.moveTo(px, py); started = true; }
+        else          { ctx.lineTo(px, py); }
+      }
+      // Close with bottom edge for fill.
+      const lastFreq = Math.min(fmax, sp.freqs[sp.freqs.length - 1]);
+      const lastX = r.x + (lastFreq / FREQ_MAX) * r.w;
+      ctx.lineTo(lastX, r.y + r.h);
+      ctx.lineTo(r.x, r.y + r.h);
+      ctx.closePath();
+      ctx.fillStyle = fillStr;
+      ctx.fill();
+
+      // Stroke pass: just the curve, no closing.
+      ctx.beginPath();
+      started = false;
+      for (let i = 0; i < sp.freqs.length; i++) {
+        const f = sp.freqs[i];
+        if (f > fmax) break;
+        const px = r.x + (f / FREQ_MAX) * r.w;
+        const py = r.y + r.h * (1 - sp.amps[i] / ampScale);
+        if (!started) { ctx.moveTo(px, py); started = true; }
+        else          { ctx.lineTo(px, py); }
+      }
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    };
+
+    drawTrace(truthSpectrum,   COLOR.truth,   0.18, FREQ_MAX);
+    const fsHalf = 1 / (2 * state.interval);
+    drawTrace(samplerSpectrum, COLOR.sampler, 0.22, fsHalf);
+
+    ctx.restore();
+
+    // Sampler-Nyquist marker line + label, drawn on top of the clip.
+    if (fsHalf <= FREQ_MAX) {
+      const nx = r.x + (fsHalf / FREQ_MAX) * r.w;
+      ctx.strokeStyle = COLOR.sampler;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(nx, r.y);
+      ctx.lineTo(nx, r.y + r.h);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = COLOR.sampler;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.font = `10px ${FONT_MONO}`;
+      ctx.fillText("fs/2", nx + 4, r.y + 4);
+    }
+  };
+
   // -- Readout: derived quantities -----------------------------------------
   const gcd = (a, b) => {
     a = Math.round(a); b = Math.round(b);
@@ -291,6 +512,7 @@
     state.window   = parseFloat(windowInput.value);
     intervalOut.textContent = `${state.interval} s`;
     windowOut.textContent   = formatWindow(state.window);
+    samplerSpectrum = computeSamplerSpectrum(state.interval, state.window);
     updateReadout();
   };
   intervalInput.addEventListener("input", onInput);
@@ -301,6 +523,7 @@
   const tick = () => {
     drawTruth();
     drawSampler();
+    drawSpectrum();
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
@@ -309,6 +532,8 @@
   let resizeTimer = null;
   window.addEventListener("resize", () => {
     if (resizeTimer) cancelAnimationFrame(resizeTimer);
-    resizeTimer = requestAnimationFrame(() => { drawTruth(); drawSampler(); });
+    resizeTimer = requestAnimationFrame(() => {
+      drawTruth(); drawSampler(); drawSpectrum();
+    });
   });
 })();
