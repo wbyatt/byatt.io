@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1C1B18"/>
+    </marker>
+    <marker id="arr-fb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6E2A1E"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="760" height="320" fill="#FCFBF7"/>
+  <rect x="1" y="1" width="758" height="318" fill="none" stroke="#E8E2D1" stroke-width="2"/>
+
+  <!-- reference input -->
+  <text x="78" y="100" text-anchor="middle" font-size="15" fill="#1C1B18">reference</text>
+  <text x="78" y="118" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">desired state</text>
+  <line x1="25" y1="130" x2="128" y2="130" stroke="#1C1B18" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- summing junction -->
+  <circle cx="150" cy="130" r="16" fill="#FCFBF7" stroke="#1C1B18" stroke-width="1.5"/>
+  <text x="150" y="136" text-anchor="middle" font-size="16" fill="#1C1B18">&#931;</text>
+  <text x="126" y="122" text-anchor="middle" font-size="13" fill="#1C1B18">+</text>
+  <text x="164" y="164" text-anchor="middle" font-size="14" fill="#6E2A1E">&#8722;</text>
+
+  <!-- error arrow -->
+  <line x1="166" y1="130" x2="219" y2="130" stroke="#1C1B18" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="193" y="92" text-anchor="middle" font-size="14" fill="#6E2A1E">error</text>
+  <text x="193" y="109" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">drift</text>
+
+  <!-- controller -->
+  <rect x="225" y="95" width="140" height="70" rx="4" fill="#F1ECDF" stroke="#1C1B18" stroke-width="1.5"/>
+  <text x="295" y="126" text-anchor="middle" font-size="16" fill="#1C1B18">Controller</text>
+  <text x="295" y="147" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">reconciler &#183; operator</text>
+
+  <line x1="365" y1="130" x2="414" y2="130" stroke="#1C1B18" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- actuator -->
+  <rect x="420" y="95" width="130" height="70" rx="4" fill="#F1ECDF" stroke="#1C1B18" stroke-width="1.5"/>
+  <text x="485" y="126" text-anchor="middle" font-size="16" fill="#1C1B18">Actuator</text>
+  <text x="485" y="147" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">mutating operations</text>
+
+  <line x1="550" y1="130" x2="584" y2="130" stroke="#1C1B18" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- plant -->
+  <rect x="590" y="95" width="125" height="70" rx="4" fill="#F1ECDF" stroke="#1C1B18" stroke-width="1.5"/>
+  <text x="652" y="126" text-anchor="middle" font-size="16" fill="#1C1B18">Plant</text>
+  <text x="652" y="147" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">data plane</text>
+
+  <!-- output and feedback tap -->
+  <line x1="715" y1="130" x2="745" y2="130" stroke="#1C1B18" stroke-width="1.5"/>
+  <circle cx="732" cy="130" r="3.5" fill="#6E2A1E"/>
+
+  <!-- feedback path -->
+  <path d="M732 130 L732 235 L556 235" fill="none" stroke="#6E2A1E" stroke-width="1.5" marker-end="url(#arr-fb)"/>
+
+  <!-- sensor -->
+  <rect x="420" y="205" width="130" height="60" rx="4" fill="#FCFBF7" stroke="#6E2A1E" stroke-width="1.5"/>
+  <text x="485" y="231" text-anchor="middle" font-size="16" fill="#1C1B18">Sensor</text>
+  <text x="485" y="250" text-anchor="middle" font-size="12" font-style="italic" fill="#6B665C">telemetry &#183; watches</text>
+
+  <path d="M420 235 L150 235 L150 152" fill="none" stroke="#6E2A1E" stroke-width="1.5" marker-end="url(#arr-fb)"/>
+</svg>

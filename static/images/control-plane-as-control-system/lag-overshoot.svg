@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="760" height="320" fill="#FCFBF7"/>
+  <rect x="1" y="1" width="758" height="318" fill="none" stroke="#E8E2D1" stroke-width="2"/>
+
+  <!-- axes -->
+  <line x1="60" y1="40" x2="60" y2="270" stroke="#6B665C" stroke-width="1.2"/>
+  <line x1="60" y1="270" x2="730" y2="270" stroke="#6B665C" stroke-width="1.2"/>
+  <text x="730" y="292" text-anchor="end" font-size="13" font-style="italic" fill="#6B665C">time &#8594;</text>
+  <text x="38" y="160" text-anchor="middle" font-size="13" font-style="italic" fill="#6B665C" transform="rotate(-90 38 160)">system state</text>
+
+  <!-- reference step -->
+  <path d="M60 230 L140 230 L140 120 L730 120" fill="none" stroke="#6B665C" stroke-width="1.5" stroke-dasharray="7 5"/>
+
+  <!-- damped response -->
+  <path d="M140 230 C190 228 215 134 295 122 C345 119 420 120 730 120" fill="none" stroke="#4A5240" stroke-width="2.5"/>
+
+  <!-- lagged, underdamped response -->
+  <path d="M140 230 C175 230 185 60 230 60 C275 60 280 170 320 170 C360 170 365 90 410 90 C455 90 460 145 500 145 C540 145 550 103 590 103 C630 103 660 118 730 119" fill="none" stroke="#6E2A1E" stroke-width="2.5"/>
+
+  <!-- legend -->
+  <line x1="470" y1="50" x2="500" y2="50" stroke="#4A5240" stroke-width="2.5"/>
+  <text x="508" y="54" font-size="13" fill="#1C1B18">damped correction</text>
+  <line x1="470" y1="73" x2="500" y2="73" stroke="#6E2A1E" stroke-width="2.5"/>
+  <text x="508" y="77" font-size="13" fill="#1C1B18">correction applied to stale state</text>
+</svg>
